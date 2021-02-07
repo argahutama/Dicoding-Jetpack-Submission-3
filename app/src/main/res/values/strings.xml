@@ -5,4 +5,6 @@
     <string name="tab_tv_show">TV SHOW</string>
     <string name="movie_poster">Movie Poster</string>
     <string name="tvshow_poster">TV Show Poster</string>
+    <string name="warning">Warning</string>
+    <string name="press_back_once_again_to_exit">Press back once again to exit</string>
 </resources>
