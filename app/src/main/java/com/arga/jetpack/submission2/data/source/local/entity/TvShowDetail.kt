@@ -11,8 +11,6 @@ data class TvShowDetail (
     val backdropPath: String?,
     @SerializedName("name")
     val name: String?,
-    @SerializedName("original_name")
-    val originalName: String?,
     @SerializedName("first_air_date")
     val firstAirDate: String?,
     @SerializedName("overview")
