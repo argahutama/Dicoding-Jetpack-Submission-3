@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
+import com.arga.jetpack.submission2.R
 import com.arga.jetpack.submission2.databinding.ActivitySplashBinding
 
 class SplashActivity : AppCompatActivity() {
@@ -15,12 +16,10 @@ class SplashActivity : AppCompatActivity() {
         setContentView(activitySplashBinding.root)
 
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(
-                this@SplashActivity,
-                MainActivity::class.java
-            )
+            val intent = Intent(this@SplashActivity, MainActivity::class.java)
             startActivity(intent)
             finish()
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
         }, 1000)
     }
 }
