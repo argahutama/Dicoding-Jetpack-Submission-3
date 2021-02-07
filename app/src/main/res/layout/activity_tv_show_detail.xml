@@ -48,7 +48,7 @@
                 android:layout_width="150dp"
                 android:layout_height="225dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="90dp"
+                android:layout_marginTop="100dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:elevation="4dp"
@@ -76,7 +76,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 tools:text="@string/title"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -84,7 +84,6 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="8dp"
             android:paddingBottom="8dp">
 
             <androidx.cardview.widget.CardView
@@ -109,7 +108,7 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="16dp"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         android:gravity="center_vertical"
                         android:textColor="@android:color/black"
                         app:drawableStartCompat="@drawable/ic_date"
@@ -124,7 +123,7 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="16dp"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         android:gravity="center_vertical"
                         android:textColor="@android:color/black"
                         app:drawableStartCompat="@drawable/ic_star_black_24dp"
@@ -139,23 +138,13 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="16dp"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         android:textStyle="bold"
                         android:gravity="center_vertical"
                         android:textColor="@android:color/black"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/view1"
-                        android:text="@string/overview" />
-
-                    <View
-                        android:id="@+id/view1"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="16dp"
-                        android:background="@color/colorAccent"
                         app:layout_constraintTop_toBottomOf="@id/tv_rating"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"/>
+                        android:text="@string/overview" />
 
                     <TextView
                         android:id="@+id/tv_overview"
@@ -164,11 +153,13 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="16dp"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         android:gravity="center_vertical"
                         android:textColor="@android:color/black"
+                        android:justificationMode="inter_word"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tv_overview_header" />
+                        app:layout_constraintTop_toBottomOf="@id/tv_overview_header"
+                        tools:targetApi="o" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
