@@ -1,6 +1,5 @@
 package com.arga.jetpack.submission2.util
 
-import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.arga.jetpack.submission2.data.DataRepository
@@ -13,9 +12,9 @@ class ViewModelFactory(private val dataRepository: DataRepository): ViewModelPro
         @Volatile
         private var instance: ViewModelFactory? = null
 
-        fun getInstance(context: Context?): ViewModelFactory =
+        fun getInstance(): ViewModelFactory =
             instance ?: synchronized(this) {
-                instance ?: ViewModelFactory(Injection.dataRepository(context))
+                instance ?: ViewModelFactory(Injection.dataRepository())
             }
     }
 
