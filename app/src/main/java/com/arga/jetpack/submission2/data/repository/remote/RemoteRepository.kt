@@ -4,6 +4,9 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import com.arga.jetpack.submission2.BuildConfig.API_KEY
+import com.arga.jetpack.submission2.data.repository.local.entity.Item
+import com.arga.jetpack.submission2.data.repository.local.entity.MovieDetail
+import com.arga.jetpack.submission2.data.repository.local.entity.TvShowDetail
 import com.arga.jetpack.submission2.network.ApiClient
 import com.arga.jetpack.submission2.util.EspressoIdlingResource
 import retrofit2.Call

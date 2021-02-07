@@ -1,8 +1,8 @@
 package com.arga.jetpack.submission2.network
 
 import com.arga.jetpack.submission2.data.repository.remote.ItemResponse
-import com.arga.jetpack.submission2.data.repository.remote.MovieDetail
-import com.arga.jetpack.submission2.data.repository.remote.TvShowDetail
+import com.arga.jetpack.submission2.data.repository.local.entity.MovieDetail
+import com.arga.jetpack.submission2.data.repository.local.entity.TvShowDetail
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path

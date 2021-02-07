@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.arga.jetpack.submission2.R
-import com.arga.jetpack.submission2.data.repository.remote.Item
+import com.arga.jetpack.submission2.data.repository.local.entity.Item
 import com.arga.jetpack.submission2.databinding.MoviesItemBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions

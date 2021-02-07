@@ -1,4 +1,4 @@
-package com.arga.jetpack.submission2.data.repository.remote
+package com.arga.jetpack.submission2.data.repository.local.entity
 
 import com.google.gson.annotations.SerializedName
 
