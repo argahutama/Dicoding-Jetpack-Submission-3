@@ -5,7 +5,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.arga.jetpack.submission2.R
-import com.arga.jetpack.submission2.data.source.local.entity.MovieDetail
+import com.arga.jetpack.submission2.data.source.local.entity.MovieEntity
 import com.arga.jetpack.submission2.databinding.ActivityMovieDetailBinding
 import com.arga.jetpack.submission2.util.ViewModelFactory
 import com.arga.jetpack.submission2.viewmodel.MovieViewModel
@@ -27,7 +27,7 @@ class MovieDetailActivity : AppCompatActivity() {
         }
     }
 
-    private fun loadMovieDetail(movieDetail: MovieDetail, activityMovieDetailBinding: ActivityMovieDetailBinding) {
+    private fun loadMovieDetail(movieDetail: MovieEntity, activityMovieDetailBinding: ActivityMovieDetailBinding) {
         activityMovieDetailBinding.progressBar.visibility = View.GONE
         activityMovieDetailBinding.llContent.visibility = View.VISIBLE
 

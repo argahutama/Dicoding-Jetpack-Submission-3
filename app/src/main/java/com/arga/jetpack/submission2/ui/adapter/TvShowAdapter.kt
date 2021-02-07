@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.arga.jetpack.submission2.R
-import com.arga.jetpack.submission2.data.source.local.entity.Item
+import com.arga.jetpack.submission2.data.source.local.entity.TvShowEntity
 import com.arga.jetpack.submission2.databinding.TvshowItemBinding
 import com.arga.jetpack.submission2.ui.activity.TvShowDetailActivity
 import com.bumptech.glide.Glide
@@ -14,9 +14,9 @@ import com.bumptech.glide.request.RequestOptions
 
 class TvShowAdapter(private val context: Context?): RecyclerView.Adapter<TvShowAdapter.TvShowViewHolder>(){
 
-    private val list =  ArrayList<Item>()
+    private val list =  ArrayList<TvShowEntity>()
 
-    fun setData(movie: ArrayList<Item>){
+    fun setData(movie: ArrayList<TvShowEntity>){
         list.clear()
         list.addAll(movie)
         notifyDataSetChanged()
@@ -38,7 +38,7 @@ class TvShowAdapter(private val context: Context?): RecyclerView.Adapter<TvShowA
     }
 
     inner class TvShowViewHolder(private val binding: TvshowItemBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(tvShow: Item){
+        fun bind(tvShow: TvShowEntity){
             with(binding){
                 tvTitleTvshow.text = tvShow.name
                 tvDescriptionTvshow.text = tvShow.overview

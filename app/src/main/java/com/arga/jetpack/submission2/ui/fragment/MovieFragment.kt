@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.arga.jetpack.submission2.data.source.local.entity.Item
+import com.arga.jetpack.submission2.data.source.local.entity.MovieEntity
 import com.arga.jetpack.submission2.databinding.FragmentMovieBinding
 import com.arga.jetpack.submission2.ui.adapter.MovieAdapter
 import com.arga.jetpack.submission2.util.ViewModelFactory
@@ -33,7 +33,7 @@ class MovieFragment : Fragment() {
 
         viewModel.movie.observe(viewLifecycleOwner, { data ->
             fragmentMovieBinding.progressBar.visibility = View.GONE
-            moviesAdapter.setData(data as ArrayList<Item>)
+            moviesAdapter.setData(data as ArrayList<MovieEntity>)
         })
 
         with(fragmentMovieBinding.rvMovies){

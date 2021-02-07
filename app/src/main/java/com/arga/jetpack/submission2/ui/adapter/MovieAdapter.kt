@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.arga.jetpack.submission2.R
-import com.arga.jetpack.submission2.data.source.local.entity.Item
+import com.arga.jetpack.submission2.data.source.local.entity.MovieEntity
 import com.arga.jetpack.submission2.databinding.MoviesItemBinding
 import com.arga.jetpack.submission2.ui.activity.MovieDetailActivity
 import com.bumptech.glide.Glide
@@ -14,9 +14,9 @@ import com.bumptech.glide.request.RequestOptions
 
 class MovieAdapter(private val context: Context?): RecyclerView.Adapter<MovieAdapter.MovieViewHolder>(){
 
-    private val list =  ArrayList<Item>()
+    private val list =  ArrayList<MovieEntity>()
 
-    fun setData(movie: ArrayList<Item>){
+    fun setData(movie: ArrayList<MovieEntity>){
         list.clear()
         list.addAll(movie)
         notifyDataSetChanged()
@@ -38,7 +38,7 @@ class MovieAdapter(private val context: Context?): RecyclerView.Adapter<MovieAda
     }
 
     inner class MovieViewHolder(private val binding: MoviesItemBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(movie: Item){
+        fun bind(movie: MovieEntity){
             with(binding){
                 tvTitleMovies.text = movie.title
                 tvDescriptionMovies.text = movie.overview

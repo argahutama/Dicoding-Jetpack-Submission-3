@@ -3,10 +3,13 @@ package com.arga.jetpack.submission2.data
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.arga.jetpack.submission2.data.source.local.entity.Item
-import com.arga.jetpack.submission2.data.source.local.entity.MovieDetail
+import com.arga.jetpack.submission2.data.source.local.entity.MovieEntity
 import com.arga.jetpack.submission2.data.source.remote.RemoteRepository
-import com.arga.jetpack.submission2.data.source.local.entity.TvShowDetail
+import com.arga.jetpack.submission2.data.source.local.entity.TvShowEntity
+import com.arga.jetpack.submission2.data.source.remote.interactor.GetMovieCallback
+import com.arga.jetpack.submission2.data.source.remote.interactor.GetMovieDetailCallback
+import com.arga.jetpack.submission2.data.source.remote.interactor.GetTvShowCallback
+import com.arga.jetpack.submission2.data.source.remote.interactor.GetTvShowDetailCallback
 
 class DataRepository(private val remoteRepository: RemoteRepository): DataSource {
 
@@ -25,22 +28,22 @@ class DataRepository(private val remoteRepository: RemoteRepository): DataSource
         }
     }
 
-    override fun getMovie(): LiveData<List<Item>> {
-        val movieLists = MutableLiveData<List<Item>>()
-        remoteRepository.getMovie(object: RemoteRepository.GetMovieCallback{
-            override fun onResponse(movieResponse: List<Item>) {
-                movieLists.postValue(movieResponse)
+    override fun getMovie(): LiveData<List<MovieEntity>> {
+        val movieList = MutableLiveData<List<MovieEntity>>()
+        remoteRepository.getMovie(object: GetMovieCallback {
+            override fun onResponse(movieResponse: List<MovieEntity>) {
+                movieList.postValue(movieResponse)
                 Log.d("Movie Response", movieResponse.toString())
             }
 
         })
-        return movieLists
+        return movieList
     }
 
-    override fun getMovieDetail(movieId: Int): LiveData<MovieDetail> {
-        val movieDetail = MutableLiveData<MovieDetail>()
-        remoteRepository.getMovieDetail(movieId, object: RemoteRepository.GetMovieDetailCallback{
-            override fun onResponse(movieDetailResponse: MovieDetail) {
+    override fun getMovieDetail(movieId: Int): LiveData<MovieEntity> {
+        val movieDetail = MutableLiveData<MovieEntity>()
+        remoteRepository.getMovieDetail(movieId, object: GetMovieDetailCallback {
+            override fun onResponse(movieDetailResponse: MovieEntity) {
                 movieDetail.postValue(movieDetailResponse)
             }
 
@@ -48,10 +51,10 @@ class DataRepository(private val remoteRepository: RemoteRepository): DataSource
         return movieDetail
     }
 
-    override fun getTvShow(): LiveData<List<Item>> {
-        val tvShowList = MutableLiveData<List<Item>>()
-        remoteRepository.getTvShow(object: RemoteRepository.GetTvShowCallback{
-            override fun onResponse(tvShowResponse: List<Item>) {
+    override fun getTvShow(): LiveData<List<TvShowEntity>> {
+        val tvShowList = MutableLiveData<List<TvShowEntity>>()
+        remoteRepository.getTvShow(object: GetTvShowCallback {
+            override fun onResponse(tvShowResponse: List<TvShowEntity>) {
                 tvShowList.postValue(tvShowResponse)
                 Log.d("Movie Response", tvShowResponse.toString())
             }
@@ -60,10 +63,10 @@ class DataRepository(private val remoteRepository: RemoteRepository): DataSource
         return tvShowList
     }
 
-    override fun getTvShowDetail(tvShowId: Int): LiveData<TvShowDetail> {
-        val tvShowDetail = MutableLiveData<TvShowDetail>()
-        remoteRepository.getTvShowDetail(tvShowId, object: RemoteRepository.GetTvShowDetailCallback{
-            override fun onResponse(tvShowDetailResponse: TvShowDetail) {
+    override fun getTvShowDetail(tvShowId: Int): LiveData<TvShowEntity> {
+        val tvShowDetail = MutableLiveData<TvShowEntity>()
+        remoteRepository.getTvShowDetail(tvShowId, object: GetTvShowDetailCallback {
+            override fun onResponse(tvShowDetailResponse: TvShowEntity) {
                 tvShowDetail.postValue(tvShowDetailResponse)
             }
 

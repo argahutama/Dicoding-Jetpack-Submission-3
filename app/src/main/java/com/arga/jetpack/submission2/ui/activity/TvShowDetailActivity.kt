@@ -5,7 +5,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.arga.jetpack.submission2.R
-import com.arga.jetpack.submission2.data.source.local.entity.TvShowDetail
+import com.arga.jetpack.submission2.data.source.local.entity.TvShowEntity
 import com.arga.jetpack.submission2.databinding.ActivityTvShowDetailBinding
 import com.arga.jetpack.submission2.util.ViewModelFactory
 import com.arga.jetpack.submission2.viewmodel.TvShowViewModel
@@ -27,7 +27,7 @@ class TvShowDetailActivity : AppCompatActivity() {
         }
     }
 
-    private fun loadTvShowDetail(tvShowDetail: TvShowDetail, activityTvShowDetailBinding: ActivityTvShowDetailBinding) {
+    private fun loadTvShowDetail(tvShowDetail: TvShowEntity, activityTvShowDetailBinding: ActivityTvShowDetailBinding) {
         activityTvShowDetailBinding.progressBar.visibility = View.GONE
         activityTvShowDetailBinding.llContent.visibility = View.VISIBLE
 

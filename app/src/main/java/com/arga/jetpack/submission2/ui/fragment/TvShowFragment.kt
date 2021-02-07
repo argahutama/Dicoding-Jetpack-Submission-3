@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.arga.jetpack.submission2.data.source.local.entity.Item
+import com.arga.jetpack.submission2.data.source.local.entity.TvShowEntity
 import com.arga.jetpack.submission2.databinding.FragmentTvShowBinding
 import com.arga.jetpack.submission2.ui.adapter.TvShowAdapter
 import com.arga.jetpack.submission2.util.ViewModelFactory
@@ -32,7 +32,7 @@ class TvShowFragment : Fragment() {
         val tvShowAdapter = TvShowAdapter(context)
         viewModel.tvShow.observe(viewLifecycleOwner, { data ->
             fragmentTvShowBinding.progressBar.visibility = View.GONE
-            tvShowAdapter.setData(data as ArrayList<Item>)
+            tvShowAdapter.setData(data as ArrayList<TvShowEntity>)
         })
 
         with(fragmentTvShowBinding.rvTvshow){
