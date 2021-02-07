@@ -18,7 +18,7 @@ class MovieDetailActivity : AppCompatActivity() {
         val activityMovieDetailBinding = ActivityMovieDetailBinding.inflate(layoutInflater)
         setContentView(activityMovieDetailBinding.root)
 
-        val factory = ViewModelFactory.getInstance(this)
+        val factory = ViewModelFactory.getInstance()
         val viewModel = ViewModelProvider(this, factory)[MovieViewModel::class.java]
 
         val movieId = intent.extras?.getInt("movieId")
@@ -29,7 +29,7 @@ class MovieDetailActivity : AppCompatActivity() {
 
     private fun loadMovieDetail(movieDetail: MovieDetail, activityMovieDetailBinding: ActivityMovieDetailBinding) {
         activityMovieDetailBinding.progressBar.visibility = View.GONE
-        activityMovieDetailBinding.clContent.visibility = View.VISIBLE
+        activityMovieDetailBinding.llContent.visibility = View.VISIBLE
 
         Glide.with(this)
             .load("https://image.tmdb.org/t/p/w500${movieDetail.backdropPath}")

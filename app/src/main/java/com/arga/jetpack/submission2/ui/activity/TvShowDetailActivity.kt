@@ -18,7 +18,7 @@ class TvShowDetailActivity : AppCompatActivity() {
         val activityTvShowDetailBinding = ActivityTvShowDetailBinding.inflate(layoutInflater)
         setContentView(activityTvShowDetailBinding.root)
 
-        val factory = ViewModelFactory.getInstance(this)
+        val factory = ViewModelFactory.getInstance()
         val viewModel = ViewModelProvider(this, factory)[TvShowViewModel::class.java]
 
         val tvShowId = intent.extras?.getInt("tvShowId")
@@ -29,7 +29,7 @@ class TvShowDetailActivity : AppCompatActivity() {
 
     private fun loadTvShowDetail(tvShowDetail: TvShowDetail, activityTvShowDetailBinding: ActivityTvShowDetailBinding) {
         activityTvShowDetailBinding.progressBar.visibility = View.GONE
-        activityTvShowDetailBinding.clContent.visibility = View.VISIBLE
+        activityTvShowDetailBinding.llContent.visibility = View.VISIBLE
 
         Glide.with(this)
             .load("https://image.tmdb.org/t/p/w500${tvShowDetail.backdropPath}")
