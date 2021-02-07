@@ -50,8 +50,10 @@
                 android:layout_height="wrap_content"
                 tools:text="Description"
                 android:layout_marginTop="8dp"
+                android:justificationMode="inter_word"
                 android:maxLines="3"
-                android:ellipsize="end"/>
+                android:ellipsize="end"
+                tools:targetApi="o" />
 
         </LinearLayout>
 

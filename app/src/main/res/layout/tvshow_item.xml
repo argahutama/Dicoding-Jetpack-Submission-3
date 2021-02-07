@@ -49,9 +49,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:text="Description"
+                android:justificationMode="inter_word"
                 android:layout_marginTop="8dp"
                 android:maxLines="3"
-                android:ellipsize="end"/>
+                android:ellipsize="end"
+                tools:targetApi="o" />
 
         </LinearLayout>
 
