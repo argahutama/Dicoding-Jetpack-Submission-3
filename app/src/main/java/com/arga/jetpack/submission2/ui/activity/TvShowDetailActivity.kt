@@ -1,6 +1,7 @@
 package com.arga.jetpack.submission2.ui.activity
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.arga.jetpack.submission2.R
@@ -27,6 +28,9 @@ class TvShowDetailActivity : AppCompatActivity() {
     }
 
     private fun loadTvShowDetail(tvShowDetail: TvShowDetail, activityTvShowDetailBinding: ActivityTvShowDetailBinding) {
+        activityTvShowDetailBinding.progressBar.visibility = View.GONE
+        activityTvShowDetailBinding.clContent.visibility = View.VISIBLE
+
         Glide.with(this)
             .load("https://image.tmdb.org/t/p/w500${tvShowDetail.backdropPath}")
             .into(activityTvShowDetailBinding.ivBigPoster)

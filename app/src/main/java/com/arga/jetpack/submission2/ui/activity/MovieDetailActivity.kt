@@ -1,6 +1,7 @@
 package com.arga.jetpack.submission2.ui.activity
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.arga.jetpack.submission2.R
@@ -27,6 +28,9 @@ class MovieDetailActivity : AppCompatActivity() {
     }
 
     private fun loadMovieDetail(movieDetail: MovieDetail, activityMovieDetailBinding: ActivityMovieDetailBinding) {
+        activityMovieDetailBinding.progressBar.visibility = View.GONE
+        activityMovieDetailBinding.clContent.visibility = View.VISIBLE
+
         Glide.with(this)
             .load("https://image.tmdb.org/t/p/w500${movieDetail.backdropPath}")
             .into(activityMovieDetailBinding.ivBigPoster)
