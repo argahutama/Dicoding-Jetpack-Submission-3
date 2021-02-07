@@ -1,5 +1,6 @@
 package com.arga.jetpack.submission2.data.repository
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.arga.jetpack.submission2.data.repository.local.entity.Item
@@ -8,17 +9,17 @@ import com.arga.jetpack.submission2.data.repository.remote.RemoteRepository
 import com.arga.jetpack.submission2.data.repository.local.entity.TvShowDetail
 import com.arga.jetpack.submission2.data.source.DataSource
 
-class DataRepository(localRepository: LocalRepository, private val remoteRepository: RemoteRepository): DataSource {
+class DataRepository(private val remoteRepository: RemoteRepository): DataSource {
 
     companion object{
         @Volatile
         private var INSTANCE: DataRepository? = null
 
-        fun getInstance(localRepository: LocalRepository, remoteRepository: RemoteRepository): DataRepository?{
+        fun getInstance(remoteRepository: RemoteRepository): DataRepository?{
             if (INSTANCE == null){
                 synchronized(DataRepository::class.java){
                     if (INSTANCE == null)
-                        INSTANCE = DataRepository(localRepository, remoteRepository)
+                        INSTANCE = DataRepository(remoteRepository)
                 }
             }
             return INSTANCE
@@ -30,6 +31,7 @@ class DataRepository(localRepository: LocalRepository, private val remoteReposit
         remoteRepository.getMovie(object: RemoteRepository.GetMovieCallback{
             override fun onResponse(movieResponse: List<Item>) {
                 movieLists.postValue(movieResponse)
+                Log.d("Movie Response", movieResponse.toString())
             }
 
         })
@@ -52,6 +54,7 @@ class DataRepository(localRepository: LocalRepository, private val remoteReposit
         remoteRepository.getTvShow(object: RemoteRepository.GetTvShowCallback{
             override fun onResponse(tvShowResponse: List<Item>) {
                 tvShowList.postValue(tvShowResponse)
+                Log.d("Movie Response", tvShowResponse.toString())
             }
 
         })
