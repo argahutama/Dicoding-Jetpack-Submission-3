@@ -17,10 +17,7 @@ class TvShowFragment : Fragment() {
 
     private lateinit var fragmentTvShowBinding: FragmentTvShowBinding
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         // Inflate the layout for this fragment
         fragmentTvShowBinding = FragmentTvShowBinding.inflate(layoutInflater, container, false)
         return fragmentTvShowBinding.root
@@ -34,6 +31,7 @@ class TvShowFragment : Fragment() {
 
         val tvShowAdapter = TvShowAdapter(context)
         viewModel.tvShow.observe(viewLifecycleOwner, { data ->
+            fragmentTvShowBinding.progressBar.visibility = View.GONE
             tvShowAdapter.setData(data as ArrayList<Item>)
         })
 

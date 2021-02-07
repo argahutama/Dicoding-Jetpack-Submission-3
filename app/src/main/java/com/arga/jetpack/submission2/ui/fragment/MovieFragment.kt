@@ -17,10 +17,7 @@ class MovieFragment : Fragment() {
 
     private lateinit var fragmentMovieBinding: FragmentMovieBinding
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         // Inflate the layout for this fragment
         fragmentMovieBinding = FragmentMovieBinding.inflate(layoutInflater, container, false)
         return fragmentMovieBinding.root
@@ -35,6 +32,7 @@ class MovieFragment : Fragment() {
         val moviesAdapter = MovieAdapter(context)
 
         viewModel.movie.observe(viewLifecycleOwner, { data ->
+            fragmentMovieBinding.progressBar.visibility = View.GONE
             moviesAdapter.setData(data as ArrayList<Item>)
         })
 
