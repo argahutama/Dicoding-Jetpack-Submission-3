@@ -132,8 +132,8 @@
                         tools:text="@string/release_date" />
 
                     <androidx.cardview.widget.CardView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginBottom="8dp"
                         android:elevation="4dp"
@@ -150,7 +150,8 @@
                             android:layout_height="match_parent"
                             android:textColor="@android:color/white"
                             android:gravity="center"
-                            android:textSize="14sp"
+                            android:textSize="16sp"
+                            app:drawableStartCompat="@drawable/ic_star_white_24dp"
                             tools:text="@string/rating"/>
                     </androidx.cardview.widget.CardView>
 

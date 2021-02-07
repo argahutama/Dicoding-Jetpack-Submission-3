@@ -117,7 +117,7 @@
                         app:layout_constraintEnd_toEndOf="parent"/>
 
                     <TextView
-                        android:id="@+id/tv_release"
+                        android:id="@+id/tv_first_on_air"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -129,18 +129,18 @@
                         app:drawableStartCompat="@drawable/ic_date"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_title"
-                        tools:text="@string/release_date" />
+                        tools:text="@string/first_on_air" />
 
                     <androidx.cardview.widget.CardView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginBottom="8dp"
                         android:elevation="4dp"
                         app:cardCornerRadius="42dp"
                         app:cardBackgroundColor="@color/colorAccent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tv_release"
+                        app:layout_constraintTop_toBottomOf="@id/tv_first_on_air"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent">
 
@@ -150,7 +150,8 @@
                             android:layout_height="match_parent"
                             android:textColor="@android:color/white"
                             android:gravity="center"
-                            android:textSize="14sp"
+                            android:textSize="16sp"
+                            app:drawableStartCompat="@drawable/ic_star_white_24dp"
                             tools:text="@string/rating"/>
                     </androidx.cardview.widget.CardView>
 

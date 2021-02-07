@@ -34,7 +34,7 @@ class TvShowDetailActivity : AppCompatActivity() {
             .load("https://image.tmdb.org/t/p/w500${tvShowDetail.posterPath}")
             .into(activityTvShowDetailBinding.ivSmallPoster)
         activityTvShowDetailBinding.tvTitle.text = tvShowDetail.name
-        activityTvShowDetailBinding.tvRelease.text = resources.getString(R.string.release_date, tvShowDetail.firstAirDate)
+        activityTvShowDetailBinding.tvFirstOnAir.text = resources.getString(R.string.first_on_air, tvShowDetail.firstAirDate)
         activityTvShowDetailBinding.tvRating.text = tvShowDetail.voteAverage.toString()
         activityTvShowDetailBinding.tvOverview.text = tvShowDetail.overview
     }

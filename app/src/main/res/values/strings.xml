@@ -11,6 +11,7 @@
     <string name="production">Production</string>
     <string name="overview">Overview</string>
     <string name="release_date">Release Date : %s</string>
+    <string name="first_on_air">First On Air : %s</string>
     <string name="poster">Poster</string>
     <string name="rating">Rating</string>
 </resources>
