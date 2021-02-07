@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.arga.jetpack.submission2.R
-import com.arga.jetpack.submission2.data.repository.local.entity.Item
+import com.arga.jetpack.submission2.data.source.local.entity.Item
 import com.arga.jetpack.submission2.databinding.TvshowItemBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -36,12 +36,12 @@ class TvShowAdapter(private val context: Context?): RecyclerView.Adapter<TvShowA
     }
 
     inner class TvShowViewHolder(private val binding: TvshowItemBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(movie: Item){
+        fun bind(tvShow: Item){
             with(binding){
-                tvTitleTvshow.text = movie.title
-                tvDescriptionTvshow.text = movie.overview
+                tvTitleTvshow.text = tvShow.name
+                tvDescriptionTvshow.text = tvShow.overview
                 Glide.with(itemView)
-                    .load("https://image.tmdb.org/t/p/w500${movie.posterPath}")
+                    .load("https://image.tmdb.org/t/p/w500${tvShow.posterPath}")
                     .apply(RequestOptions.placeholderOf(R.drawable.ic_refresh_black_24dp).error(R.drawable.ic_broken_image_black_24dp))
                     .centerCrop()
                     .into(imgTvshow)

@@ -1,12 +1,13 @@
-package com.arga.jetpack.submission2.data.repository.remote
+package com.arga.jetpack.submission2.data.source.remote
 
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import com.arga.jetpack.submission2.BuildConfig.API_KEY
-import com.arga.jetpack.submission2.data.repository.local.entity.Item
-import com.arga.jetpack.submission2.data.repository.local.entity.MovieDetail
-import com.arga.jetpack.submission2.data.repository.local.entity.TvShowDetail
+import com.arga.jetpack.submission2.data.source.local.entity.Item
+import com.arga.jetpack.submission2.data.source.local.entity.MovieDetail
+import com.arga.jetpack.submission2.data.source.local.entity.TvShowDetail
+import com.arga.jetpack.submission2.data.source.remote.response.ItemResponse
 import com.arga.jetpack.submission2.network.ApiClient
 import com.arga.jetpack.submission2.util.EspressoIdlingResource
 import retrofit2.Call
@@ -23,7 +24,7 @@ open class RemoteRepository(apiClient: ApiClient) {
         private val TAG = RemoteRepository::class.java.toString()
         private const val TIME_IN_MILLIS: Long = 1500
 
-        fun getInstance(apiClient: ApiClient):RemoteRepository{
+        fun getInstance(apiClient: ApiClient): RemoteRepository {
             if (INSTANCE == null)
                 INSTANCE = RemoteRepository(apiClient)
             return INSTANCE!!

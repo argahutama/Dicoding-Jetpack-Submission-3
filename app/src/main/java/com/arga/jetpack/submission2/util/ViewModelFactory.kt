@@ -3,7 +3,7 @@ package com.arga.jetpack.submission2.util
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.arga.jetpack.submission2.data.repository.DataRepository
+import com.arga.jetpack.submission2.data.DataRepository
 import com.arga.jetpack.submission2.di.Injection
 import com.arga.jetpack.submission2.viewmodel.MovieViewModel
 import com.arga.jetpack.submission2.viewmodel.TvShowViewModel

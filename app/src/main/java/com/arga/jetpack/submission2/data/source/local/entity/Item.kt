@@ -1,8 +1,8 @@
-package com.arga.jetpack.submission2.data.repository.local.entity
+package com.arga.jetpack.submission2.data.source.local.entity
 
 import com.google.gson.annotations.SerializedName
 
-data class MovieDetail(
+data class Item(
     @SerializedName("id")
     val id: Int,
     @SerializedName("poster_path")

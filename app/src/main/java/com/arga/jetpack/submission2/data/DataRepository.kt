@@ -1,13 +1,12 @@
-package com.arga.jetpack.submission2.data.repository
+package com.arga.jetpack.submission2.data
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.arga.jetpack.submission2.data.repository.local.entity.Item
-import com.arga.jetpack.submission2.data.repository.local.entity.MovieDetail
-import com.arga.jetpack.submission2.data.repository.remote.RemoteRepository
-import com.arga.jetpack.submission2.data.repository.local.entity.TvShowDetail
-import com.arga.jetpack.submission2.data.source.DataSource
+import com.arga.jetpack.submission2.data.source.local.entity.Item
+import com.arga.jetpack.submission2.data.source.local.entity.MovieDetail
+import com.arga.jetpack.submission2.data.source.remote.RemoteRepository
+import com.arga.jetpack.submission2.data.source.local.entity.TvShowDetail
 
 class DataRepository(private val remoteRepository: RemoteRepository): DataSource {
 
