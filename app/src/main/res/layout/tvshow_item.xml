@@ -34,14 +34,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="8dp">
+            android:paddingHorizontal="8dp">
 
             <TextView
                 android:id="@+id/tv_title_tvshow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="3"
                 tools:text="Judul Film"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold"/>
 
             <TextView
