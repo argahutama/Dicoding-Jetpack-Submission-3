@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ArMovies</string>
+
+    <string name="tab_movie">MOVIE</string>
+    <string name="tab_tv_show">TV SHOW</string>
+    <string name="movie_poster">Movie Poster</string>
+    <string name="tvshow_poster">TV Show Poster</string>
+</resources>
