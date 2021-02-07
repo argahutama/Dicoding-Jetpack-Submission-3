@@ -42,6 +42,7 @@ class TvShowAdapter(private val context: Context?): RecyclerView.Adapter<TvShowA
             with(binding){
                 tvTitleTvshow.text = tvShow.name
                 tvDescriptionTvshow.text = tvShow.overview
+                tvRating.text = tvShow.voteAverage.toString()
                 Glide.with(itemView)
                     .load("https://image.tmdb.org/t/p/w500${tvShow.posterPath}")
                     .apply(RequestOptions.placeholderOf(R.drawable.ic_refresh_black_24dp).error(R.drawable.ic_broken_image_black_24dp))

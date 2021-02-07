@@ -42,6 +42,7 @@ class MovieAdapter(private val context: Context?): RecyclerView.Adapter<MovieAda
             with(binding){
                 tvTitleMovies.text = movie.title
                 tvDescriptionMovies.text = movie.overview
+                tvRating.text = movie.voteAverage.toString()
                 Glide.with(itemView)
                     .load("https://image.tmdb.org/t/p/w500${movie.posterPath}")
                     .apply(RequestOptions.placeholderOf(R.drawable.ic_refresh_black_24dp).error(R.drawable.ic_broken_image_black_24dp))

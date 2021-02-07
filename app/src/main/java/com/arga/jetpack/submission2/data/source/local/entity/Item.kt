@@ -11,14 +11,10 @@ data class Item(
     val backdropPath: String?,
     @SerializedName("title")
     val title: String?,
-    @SerializedName("tagline")
-    val tagLine: String?,
+    @SerializedName("name")
+    val name: String?,
     @SerializedName("overview")
     val overview: String?,
-    @SerializedName("release_date")
-    val releasedDate: String?,
     @SerializedName("vote_average")
-    val voteAverage: Double?,
-    @SerializedName("name")
-    val name: String?
+    val voteAverage: Double?
 )

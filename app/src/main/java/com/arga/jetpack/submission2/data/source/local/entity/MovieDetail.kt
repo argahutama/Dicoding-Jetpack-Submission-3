@@ -11,8 +11,6 @@ data class MovieDetail(
     val backdropPath: String?,
     @SerializedName("title")
     val title: String?,
-    @SerializedName("tagline")
-    val tagLine: String?,
     @SerializedName("overview")
     val overview: String?,
     @SerializedName("release_date")
