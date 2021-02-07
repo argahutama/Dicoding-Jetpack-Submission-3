@@ -41,7 +41,7 @@ class TvShowAdapter(private val context: Context?): RecyclerView.Adapter<TvShowA
                 tvTitleTvshow.text = movie.title
                 tvDescriptionTvshow.text = movie.overview
                 Glide.with(itemView)
-                    .load(movie.posterPath)
+                    .load("https://image.tmdb.org/t/p/w500${movie.posterPath}")
                     .apply(RequestOptions.placeholderOf(R.drawable.ic_refresh_black_24dp).error(R.drawable.ic_broken_image_black_24dp))
                     .centerCrop()
                     .into(imgTvshow)
