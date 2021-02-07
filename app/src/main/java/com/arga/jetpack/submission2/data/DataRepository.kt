@@ -37,7 +37,7 @@ class DataRepository(private val remoteRepository: RemoteRepository): DataSource
         return movieLists
     }
 
-    override fun getMovieDetail(movieId: String): LiveData<MovieDetail> {
+    override fun getMovieDetail(movieId: Int): LiveData<MovieDetail> {
         val movieDetail = MutableLiveData<MovieDetail>()
         remoteRepository.getMovieDetail(movieId, object: RemoteRepository.GetMovieDetailCallback{
             override fun onResponse(movieDetailResponse: MovieDetail) {
@@ -60,7 +60,7 @@ class DataRepository(private val remoteRepository: RemoteRepository): DataSource
         return tvShowList
     }
 
-    override fun getTvShowDetail(tvShowId: String): LiveData<TvShowDetail> {
+    override fun getTvShowDetail(tvShowId: Int): LiveData<TvShowDetail> {
         val tvShowDetail = MutableLiveData<TvShowDetail>()
         remoteRepository.getTvShowDetail(tvShowId, object: RemoteRepository.GetTvShowDetailCallback{
             override fun onResponse(tvShowDetailResponse: TvShowDetail) {

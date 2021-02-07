@@ -1,12 +1,14 @@
 package com.arga.jetpack.submission2.ui.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.arga.jetpack.submission2.R
 import com.arga.jetpack.submission2.data.source.local.entity.Item
 import com.arga.jetpack.submission2.databinding.MoviesItemBinding
+import com.arga.jetpack.submission2.ui.activity.MovieDetailActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
@@ -45,6 +47,11 @@ class MovieAdapter(private val context: Context?): RecyclerView.Adapter<MovieAda
                     .apply(RequestOptions.placeholderOf(R.drawable.ic_refresh_black_24dp).error(R.drawable.ic_broken_image_black_24dp))
                     .centerCrop()
                     .into(imgMovies)
+                itemView.setOnClickListener {
+                    val intent = Intent(itemView.context, MovieDetailActivity::class.java)
+                    intent.putExtra("movieId", movie.id)
+                    itemView.context.startActivity(intent)
+                }
             }
         }
     }

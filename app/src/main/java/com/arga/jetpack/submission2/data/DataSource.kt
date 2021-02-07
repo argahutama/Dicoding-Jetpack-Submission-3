@@ -7,7 +7,7 @@ import com.arga.jetpack.submission2.data.source.local.entity.TvShowDetail
 
 interface DataSource {
     fun getMovie(): LiveData<List<Item>>
-    fun getMovieDetail(movieId: String): LiveData<MovieDetail>
+    fun getMovieDetail(movieId: Int): LiveData<MovieDetail>
     fun getTvShow(): LiveData<List<Item>>
-    fun getTvShowDetail(tvShowId: String): LiveData<TvShowDetail>
+    fun getTvShowDetail(tvShowId: Int): LiveData<TvShowDetail>
 }

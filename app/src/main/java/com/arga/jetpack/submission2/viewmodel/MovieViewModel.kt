@@ -8,5 +8,5 @@ import com.arga.jetpack.submission2.data.source.local.entity.MovieDetail
 
 class MovieViewModel(private val dataRepository: DataRepository) : ViewModel() {
     val movie: LiveData<List<Item>> = dataRepository.getMovie()
-    fun getMovieDetail(movieId: String): LiveData<MovieDetail> = dataRepository.getMovieDetail(movieId)
+    fun getMovieDetail(movieId: Int): LiveData<MovieDetail> = dataRepository.getMovieDetail(movieId)
 }

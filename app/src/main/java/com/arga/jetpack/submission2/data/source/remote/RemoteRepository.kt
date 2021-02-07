@@ -67,7 +67,7 @@ open class RemoteRepository(apiClient: ApiClient) {
         }, TIME_IN_MILLIS)
     }
 
-    fun getMovieDetail(movieId: String, getMovieDetailCallback: GetMovieDetailCallback){
+    fun getMovieDetail(movieId: Int, getMovieDetailCallback: GetMovieDetailCallback){
         EspressoIdlingResource.increment()
         handler.postDelayed({
             apiClient.getApiService().getMovieDetails(movieId, apiKey).enqueue(object: Callback<MovieDetail> {
@@ -104,7 +104,7 @@ open class RemoteRepository(apiClient: ApiClient) {
         }, TIME_IN_MILLIS)
     }
 
-    fun getTvShowDetail(tvShowId: String, getTvShowDetailCallback: GetTvShowDetailCallback){
+    fun getTvShowDetail(tvShowId: Int, getTvShowDetailCallback: GetTvShowDetailCallback){
         EspressoIdlingResource.increment()
         handler.postDelayed({
             apiClient.getApiService().getTvShowDetails(tvShowId, apiKey).enqueue(object: Callback<TvShowDetail> {

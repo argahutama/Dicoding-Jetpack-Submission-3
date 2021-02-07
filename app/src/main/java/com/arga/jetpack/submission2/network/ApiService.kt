@@ -14,7 +14,7 @@ interface ApiService {
     fun getMovies(@Query("api_key") apiKey: String): Call<ItemResponse>
 
     @GET("movie/{movie_id}")
-    fun getMovieDetails(@Path("movie_id") movieId: String?,
+    fun getMovieDetails(@Path("movie_id") movieId: Int?,
                         @Query("api_key") apiKey: String?
     ) : Call<MovieDetail>
 
@@ -23,7 +23,7 @@ interface ApiService {
 
 
     @GET("tv/{tv_id}")
-    fun getTvShowDetails(@Path("tv_id") tvId: String?,
+    fun getTvShowDetails(@Path("tv_id") tvId: Int?,
                          @Query("api_key") apiKey: String?
     ) : Call<TvShowDetail>
 }
