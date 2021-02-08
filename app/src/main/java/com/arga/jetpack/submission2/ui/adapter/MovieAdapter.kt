@@ -1,5 +1,6 @@
 package com.arga.jetpack.submission2.ui.adapter
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -12,8 +13,9 @@ import com.arga.jetpack.submission2.ui.activity.MovieDetailActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
-class MovieAdapter(private val context: Context?): RecyclerView.Adapter<MovieAdapter.MovieViewHolder>(){
+class MovieAdapter(context: Context?): RecyclerView.Adapter<MovieAdapter.MovieViewHolder>(){
 
+    private val activity = context as Activity
     private val list =  ArrayList<MovieEntity>()
 
     fun setData(movie: ArrayList<MovieEntity>){
@@ -51,7 +53,8 @@ class MovieAdapter(private val context: Context?): RecyclerView.Adapter<MovieAda
                 itemView.setOnClickListener {
                     val intent = Intent(itemView.context, MovieDetailActivity::class.java)
                     intent.putExtra("movieId", movie.id)
-                    itemView.context.startActivity(intent)
+                    activity.startActivity(intent)
+                    activity.overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
                 }
             }
         }

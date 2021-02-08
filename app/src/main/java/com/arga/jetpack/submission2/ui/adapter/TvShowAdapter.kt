@@ -1,5 +1,6 @@
 package com.arga.jetpack.submission2.ui.adapter
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -12,8 +13,10 @@ import com.arga.jetpack.submission2.ui.activity.TvShowDetailActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
-class TvShowAdapter(private val context: Context?): RecyclerView.Adapter<TvShowAdapter.TvShowViewHolder>(){
 
+class TvShowAdapter(context: Context?): RecyclerView.Adapter<TvShowAdapter.TvShowViewHolder>(){
+
+    private val activity = context as Activity
     private val list =  ArrayList<TvShowEntity>()
 
     fun setData(movie: ArrayList<TvShowEntity>){
@@ -23,8 +26,8 @@ class TvShowAdapter(private val context: Context?): RecyclerView.Adapter<TvShowA
     }
 
     override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
+            parent: ViewGroup,
+            viewType: Int
     ): TvShowViewHolder {
         val itemsAcademyBinding = TvshowItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return TvShowViewHolder(itemsAcademyBinding)
@@ -51,7 +54,8 @@ class TvShowAdapter(private val context: Context?): RecyclerView.Adapter<TvShowA
                 itemView.setOnClickListener {
                     val intent = Intent(itemView.context, TvShowDetailActivity::class.java)
                     intent.putExtra("tvShowId", tvShow.id)
-                    itemView.context.startActivity(intent)
+                    activity.startActivity(intent)
+                    activity.overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
                 }
             }
         }
