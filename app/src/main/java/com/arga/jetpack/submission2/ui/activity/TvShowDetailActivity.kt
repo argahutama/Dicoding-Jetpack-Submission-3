@@ -11,9 +11,6 @@ import com.arga.jetpack.submission2.util.Utilization.Companion.glideOption
 import com.arga.jetpack.submission2.util.ViewModelFactory
 import com.arga.jetpack.submission2.viewmodel.TvShowViewModel
 import com.bumptech.glide.Glide
-import com.bumptech.glide.Priority
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.request.RequestOptions
 
 class TvShowDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

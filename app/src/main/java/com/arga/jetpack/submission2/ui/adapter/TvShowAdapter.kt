@@ -12,10 +12,6 @@ import com.arga.jetpack.submission2.databinding.TvshowItemBinding
 import com.arga.jetpack.submission2.ui.activity.TvShowDetailActivity
 import com.arga.jetpack.submission2.util.Utilization.Companion.glideOption
 import com.bumptech.glide.Glide
-import com.bumptech.glide.Priority
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.request.RequestOptions
-
 
 class TvShowAdapter(context: Context?): RecyclerView.Adapter<TvShowAdapter.TvShowViewHolder>(){
 

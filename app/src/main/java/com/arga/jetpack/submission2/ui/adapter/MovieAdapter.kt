@@ -12,10 +12,6 @@ import com.arga.jetpack.submission2.databinding.MoviesItemBinding
 import com.arga.jetpack.submission2.ui.activity.MovieDetailActivity
 import com.arga.jetpack.submission2.util.Utilization.Companion.glideOption
 import com.bumptech.glide.Glide
-import com.bumptech.glide.Priority
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.request.RequestOptions
-
 
 class MovieAdapter(context: Context?): RecyclerView.Adapter<MovieAdapter.MovieViewHolder>(){
 
