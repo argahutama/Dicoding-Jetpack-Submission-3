@@ -14,166 +14,172 @@
         android:layout_gravity="center"
         tools:visibility="gone" />
 
-    <LinearLayout
-        android:id="@+id/ll_content"
-        android:layout_height="wrap_content"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:visibility="gone"
-        tools:visibility="visible"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
+            android:id="@+id/ll_content"
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:orientation="vertical">
 
-            <com.github.florent37.shapeofview.shapes.ArcView
-                android:id="@+id/arc_view_big_poster"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="230dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:elevation="4dp"
-                app:shape_arc_height="20dp"
-                app:shape_arc_position="bottom">
-                <ImageView
-                    android:id="@+id/iv_big_poster"
+                android:layout_height="wrap_content">
+
+                <com.github.florent37.shapeofview.shapes.ArcView
+                    android:id="@+id/arc_view_big_poster"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:contentDescription="@string/poster"
-                    android:scaleType="centerCrop" />
-            </com.github.florent37.shapeofview.shapes.ArcView>
+                    android:layout_height="230dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:elevation="4dp"
+                    app:shape_arc_height="20dp"
+                    app:shape_arc_position="bottom">
+                    <ImageView
+                        android:id="@+id/iv_big_poster"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:contentDescription="@string/poster"
+                        android:scaleType="centerCrop" />
+                </com.github.florent37.shapeofview.shapes.ArcView>
 
-            <com.github.florent37.shapeofview.shapes.RoundRectView
-                android:id="@+id/round_rect_view_small_poster"
-                android:layout_width="150dp"
-                android:layout_height="225dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="100dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:elevation="4dp"
-                app:shape_roundRect_bottomLeftRadius="5dp"
-                app:shape_roundRect_bottomRightRadius="5dp"
-                app:shape_roundRect_topLeftRadius="5dp"
-                app:shape_roundRect_topRightRadius="5dp">
-                <ImageView
-                    android:id="@+id/iv_small_poster"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:contentDescription="@string/poster"/>
-            </com.github.florent37.shapeofview.shapes.RoundRectView>
+                <com.github.florent37.shapeofview.shapes.RoundRectView
+                    android:id="@+id/round_rect_view_small_poster"
+                    android:layout_width="150dp"
+                    android:layout_height="225dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="100dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:elevation="4dp"
+                    app:shape_roundRect_bottomLeftRadius="5dp"
+                    app:shape_roundRect_bottomRightRadius="5dp"
+                    app:shape_roundRect_topLeftRadius="5dp"
+                    app:shape_roundRect_topRightRadius="5dp">
+                    <ImageView
+                        android:id="@+id/iv_small_poster"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:contentDescription="@string/poster"/>
+                </com.github.florent37.shapeofview.shapes.RoundRectView>
 
-            <TextView
-                android:id="@+id/tv_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="165dp"
-                android:paddingEnd="8dp"
-                android:ellipsize="end"
-                android:maxLines="4"
-                app:layout_constraintStart_toEndOf="@id/round_rect_view_small_poster"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                tools:text="@string/title"/>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingBottom="8dp">
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_poster"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                app:cardCornerRadius="6dp"
-                app:cardElevation="4dp"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="NotSibling">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <TextView
+                    android:id="@+id/tv_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="8dp">
+                    android:paddingStart="165dp"
+                    android:paddingEnd="8dp"
+                    android:ellipsize="end"
+                    android:maxLines="4"
+                    app:layout_constraintStart_toEndOf="@id/round_rect_view_small_poster"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    tools:text="@string/title"/>
 
-                    <TextView
-                        android:id="@+id/tv_release"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:textSize="12sp"
-                        android:gravity="center_vertical"
-                        android:textColor="@android:color/black"
-                        app:drawableStartCompat="@drawable/ic_date"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tv_title"
-                        tools:text="@string/first_on_air" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <TextView
-                        android:id="@+id/tv_rating"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:textSize="12sp"
-                        android:gravity="center_vertical"
-                        android:textColor="@android:color/black"
-                        app:drawableStartCompat="@drawable/ic_star_black_24dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tv_release"
-                        tools:text="@string/rating" />
-
-                    <TextView
-                        android:id="@+id/tv_overview_header"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:textSize="12sp"
-                        android:textStyle="bold"
-                        android:gravity="center_vertical"
-                        android:textColor="@android:color/black"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tv_rating"
-                        android:text="@string/overview" />
-
-                    <TextView
-                        android:id="@+id/tv_overview"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:textSize="12sp"
-                        android:gravity="center_vertical"
-                        android:justificationMode="inter_word"
-                        android:textColor="@android:color/black"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tv_overview_header"
-                        tools:targetApi="o" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <View
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="16dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cv_poster"/>
+                android:layout_height="match_parent"
+                android:paddingBottom="8dp">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_poster"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="6dp"
+                    app:cardElevation="4dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="NotSibling">
 
-    </LinearLayout>
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp">
+
+                        <TextView
+                            android:id="@+id/tv_release"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:textSize="12sp"
+                            android:gravity="center_vertical"
+                            android:textColor="@android:color/black"
+                            app:drawableStartCompat="@drawable/ic_date"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tv_title"
+                            tools:text="@string/first_on_air" />
+
+                        <TextView
+                            android:id="@+id/tv_rating"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:textSize="12sp"
+                            android:gravity="center_vertical"
+                            android:textColor="@android:color/black"
+                            app:drawableStartCompat="@drawable/ic_star_black_24dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tv_release"
+                            tools:text="@string/rating" />
+
+                        <TextView
+                            android:id="@+id/tv_overview_header"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:gravity="center_vertical"
+                            android:textColor="@android:color/black"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tv_rating"
+                            android:text="@string/overview" />
+
+                        <TextView
+                            android:id="@+id/tv_overview"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:textSize="12sp"
+                            android:gravity="center_vertical"
+                            android:justificationMode="inter_word"
+                            android:textColor="@android:color/black"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tv_overview_header"
+                            tools:targetApi="o" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cv_poster"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
