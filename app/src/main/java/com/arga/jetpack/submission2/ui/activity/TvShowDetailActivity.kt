@@ -35,21 +35,21 @@ class TvShowDetailActivity : AppCompatActivity() {
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
     }
 
-    private fun loadTvShowDetail(tvShowDetail: TvShowEntity, activityTvShowDetailBinding: ActivityTvShowDetailBinding) {
-        activityTvShowDetailBinding.progressBar.visibility = View.GONE
-        activityTvShowDetailBinding.llContent.visibility = View.VISIBLE
+    private fun loadTvShowDetail(tvShowDetail: TvShowEntity, binding: ActivityTvShowDetailBinding) {
+        binding.progressBar.visibility = View.GONE
+        binding.llContent.visibility = View.VISIBLE
 
         Glide.with(this)
             .load("https://image.tmdb.org/t/p/w500${tvShowDetail.backdropPath}")
             .apply(glideOption)
-            .into(activityTvShowDetailBinding.ivBigPoster)
+            .into(binding.ivBigPoster)
         Glide.with(this)
             .load("https://image.tmdb.org/t/p/w500${tvShowDetail.posterPath}")
             .apply(glideOption)
-            .into(activityTvShowDetailBinding.ivSmallPoster)
-        activityTvShowDetailBinding.tvTitle.text = tvShowDetail.name
-        activityTvShowDetailBinding.tvFirstOnAir.text = resources.getString(R.string.first_on_air, tvShowDetail.firstAirDate)
-        activityTvShowDetailBinding.tvRating.text = tvShowDetail.voteAverage.toString()
-        activityTvShowDetailBinding.tvOverview.text = tvShowDetail.overview
+            .into(binding.ivSmallPoster)
+        binding.tvTitle.text = tvShowDetail.name
+        binding.tvFirstOnAir.text = resources.getString(R.string.first_on_air, tvShowDetail.firstAirDate)
+        binding.tvRating.text = tvShowDetail.voteAverage.toString()
+        binding.tvOverview.text = tvShowDetail.overview
     }
 }

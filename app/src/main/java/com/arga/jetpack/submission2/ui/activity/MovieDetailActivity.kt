@@ -35,21 +35,21 @@ class MovieDetailActivity : AppCompatActivity() {
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
     }
 
-    private fun loadMovieDetail(movieDetail: MovieEntity, activityMovieDetailBinding: ActivityMovieDetailBinding) {
-        activityMovieDetailBinding.progressBar.visibility = View.GONE
-        activityMovieDetailBinding.llContent.visibility = View.VISIBLE
+    private fun loadMovieDetail(movieDetail: MovieEntity, binding: ActivityMovieDetailBinding) {
+        binding.progressBar.visibility = View.GONE
+        binding.llContent.visibility = View.VISIBLE
 
         Glide.with(this)
             .load("https://image.tmdb.org/t/p/w500${movieDetail.backdropPath}")
             .apply(glideOption)
-            .into(activityMovieDetailBinding.ivBigPoster)
+            .into(binding.ivBigPoster)
         Glide.with(this)
             .load("https://image.tmdb.org/t/p/w500${movieDetail.posterPath}")
             .apply(glideOption)
-            .into(activityMovieDetailBinding.ivSmallPoster)
-        activityMovieDetailBinding.tvTitle.text = movieDetail.title
-        activityMovieDetailBinding.tvRelease.text = resources.getString(R.string.release_date, movieDetail.releasedDate)
-        activityMovieDetailBinding.tvRating.text = movieDetail.voteAverage.toString()
-        activityMovieDetailBinding.tvOverview.text = movieDetail.overview
+            .into(binding.ivSmallPoster)
+        binding.tvTitle.text = movieDetail.title
+        binding.tvRelease.text = resources.getString(R.string.release_date, movieDetail.releasedDate)
+        binding.tvRating.text = movieDetail.voteAverage.toString()
+        binding.tvOverview.text = movieDetail.overview
     }
 }

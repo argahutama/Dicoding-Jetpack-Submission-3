@@ -15,12 +15,12 @@ import com.arga.jetpack.submission2.viewmodel.TvShowViewModel
 
 class TvShowFragment : Fragment() {
 
-    private lateinit var fragmentTvShowBinding: FragmentTvShowBinding
+    private lateinit var binding: FragmentTvShowBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         // Inflate the layout for this fragment
-        fragmentTvShowBinding = FragmentTvShowBinding.inflate(layoutInflater, container, false)
-        return fragmentTvShowBinding.root
+        binding = FragmentTvShowBinding.inflate(layoutInflater, container, false)
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -31,11 +31,11 @@ class TvShowFragment : Fragment() {
 
         val tvShowAdapter = TvShowAdapter(context)
         viewModel.tvShow.observe(viewLifecycleOwner, { data ->
-            fragmentTvShowBinding.progressBar.visibility = View.GONE
+            binding.progressBar.visibility = View.GONE
             tvShowAdapter.setData(data as ArrayList<TvShowEntity>)
         })
 
-        with(fragmentTvShowBinding.rvTvshow){
+        with(binding.rvTvshow){
             layoutManager = LinearLayoutManager(activity)
             setHasFixedSize(true)
             adapter = tvShowAdapter
