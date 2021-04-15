@@ -23,7 +23,7 @@
             app:shape_roundRect_topRightRadius="5dp">
 
             <ImageView
-                android:id="@+id/img_tvshow"
+                android:id="@+id/iv_tv_show"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:contentDescription="@string/tvshow_poster"/>
@@ -37,7 +37,7 @@
             android:paddingHorizontal="8dp">
 
             <TextView
-                android:id="@+id/tv_title_tvshow"
+                android:id="@+id/tv_title_tv_show"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
@@ -47,7 +47,7 @@
                 android:textStyle="bold"/>
 
             <TextView
-                android:id="@+id/tv_description_tvshow"
+                android:id="@+id/tv_description_tv_show"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:text="Description"

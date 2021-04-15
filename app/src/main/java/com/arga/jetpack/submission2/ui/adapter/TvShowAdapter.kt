@@ -10,7 +10,10 @@ import com.arga.jetpack.submission2.R
 import com.arga.jetpack.submission2.data.source.local.entity.TvShowEntity
 import com.arga.jetpack.submission2.databinding.TvshowItemBinding
 import com.arga.jetpack.submission2.ui.activity.TvShowDetailActivity
+import com.arga.jetpack.submission2.util.Utilization.Companion.glideOption
 import com.bumptech.glide.Glide
+import com.bumptech.glide.Priority
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 
 
@@ -29,8 +32,8 @@ class TvShowAdapter(context: Context?): RecyclerView.Adapter<TvShowAdapter.TvSho
             parent: ViewGroup,
             viewType: Int
     ): TvShowViewHolder {
-        val itemsAcademyBinding = TvshowItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return TvShowViewHolder(itemsAcademyBinding)
+        val binding = TvshowItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return TvShowViewHolder(binding)
     }
 
 
@@ -43,14 +46,13 @@ class TvShowAdapter(context: Context?): RecyclerView.Adapter<TvShowAdapter.TvSho
     inner class TvShowViewHolder(private val binding: TvshowItemBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(tvShow: TvShowEntity){
             with(binding){
-                tvTitleTvshow.text = tvShow.name
-                tvDescriptionTvshow.text = tvShow.overview
+                tvTitleTvShow.text = tvShow.name
+                tvDescriptionTvShow.text = tvShow.overview
                 tvRating.text = tvShow.voteAverage.toString()
                 Glide.with(itemView)
                     .load("https://image.tmdb.org/t/p/w500${tvShow.posterPath}")
-                    .apply(RequestOptions.placeholderOf(R.drawable.ic_refresh_black_24dp).error(R.drawable.ic_broken_image_black_24dp))
-                    .centerCrop()
-                    .into(imgTvshow)
+                    .apply(glideOption)
+                    .into(ivTvShow)
                 itemView.setOnClickListener {
                     val intent = Intent(itemView.context, TvShowDetailActivity::class.java)
                     intent.putExtra("tvShowId", tvShow.id)

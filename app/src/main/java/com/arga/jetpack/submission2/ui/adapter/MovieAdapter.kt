@@ -10,8 +10,12 @@ import com.arga.jetpack.submission2.R
 import com.arga.jetpack.submission2.data.source.local.entity.MovieEntity
 import com.arga.jetpack.submission2.databinding.MoviesItemBinding
 import com.arga.jetpack.submission2.ui.activity.MovieDetailActivity
+import com.arga.jetpack.submission2.util.Utilization.Companion.glideOption
 import com.bumptech.glide.Glide
+import com.bumptech.glide.Priority
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
+
 
 class MovieAdapter(context: Context?): RecyclerView.Adapter<MovieAdapter.MovieViewHolder>(){
 
@@ -28,8 +32,8 @@ class MovieAdapter(context: Context?): RecyclerView.Adapter<MovieAdapter.MovieVi
         parent: ViewGroup,
         viewType: Int
     ): MovieViewHolder {
-        val itemsAcademyBinding = MoviesItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return MovieViewHolder(itemsAcademyBinding)
+        val binding = MoviesItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return MovieViewHolder(binding)
     }
 
 
@@ -39,17 +43,17 @@ class MovieAdapter(context: Context?): RecyclerView.Adapter<MovieAdapter.MovieVi
         holder.bind(list[position])
     }
 
-    inner class MovieViewHolder(private val binding: MoviesItemBinding): RecyclerView.ViewHolder(binding.root){
+    inner class MovieViewHolder(private val binding: MoviesItemBinding)
+        : RecyclerView.ViewHolder(binding.root){
         fun bind(movie: MovieEntity){
             with(binding){
-                tvTitleMovies.text = movie.title
-                tvDescriptionMovies.text = movie.overview
+                tvTitleMovie.text = movie.title
+                tvDescriptionMovie.text = movie.overview
                 tvRating.text = movie.voteAverage.toString()
                 Glide.with(itemView)
                     .load("https://image.tmdb.org/t/p/w500${movie.posterPath}")
-                    .apply(RequestOptions.placeholderOf(R.drawable.ic_refresh_black_24dp).error(R.drawable.ic_broken_image_black_24dp))
-                    .centerCrop()
-                    .into(imgMovies)
+                    .apply(glideOption)
+                    .into(ivMovie)
                 itemView.setOnClickListener {
                     val intent = Intent(itemView.context, MovieDetailActivity::class.java)
                     intent.putExtra("movieId", movie.id)

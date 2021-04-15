@@ -5,7 +5,7 @@ plugins {
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.arga.jetpack.submission2"
@@ -47,6 +47,8 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
     implementation "androidx.recyclerview:recyclerview:$recyclerViewVersion"
     implementation "com.google.android.material:material:$materialVersion"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glideVersion"
+    implementation "com.github.bumptech.glide:okhttp3-integration:$glideVersion"
     implementation "com.github.bumptech.glide:glide:$glideVersion"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 

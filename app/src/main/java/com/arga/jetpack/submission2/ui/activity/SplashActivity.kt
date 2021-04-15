@@ -12,8 +12,8 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val activitySplashBinding = ActivitySplashBinding.inflate(layoutInflater)
-        setContentView(activitySplashBinding.root)
+        val binding = ActivitySplashBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         Handler(Looper.getMainLooper()).postDelayed({
             val intent = Intent(this@SplashActivity, MainActivity::class.java)

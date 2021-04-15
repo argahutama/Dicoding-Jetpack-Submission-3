@@ -17,14 +17,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(activityMainBinding.root)
+        val binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val mFragmentManager = supportFragmentManager
         val sectionsPagerAdapter =
             SectionPagerAdapter(this, mFragmentManager)
-        activityMainBinding.viewPager.adapter = sectionsPagerAdapter
-        activityMainBinding.tabs.setupWithViewPager(activityMainBinding.viewPager)
+        binding.viewPager.adapter = sectionsPagerAdapter
+        binding.tabs.setupWithViewPager(binding.viewPager)
     }
 
     override fun onBackPressed() {

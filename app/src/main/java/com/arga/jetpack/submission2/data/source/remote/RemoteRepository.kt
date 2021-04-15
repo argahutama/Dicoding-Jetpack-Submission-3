@@ -1,7 +1,5 @@
 package com.arga.jetpack.submission2.data.source.remote
 
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
 import com.arga.jetpack.submission2.BuildConfig.API_KEY
 import com.arga.jetpack.submission2.data.source.local.entity.MovieEntity
@@ -20,13 +18,11 @@ import retrofit2.Response
 
 open class RemoteRepository(apiClient: ApiClient) {
     private val apiKey = API_KEY
-    private var handler = Handler(Looper.getMainLooper())
     private val apiClient = ApiClient
 
     companion object{
         private var INSTANCE: RemoteRepository? = null
         private val TAG = RemoteRepository::class.java.toString()
-        private const val TIME_IN_MILLIS: Long = 1500
 
         fun getInstance(apiClient: ApiClient): RemoteRepository {
             if (INSTANCE == null)
@@ -37,69 +33,57 @@ open class RemoteRepository(apiClient: ApiClient) {
 
     fun getMovie(getMovieCallback: GetMovieCallback) {
         EspressoIdlingResource.increment()
-        handler.postDelayed({
-            apiClient.getApiService().getMovies(apiKey).enqueue(object: Callback<MovieResponse> {
-                override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
-                    Log.d(TAG, t.printStackTrace().toString())
-                }
+        apiClient.getApiService().getMovies(apiKey).enqueue(object: Callback<MovieResponse> {
+            override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
+                response.body()?.results?.let { getMovieCallback.onMovieListLoaded(it) }
+                EspressoIdlingResource.decrement()
+            }
 
-                override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
-                    response.body()?.results?.let { getMovieCallback.onResponse(it) }
-                    EspressoIdlingResource.decrement()
-                }
-
-            })
-        }, TIME_IN_MILLIS)
+            override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
+                Log.d(TAG, t.printStackTrace().toString())
+            }
+        })
     }
 
     fun getMovieDetail(movieId: Int, getMovieDetailCallback: GetMovieDetailCallback){
         EspressoIdlingResource.increment()
-        handler.postDelayed({
-            apiClient.getApiService().getMovieDetails(movieId, apiKey).enqueue(object: Callback<MovieEntity> {
-                override fun onFailure(call: Call<MovieEntity>, t: Throwable) {
-                    Log.d(TAG, t.printStackTrace().toString())
-                }
+        apiClient.getApiService().getMovieDetails(movieId, apiKey).enqueue(object: Callback<MovieEntity> {
+            override fun onResponse(call: Call<MovieEntity>, response: Response<MovieEntity>) {
+                getMovieDetailCallback.onMovieDetailLoaded(response.body()!!)
+                EspressoIdlingResource.decrement()
+            }
 
-                override fun onResponse(call: Call<MovieEntity>, response: Response<MovieEntity>) {
-                    getMovieDetailCallback.onResponse(response.body()!!)
-                    EspressoIdlingResource.decrement()
-                }
-
-            })
-        }, TIME_IN_MILLIS)
+            override fun onFailure(call: Call<MovieEntity>, t: Throwable) {
+                Log.d(TAG, t.printStackTrace().toString())
+            }
+        })
     }
 
     fun getTvShow(getTvShowCallback: GetTvShowCallback){
         EspressoIdlingResource.increment()
-        handler.postDelayed({
-            apiClient.getApiService().getTvShows(apiKey).enqueue(object: Callback<TvShowResponse> {
-                override fun onFailure(call: Call<TvShowResponse>, t: Throwable) {
-                    Log.d(TAG, t.printStackTrace().toString())
-                }
+        apiClient.getApiService().getTvShows(apiKey).enqueue(object: Callback<TvShowResponse> {
+            override fun onResponse(call: Call<TvShowResponse>, response: Response<TvShowResponse>) {
+                response.body()?.results?.let { getTvShowCallback.onTvShowListLoaded(it) }
+                EspressoIdlingResource.decrement()
+            }
 
-                override fun onResponse(call: Call<TvShowResponse>, response: Response<TvShowResponse>) {
-                    response.body()?.results?.let { getTvShowCallback.onResponse(it) }
-                    EspressoIdlingResource.decrement()
-                }
-
-            })
-        }, TIME_IN_MILLIS)
+            override fun onFailure(call: Call<TvShowResponse>, t: Throwable) {
+                Log.d(TAG, t.printStackTrace().toString())
+            }
+        })
     }
 
     fun getTvShowDetail(tvShowId: Int, getTvShowDetailCallback: GetTvShowDetailCallback){
         EspressoIdlingResource.increment()
-        handler.postDelayed({
-            apiClient.getApiService().getTvShowDetails(tvShowId, apiKey).enqueue(object: Callback<TvShowEntity> {
-                override fun onFailure(call: Call<TvShowEntity>, t: Throwable) {
-                    Log.d(TAG, t.printStackTrace().toString())
-                }
+        apiClient.getApiService().getTvShowDetails(tvShowId, apiKey).enqueue(object: Callback<TvShowEntity> {
+            override fun onResponse(call: Call<TvShowEntity>, response: Response<TvShowEntity>) {
+                getTvShowDetailCallback.onTvShowDetailLoaded(response.body()!!)
+                EspressoIdlingResource.decrement()
+            }
 
-                override fun onResponse(call: Call<TvShowEntity>, response: Response<TvShowEntity>) {
-                    getTvShowDetailCallback.onResponse(response.body()!!)
-                    EspressoIdlingResource.decrement()
-                }
-
-            })
-        }, TIME_IN_MILLIS)
+            override fun onFailure(call: Call<TvShowEntity>, t: Throwable) {
+                Log.d(TAG, t.printStackTrace().toString())
+            }
+        })
     }
 }

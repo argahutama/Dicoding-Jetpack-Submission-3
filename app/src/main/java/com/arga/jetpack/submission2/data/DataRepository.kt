@@ -31,7 +31,7 @@ class DataRepository(private val remoteRepository: RemoteRepository): DataSource
     override fun getMovie(): LiveData<List<MovieEntity>> {
         val movieList = MutableLiveData<List<MovieEntity>>()
         remoteRepository.getMovie(object: GetMovieCallback {
-            override fun onResponse(movieResponse: List<MovieEntity>) {
+            override fun onMovieListLoaded(movieResponse: List<MovieEntity>) {
                 movieList.postValue(movieResponse)
                 Log.d("Movie Response", movieResponse.toString())
             }
@@ -43,7 +43,7 @@ class DataRepository(private val remoteRepository: RemoteRepository): DataSource
     override fun getMovieDetail(movieId: Int): LiveData<MovieEntity> {
         val movieDetail = MutableLiveData<MovieEntity>()
         remoteRepository.getMovieDetail(movieId, object: GetMovieDetailCallback {
-            override fun onResponse(movieDetailResponse: MovieEntity) {
+            override fun onMovieDetailLoaded(movieDetailResponse: MovieEntity) {
                 movieDetail.postValue(movieDetailResponse)
             }
 
@@ -54,7 +54,7 @@ class DataRepository(private val remoteRepository: RemoteRepository): DataSource
     override fun getTvShow(): LiveData<List<TvShowEntity>> {
         val tvShowList = MutableLiveData<List<TvShowEntity>>()
         remoteRepository.getTvShow(object: GetTvShowCallback {
-            override fun onResponse(tvShowResponse: List<TvShowEntity>) {
+            override fun onTvShowListLoaded(tvShowResponse: List<TvShowEntity>) {
                 tvShowList.postValue(tvShowResponse)
                 Log.d("Movie Response", tvShowResponse.toString())
             }
@@ -66,7 +66,7 @@ class DataRepository(private val remoteRepository: RemoteRepository): DataSource
     override fun getTvShowDetail(tvShowId: Int): LiveData<TvShowEntity> {
         val tvShowDetail = MutableLiveData<TvShowEntity>()
         remoteRepository.getTvShowDetail(tvShowId, object: GetTvShowDetailCallback {
-            override fun onResponse(tvShowDetailResponse: TvShowEntity) {
+            override fun onTvShowDetailLoaded(tvShowDetailResponse: TvShowEntity) {
                 tvShowDetail.postValue(tvShowDetailResponse)
             }
 
