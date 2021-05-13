@@ -23,11 +23,9 @@ class TvShowDetailActivity : AppCompatActivity() {
         val viewModel = ViewModelProvider(this, factory)[TvShowViewModel::class.java]
 
         val tvShowId = intent.extras?.getInt("tvShowId")
-        if (tvShowId != null) {
-            viewModel.getTvShowDetail(tvShowId).observe(
-                this, { loadTvShowDetail(it, binding) }
-            )
-        }
+        if (tvShowId != null) viewModel.getTvShowDetail(tvShowId).observe(
+            this, { loadTvShowDetail(it, binding) }
+        )
     }
 
     override fun onBackPressed() {

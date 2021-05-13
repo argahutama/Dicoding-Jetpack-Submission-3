@@ -35,9 +35,8 @@ class TvShowAdapter(context: Context?): RecyclerView.Adapter<TvShowAdapter.TvSho
 
     override fun getItemCount(): Int = list.size
 
-    override fun onBindViewHolder(holder: TvShowViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: TvShowViewHolder, position: Int) =
         holder.bind(list[position])
-    }
 
     inner class TvShowViewHolder(private val binding: TvshowItemBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(tvShow: TvShowEntity){

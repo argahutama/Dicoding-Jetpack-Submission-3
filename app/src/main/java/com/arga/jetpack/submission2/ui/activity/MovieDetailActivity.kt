@@ -23,11 +23,9 @@ class MovieDetailActivity : AppCompatActivity() {
         val viewModel = ViewModelProvider(this, factory)[MovieViewModel::class.java]
 
         val movieId = intent.extras?.getInt("movieId")
-        if (movieId != null) {
-            viewModel.getMovieDetail(movieId).observe(
-                this, { loadMovieDetail(it, binding) }
-            )
-        }
+        if (movieId != null) viewModel.getMovieDetail(movieId).observe(
+            this, { loadMovieDetail(it, binding) }
+        )
     }
 
     override fun onBackPressed() {
