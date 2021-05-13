@@ -7,6 +7,7 @@ import com.arga.jetpack.submission2.data.source.remote.interactor.GetMovieCallba
 import com.arga.jetpack.submission2.data.source.remote.interactor.GetMovieDetailCallback
 import com.arga.jetpack.submission2.data.source.remote.interactor.GetTvShowCallback
 import com.arga.jetpack.submission2.data.source.remote.interactor.GetTvShowDetailCallback
+import com.arga.jetpack.submission2.util.DummyData
 import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
@@ -22,12 +23,12 @@ class RepositoryTest {
     private val remoteRepository = mock(RemoteRepository::class.java)
     private val dataRepositoryTest = FakeRepository(localRepository, remoteRepository)
 
-    private val movieList = FakeRepository.getMovie()
+    private val movieList = DummyData.generateDummyMovies()
     private val movieId = movieList[0].id
-    private val movieDetail = FakeRepository.getMovieDetail(movieId)
-    private val tvShowList = FakeRepository.getTvShow()
-    private val tvShowId = tvShowList[0].id.toString()
-    private val tvShowDetail = FakeRepository.getTvShowDetail(tvShowId)
+    private val movieDetail = DummyData.generateDummyMovies()[0]
+    private val tvShowList = DummyData.generateDummyTvShows()
+    private val tvShowId = tvShowList[0].id
+    private val tvShowDetail = DummyData.generateDummyTvShows()[0]
 
     private fun <T> anyOfT(type: Class<T>): T = any(type)
 
