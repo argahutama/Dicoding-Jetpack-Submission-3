@@ -1,4 +1,4 @@
-package com.arga.jetpack.submission2.ui.fragment
+package com.arga.jetpack.submission2.presentation.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,9 +9,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.arga.jetpack.submission2.data.source.local.entity.TvShowEntity
 import com.arga.jetpack.submission2.databinding.FragmentTvShowBinding
-import com.arga.jetpack.submission2.ui.adapter.TvShowAdapter
+import com.arga.jetpack.submission2.presentation.adapter.TvShowAdapter
 import com.arga.jetpack.submission2.util.ViewModelFactory
-import com.arga.jetpack.submission2.ui.viewmodel.TvShowViewModel
+import com.arga.jetpack.submission2.presentation.viewmodel.TvShowViewModel
 
 class TvShowFragment : Fragment() {
 

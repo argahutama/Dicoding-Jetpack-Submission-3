@@ -1,11 +1,11 @@
-package com.arga.jetpack.submission2.ui
+package com.arga.jetpack.submission2.presentation
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.arga.jetpack.submission2.data.DataRepository
 import com.arga.jetpack.submission2.data.source.local.entity.MovieEntity
-import com.arga.jetpack.submission2.ui.viewmodel.MovieViewModel
+import com.arga.jetpack.submission2.presentation.viewmodel.MovieViewModel
 import com.arga.jetpack.submission2.util.DummyData
 import org.junit.Assert.assertEquals
 import org.junit.Before

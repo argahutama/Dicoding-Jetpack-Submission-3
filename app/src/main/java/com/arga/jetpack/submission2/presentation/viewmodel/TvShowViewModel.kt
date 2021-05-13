@@ -1,4 +1,4 @@
-package com.arga.jetpack.submission2.ui.viewmodel
+package com.arga.jetpack.submission2.presentation.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel

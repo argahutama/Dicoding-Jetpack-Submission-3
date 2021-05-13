@@ -1,4 +1,4 @@
-package com.arga.jetpack.submission2.ui.activity
+package com.arga.jetpack.submission2.presentation.activity
 
 import android.content.Intent
 import android.os.Bundle

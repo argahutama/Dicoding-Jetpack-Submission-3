@@ -1,4 +1,4 @@
-package com.arga.jetpack.submission2.ui.fragment
+package com.arga.jetpack.submission2.presentation.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,9 +9,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.arga.jetpack.submission2.data.source.local.entity.MovieEntity
 import com.arga.jetpack.submission2.databinding.FragmentMovieBinding
-import com.arga.jetpack.submission2.ui.adapter.MovieAdapter
+import com.arga.jetpack.submission2.presentation.adapter.MovieAdapter
 import com.arga.jetpack.submission2.util.ViewModelFactory
-import com.arga.jetpack.submission2.ui.viewmodel.MovieViewModel
+import com.arga.jetpack.submission2.presentation.viewmodel.MovieViewModel
 
 class MovieFragment : Fragment() {
 

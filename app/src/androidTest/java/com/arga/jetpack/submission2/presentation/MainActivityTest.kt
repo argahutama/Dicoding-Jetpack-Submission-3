@@ -1,4 +1,4 @@
-package com.arga.jetpack.submission2.ui
+package com.arga.jetpack.submission2.presentation
 
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
@@ -9,7 +9,7 @@ import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.rule.ActivityTestRule
 import com.arga.jetpack.submission2.R
-import com.arga.jetpack.submission2.ui.activity.MainActivity
+import com.arga.jetpack.submission2.presentation.activity.MainActivity
 import com.arga.jetpack.submission2.util.DummyData
 import com.arga.jetpack.submission2.util.EspressoIdlingResource
 import org.junit.After

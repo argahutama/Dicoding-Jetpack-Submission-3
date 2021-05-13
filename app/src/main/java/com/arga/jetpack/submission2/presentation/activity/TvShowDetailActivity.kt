@@ -1,4 +1,4 @@
-package com.arga.jetpack.submission2.ui.activity
+package com.arga.jetpack.submission2.presentation.activity
 
 import android.os.Bundle
 import android.view.View
@@ -9,7 +9,7 @@ import com.arga.jetpack.submission2.data.source.local.entity.TvShowEntity
 import com.arga.jetpack.submission2.databinding.ActivityTvShowDetailBinding
 import com.arga.jetpack.submission2.util.Utilization.Companion.glideOption
 import com.arga.jetpack.submission2.util.ViewModelFactory
-import com.arga.jetpack.submission2.ui.viewmodel.TvShowViewModel
+import com.arga.jetpack.submission2.presentation.viewmodel.TvShowViewModel
 import com.bumptech.glide.Glide
 
 class TvShowDetailActivity : AppCompatActivity() {

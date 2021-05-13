@@ -1,4 +1,4 @@
-package com.arga.jetpack.submission2.ui.activity
+package com.arga.jetpack.submission2.presentation.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,7 +7,7 @@ import android.os.Looper
 import androidx.core.content.res.ResourcesCompat
 import com.arga.jetpack.submission2.R
 import com.arga.jetpack.submission2.databinding.ActivityMainBinding
-import com.arga.jetpack.submission2.ui.adapter.SectionPagerAdapter
+import com.arga.jetpack.submission2.presentation.adapter.SectionPagerAdapter
 import www.sanju.motiontoast.MotionToast
 
 class MainActivity : AppCompatActivity() {
