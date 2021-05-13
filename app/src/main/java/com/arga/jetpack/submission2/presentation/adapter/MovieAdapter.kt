@@ -2,11 +2,16 @@ package com.arga.jetpack.submission2.presentation.adapter
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.arga.jetpack.submission2.R
 import com.arga.jetpack.submission2.data.source.local.entity.MovieEntity
 import com.arga.jetpack.submission2.databinding.MoviesItemBinding
+import com.arga.jetpack.submission2.presentation.activity.MovieDetailActivity
+import com.arga.jetpack.submission2.util.Utilization.Companion.glideOption
+import com.bumptech.glide.Glide
 
 class MovieAdapter(context: Context?): RecyclerView.Adapter<MovieAdapter.MovieViewHolder>(){
 
