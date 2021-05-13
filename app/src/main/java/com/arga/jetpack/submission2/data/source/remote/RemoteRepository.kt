@@ -16,7 +16,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-open class RemoteRepository(apiClient: ApiClient) {
+open class RemoteRepository {
     private val apiKey = API_KEY
     private val apiClient = ApiClient
 
@@ -24,9 +24,9 @@ open class RemoteRepository(apiClient: ApiClient) {
         private var INSTANCE: RemoteRepository? = null
         private val TAG = RemoteRepository::class.java.toString()
 
-        fun getInstance(apiClient: ApiClient): RemoteRepository {
+        fun getInstance(): RemoteRepository {
             if (INSTANCE == null)
-                INSTANCE = RemoteRepository(apiClient)
+                INSTANCE = RemoteRepository()
             return INSTANCE!!
         }
     }
