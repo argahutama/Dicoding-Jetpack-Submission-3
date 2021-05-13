@@ -30,7 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.github.florent37.shapeofview.shapes.ArcView
+                <io.github.florent37.shapeofview.shapes.ArcView
                     android:id="@+id/arc_view_big_poster"
                     android:layout_width="match_parent"
                     android:layout_height="230dp"
@@ -45,9 +45,9 @@
                         android:layout_height="match_parent"
                         android:contentDescription="@string/poster"
                         android:scaleType="centerCrop" />
-                </com.github.florent37.shapeofview.shapes.ArcView>
+                </io.github.florent37.shapeofview.shapes.ArcView>
 
-                <com.github.florent37.shapeofview.shapes.RoundRectView
+                <io.github.florent37.shapeofview.shapes.RoundRectView
                     android:id="@+id/round_rect_view_small_poster"
                     android:layout_width="150dp"
                     android:layout_height="225dp"
@@ -65,7 +65,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:contentDescription="@string/poster"/>
-                </com.github.florent37.shapeofview.shapes.RoundRectView>
+                </io.github.florent37.shapeofview.shapes.RoundRectView>
 
                 <TextView
                     android:id="@+id/tv_title"
@@ -168,7 +168,7 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </androidx.cardview.widget.CardView>
-
+`
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="16dp"
@@ -177,6 +177,10 @@
                     app:layout_constraintTop_toBottomOf="@id/cv_poster"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="250dp"/>
 
         </LinearLayout>
 

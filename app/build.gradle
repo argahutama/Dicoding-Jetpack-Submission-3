@@ -78,5 +78,5 @@ dependencies {
     implementation "com.github.Spikeysanju:MotionToast:$motionToastVersion"
 
     //custom shape
-    implementation "com.github.florent37:shapeofview:$shapeofviewVersion"
+    implementation "io.github.florent37:shapeofview:$shapeofviewVersion"
 }
