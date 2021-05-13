@@ -1,7 +1,6 @@
 package com.arga.jetpack.submission2.data.source
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.arga.jetpack.submission2.data.DataRepository
 import com.arga.jetpack.submission2.data.source.remote.RemoteRepository
 import com.arga.jetpack.submission2.data.source.remote.interactor.GetMovieCallback
 import com.arga.jetpack.submission2.data.source.remote.interactor.GetMovieDetailCallback
@@ -19,9 +18,8 @@ class RepositoryTest {
     @JvmField
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 
-    private val localRepository = mock(DataRepository::class.java)
     private val remoteRepository = mock(RemoteRepository::class.java)
-    private val dataRepositoryTest = FakeRepository(localRepository, remoteRepository)
+    private val dataRepositoryTest = FakeRepository(remoteRepository)
 
     private val movieList = DummyData.generateDummyMovies()
     private val movieId = movieList[0].id

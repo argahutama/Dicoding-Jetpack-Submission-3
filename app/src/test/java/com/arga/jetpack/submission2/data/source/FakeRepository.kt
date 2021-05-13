@@ -12,7 +12,7 @@ import com.arga.jetpack.submission2.data.source.remote.interactor.GetMovieDetail
 import com.arga.jetpack.submission2.data.source.remote.interactor.GetTvShowCallback
 import com.arga.jetpack.submission2.data.source.remote.interactor.GetTvShowDetailCallback
 
-open class FakeRepository(private val dataRepository: DataRepository, private val remoteRepository: RemoteRepository):
+open class FakeRepository(private val remoteRepository: RemoteRepository):
     DataSource {
     override fun getMovie(): LiveData<List<MovieEntity>> {
         val movieList = MutableLiveData<List<MovieEntity>>()
