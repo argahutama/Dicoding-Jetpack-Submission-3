@@ -11,7 +11,7 @@ import com.arga.jetpack.submission2.data.source.local.entity.TvShowEntity
 import com.arga.jetpack.submission2.databinding.FragmentTvShowBinding
 import com.arga.jetpack.submission2.ui.adapter.TvShowAdapter
 import com.arga.jetpack.submission2.util.ViewModelFactory
-import com.arga.jetpack.submission2.viewmodel.TvShowViewModel
+import com.arga.jetpack.submission2.ui.viewmodel.TvShowViewModel
 
 class TvShowFragment : Fragment() {
 

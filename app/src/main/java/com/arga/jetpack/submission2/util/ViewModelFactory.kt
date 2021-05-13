@@ -4,8 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.arga.jetpack.submission2.data.DataRepository
 import com.arga.jetpack.submission2.di.Injection
-import com.arga.jetpack.submission2.viewmodel.MovieViewModel
-import com.arga.jetpack.submission2.viewmodel.TvShowViewModel
+import com.arga.jetpack.submission2.ui.viewmodel.MovieViewModel
+import com.arga.jetpack.submission2.ui.viewmodel.TvShowViewModel
 
 class ViewModelFactory(private val dataRepository: DataRepository): ViewModelProvider.NewInstanceFactory() {
     companion object{

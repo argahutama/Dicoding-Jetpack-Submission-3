@@ -9,7 +9,7 @@ import com.arga.jetpack.submission2.data.source.local.entity.MovieEntity
 import com.arga.jetpack.submission2.databinding.ActivityMovieDetailBinding
 import com.arga.jetpack.submission2.util.Utilization.Companion.glideOption
 import com.arga.jetpack.submission2.util.ViewModelFactory
-import com.arga.jetpack.submission2.viewmodel.MovieViewModel
+import com.arga.jetpack.submission2.ui.viewmodel.MovieViewModel
 import com.bumptech.glide.Glide
 
 class MovieDetailActivity : AppCompatActivity() {
