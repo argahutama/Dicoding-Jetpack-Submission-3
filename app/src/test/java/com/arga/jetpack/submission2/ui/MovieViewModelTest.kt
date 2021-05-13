@@ -13,6 +13,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.mockito.Mockito
 
+@Suppress("UNCHECKED_CAST")
 class MovieViewModelTest {
 
     @Rule
