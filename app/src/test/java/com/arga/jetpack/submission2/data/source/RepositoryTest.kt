@@ -7,6 +7,7 @@ import com.arga.jetpack.submission2.data.source.remote.interactor.GetMovieDetail
 import com.arga.jetpack.submission2.data.source.remote.interactor.GetTvShowCallback
 import com.arga.jetpack.submission2.data.source.remote.interactor.GetTvShowDetailCallback
 import com.arga.jetpack.submission2.util.DummyData
+import junit.framework.Assert.assertNotNull
 import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
@@ -14,76 +15,80 @@ import org.mockito.Mockito.*
 
 class RepositoryTest {
 
-    @Rule
-    @JvmField
+    @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 
-    private val remoteRepository = mock(RemoteRepository::class.java)
-    private val dataRepositoryTest = FakeRepository(remoteRepository)
+    private val remote = mock(RemoteRepository::class.java)
+    private val repository = FakeRepository(remote)
 
-    private val movieList = DummyData.generateDummyMovies()
-    private val movieId = movieList[0].id
-    private val movieDetail = DummyData.generateDummyMovies()[0]
-    private val tvShowList = DummyData.generateDummyTvShows()
-    private val tvShowId = tvShowList[0].id
-    private val tvShowDetail = DummyData.generateDummyTvShows()[0]
-
-    private fun <T> anyOfT(type: Class<T>): T = any(type)
-
-    private fun <T> eqOfT(obj: T): T = eq(obj)
+    private val movieResponses = DummyData.generateDummyMovies()
+    private val movieId = movieResponses[0].id
+    private val tvShowResponses = DummyData.generateDummyTvShows()
+    private val tvShowId = tvShowResponses[0].id
 
     @Test
-    fun getMovie() {
-        doAnswer {
-            val callback = it.arguments[0] as GetMovieCallback
-            callback.onMovieListLoaded(movieList)
+    fun getAllMovies() {
+        doAnswer { invocation ->
+            (invocation.arguments[0] as GetMovieCallback).onMovieListLoaded(movieResponses)
             null
-        }.`when`(remoteRepository).getMovie(anyOfT(GetMovieCallback::class.java))
-
-        val result = LiveDataTest.getValue(dataRepositoryTest.getMovie())
-        verify(remoteRepository).getMovie(any(GetMovieCallback::class.java))
-        assertEquals(movieList.size, result.size)
+        }.`when`(remote).getMovie(com.nhaarman.mockitokotlin2.any())
+        val movieEntities = LiveDataTest.getValue(repository.getMovie())
+        verify(remote).getMovie(com.nhaarman.mockitokotlin2.any())
+        assertNotNull(movieEntities)
+        assertEquals(movieResponses.size, movieEntities.size)
     }
 
     @Test
-    fun getTvShow() {
-        doAnswer {
-            val callback = it.arguments[0] as GetTvShowCallback
-            callback.onTvShowListLoaded(tvShowList)
+    fun getAllTvShows() {
+        doAnswer { invocation ->
+            (invocation.arguments[0] as GetTvShowCallback).onTvShowListLoaded(tvShowResponses)
             null
-        }.`when`(remoteRepository).getTvShow(anyOfT(GetTvShowCallback::class.java))
-
-        val result = LiveDataTest.getValue(dataRepositoryTest.getTvShow())
-        verify(remoteRepository).getTvShow(any(GetTvShowCallback::class.java))
-        assertEquals(tvShowList.size, result.size)
+        }.`when`(remote).getTvShow(com.nhaarman.mockitokotlin2.any())
+        val tvShowEntities = LiveDataTest.getValue(repository.getTvShow())
+        verify(remote).getTvShow(com.nhaarman.mockitokotlin2.any())
+        assertNotNull(tvShowEntities)
+        assertEquals(tvShowResponses.size, tvShowEntities.size)
     }
 
     @Test
     fun getMovieDetail() {
         doAnswer {
-            val callback = it.arguments[0] as GetMovieDetailCallback
-            callback.onMovieDetailLoaded(movieDetail)
+            val callback = it.arguments[1] as GetMovieDetailCallback
+            callback.onMovieDetailLoaded(movieResponses[0])
             null
-        }.`when`(remoteRepository).getMovieDetail(
-            eqOfT(movieId),
-            anyOfT(GetMovieDetailCallback::class.java))
-
-        val result = LiveDataTest.getValue(dataRepositoryTest.getMovieDetail(eqOfT(tvShowId)))
-        verify(remoteRepository).getMovieDetail(eqOfT(tvShowId), anyOfT(GetMovieDetailCallback::class.java))
-        assertEquals(movieId, result)
+        }.`when`(remote).getMovieDetail(
+            com.nhaarman.mockitokotlin2.any(),
+            com.nhaarman.mockitokotlin2.any()
+        )
+        val result = movieId.let { repository.getMovieDetail(it) }.let { LiveDataTest.getValue(it) }
+        verify(
+            remote,
+            times(1)
+        ).getMovieDetail(
+            com.nhaarman.mockitokotlin2.any(),
+            com.nhaarman.mockitokotlin2.any()
+        )
+        assertEquals(movieResponses[0].id, result.id)
     }
 
     @Test
     fun getTvShowDetail() {
         doAnswer {
-            val callback = it.arguments[0] as GetTvShowDetailCallback
-            callback.onTvShowDetailLoaded(tvShowDetail)
+            val callback = it.arguments[1] as GetTvShowDetailCallback
+            callback.onTvShowDetailLoaded(tvShowResponses[0])
             null
-        }.`when`(remoteRepository).getTvShowDetail(eqOfT(tvShowId),
-            anyOfT(GetTvShowDetailCallback::class.java))
-
-        val result = LiveDataTest.getValue(dataRepositoryTest.getTvShowDetail(eqOfT(tvShowId)))
-        verify(remoteRepository).getTvShowDetail(eqOfT(tvShowId), anyOfT(GetTvShowDetailCallback::class.java))
-        assertEquals(tvShowId, result)
+        }.`when`(remote).getTvShowDetail(
+            com.nhaarman.mockitokotlin2.any(),
+            com.nhaarman.mockitokotlin2.any()
+        )
+        val result = tvShowId.let { repository.getTvShowDetail(it) }.let { LiveDataTest.getValue(it) }
+        verify(
+            remote,
+            times(1)
+        ).getTvShowDetail(
+            com.nhaarman.mockitokotlin2.any(),
+            com.nhaarman.mockitokotlin2.any()
+        )
+        assertEquals(tvShowResponses[0].id, result.id)
     }
 }
