@@ -81,7 +81,7 @@ class MainActivityTest {
     }
 
     @Test
-    fun swipePage() {
+    fun checkViewPagerIsDisplayed() {
         onView(withId(R.id.view_pager)).check(matches(isDisplayed()))
     }
 
