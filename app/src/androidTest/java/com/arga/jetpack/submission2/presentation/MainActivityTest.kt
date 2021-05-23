@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.arga.jetpack.submission2.presentation
 
 import androidx.recyclerview.widget.RecyclerView
@@ -52,8 +54,16 @@ class MainActivityTest {
                         click()
                 )
         )
+        onView(withId(R.id.iv_big_poster)).check(matches(isDisplayed()))
+        onView(withId(R.id.iv_small_poster)).check(matches(isDisplayed()))
         onView(withId(R.id.tv_title)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_release)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_rating)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_overview)).check(matches(isDisplayed()))
         onView(withId(R.id.tv_title)).check(matches(withText(dummyMovie[0].title)))
+        onView(withId(R.id.tv_release)).check(matches(withText("Release Date : " + dummyMovie[0].releasedDate)))
+        onView(withId(R.id.tv_rating)).check(matches(withText(dummyMovie[0].voteAverage.toString())))
+        onView(withId(R.id.tv_overview)).check(matches(withText(dummyMovie[0].overview)))
     }
 
     @Test
@@ -76,8 +86,16 @@ class MainActivityTest {
                         click()
                 )
         )
+        onView(withId(R.id.iv_big_poster)).check(matches(isDisplayed()))
+        onView(withId(R.id.iv_small_poster)).check(matches(isDisplayed()))
         onView(withId(R.id.tv_title)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_first_on_air)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_rating)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_overview)).check(matches(isDisplayed()))
         onView(withId(R.id.tv_title)).check(matches(withText(dummyTvShow[0].name)))
+        onView(withId(R.id.tv_first_on_air)).check(matches(withText("First On Air : " + dummyTvShow[0].firstAirDate)))
+        onView(withId(R.id.tv_rating)).check(matches(withText(dummyTvShow[0].voteAverage.toString())))
+        onView(withId(R.id.tv_overview)).check(matches(withText(dummyTvShow[0].overview)))
     }
 
     @Test
