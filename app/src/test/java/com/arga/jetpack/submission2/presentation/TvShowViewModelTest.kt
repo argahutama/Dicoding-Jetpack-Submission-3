@@ -11,7 +11,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.mockito.Mockito
+import org.mockito.Mockito.*
 
 @Suppress("UNCHECKED_CAST")
 class TvShowViewModelTest {
@@ -21,7 +21,7 @@ class TvShowViewModelTest {
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 
     private var viewModel: TvShowViewModel? = null
-    private var data = Mockito.mock(DataRepository::class.java)
+    private var data = mock(DataRepository::class.java)
 
     @Before
     fun setUp(){
@@ -32,20 +32,20 @@ class TvShowViewModelTest {
     fun getTvShowList(){
         val tvShow = MutableLiveData<List<TvShowEntity>>()
         tvShow.value = DummyData.generateDummyTvShows()
-        Mockito.`when`(data.getTvShow()).thenReturn(tvShow)
-        val observer = Mockito.mock(Observer::class.java)
+        `when`(data.getTvShow()).thenReturn(tvShow)
+        val observer = mock(Observer::class.java)
         viewModel?.tvShow?.observeForever(observer as Observer<List<TvShowEntity>>)
-        Mockito.verify(data).getTvShow()
+        verify(data).getTvShow()
     }
 
     @Test
     fun getTvShowDetail(){
         val tvShow = MutableLiveData<TvShowEntity>()
         tvShow.value = DummyData.generateDummyTvShows()[0]
-        Mockito.`when`(data.getTvShowDetail(tvShow.value!!.id)).thenReturn(tvShow)
-        val observer = Mockito.mock(Observer::class.java)
+        `when`(data.getTvShowDetail(tvShow.value!!.id)).thenReturn(tvShow)
+        val observer = mock(Observer::class.java)
         viewModel?.getTvShowDetail(tvShow.value!!.id)?.observeForever(observer as Observer<TvShowEntity>)
-        Mockito.verify(data).getTvShow()
+        verify(data).getTvShow()
 
         assertEquals(tvShow.value!!.id, viewModel?.getTvShowDetail(tvShow.value!!.id)?.value?.id)
         assertEquals(tvShow.value!!.posterPath, viewModel?.getTvShowDetail(tvShow.value!!.id)?.value?.posterPath)

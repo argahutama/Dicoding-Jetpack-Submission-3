@@ -11,7 +11,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.mockito.Mockito
+import org.mockito.Mockito.*
 
 @Suppress("UNCHECKED_CAST")
 class MovieViewModelTest {
@@ -21,7 +21,7 @@ class MovieViewModelTest {
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 
     private var viewModel: MovieViewModel? = null
-    private var data = Mockito.mock(DataRepository::class.java)
+    private var data = mock(DataRepository::class.java)
 
     @Before
     fun setUp(){
@@ -32,20 +32,20 @@ class MovieViewModelTest {
     fun getMovieList(){
         val movie = MutableLiveData<List<MovieEntity>>()
         movie.value = DummyData.generateDummyMovies()
-        Mockito.`when`(data.getMovie()).thenReturn(movie)
-        val observer = Mockito.mock(Observer::class.java)
+        `when`(data.getMovie()).thenReturn(movie)
+        val observer = mock(Observer::class.java)
         viewModel?.movie?.observeForever(observer as Observer<List<MovieEntity>>)
-        Mockito.verify(data).getMovie()
+        verify(data).getMovie()
     }
 
     @Test
     fun getMovieDetail(){
         val movie = MutableLiveData<MovieEntity>()
         movie.value = DummyData.generateDummyMovies()[0]
-        Mockito.`when`(data.getMovieDetail(movie.value!!.id)).thenReturn(movie)
-        val observer = Mockito.mock(Observer::class.java)
+        `when`(data.getMovieDetail(movie.value!!.id)).thenReturn(movie)
+        val observer = mock(Observer::class.java)
         viewModel?.getMovieDetail(movie.value!!.id)?.observeForever(observer as Observer<MovieEntity>)
-        Mockito.verify(data).getMovie()
+        verify(data).getMovie()
 
         assertEquals(movie.value!!.id, viewModel?.getMovieDetail(movie.value!!.id)?.value?.id)
         assertEquals(movie.value!!.posterPath, viewModel?.getMovieDetail(movie.value!!.id)?.value?.posterPath)
