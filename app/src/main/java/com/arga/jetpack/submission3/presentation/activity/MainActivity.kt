@@ -1,5 +1,6 @@
 package com.arga.jetpack.submission3.presentation.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -7,7 +8,7 @@ import android.os.Looper
 import androidx.core.content.res.ResourcesCompat
 import com.arga.jetpack.submission3.R
 import com.arga.jetpack.submission3.databinding.ActivityMainBinding
-import com.arga.jetpack.submission3.presentation.adapter.SectionPagerAdapter
+import com.arga.jetpack.submission3.presentation.adapter.SectionPagerMainAdapter
 import www.sanju.motiontoast.MotionToast
 
 class MainActivity : AppCompatActivity() {
@@ -22,9 +23,16 @@ class MainActivity : AppCompatActivity() {
 
         val mFragmentManager = supportFragmentManager
         val sectionsPagerAdapter =
-            SectionPagerAdapter(this, mFragmentManager)
-        binding.viewPager.adapter = sectionsPagerAdapter
-        binding.tabs.setupWithViewPager(binding.viewPager)
+            SectionPagerMainAdapter(this, mFragmentManager)
+
+        with(binding) {
+            viewPager.adapter = sectionsPagerAdapter
+            tabs.setupWithViewPager(binding.viewPager)
+            ivFavorite.setOnClickListener {
+                val intent = Intent(this@MainActivity, FavoriteActivity::class.java)
+                startActivity(intent)
+            }
+        }
     }
 
     override fun onBackPressed() {

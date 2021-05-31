@@ -14,4 +14,6 @@
     <string name="first_on_air">First On Air : %s</string>
     <string name="poster">Poster</string>
     <string name="rating">Rating</string>
+    <string name="go_to_favorite_page">Go to Favorite Page</string>
+    <string name="my_favorites">My Favorites</string>
 </resources>

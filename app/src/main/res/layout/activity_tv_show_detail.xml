@@ -13,6 +13,16 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         tools:visibility="gone" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabFavorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="20dp"
+        android:src="@drawable/ic_baseline_favorite_border_white_24"
+        app:tint="@color/white"
+        tools:ignore="ContentDescription" />
     
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
