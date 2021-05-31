@@ -82,5 +82,5 @@ dependencies {
     kapt "androidx.room:room-compiler:$roomVersion"
 
     //paging
-    implementation "androidx.paging:paging-runtime:$pagingVersion"
+    implementation "androidx.paging:paging-runtime-ktx:$pagingVersion"
 }

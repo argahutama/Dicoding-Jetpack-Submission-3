@@ -48,7 +48,8 @@ class DataRepository(
                 return LivePagedListBuilder(localDataSource.getMovies(), config).build()
             }
 
-            override fun shouldFetch(data: PagedList<MovieEntity>): Boolean = false
+            override fun shouldFetch(data: PagedList<MovieEntity>?): Boolean =
+                data == null || data.isEmpty()
 
             override fun createCall(): LiveData<ApiResponse<List<MovieEntity>>> =
                 remoteDataSource.getMovies()
@@ -69,6 +70,7 @@ class DataRepository(
                 }
                 localDataSource.insertMovies(movieList)
             }
+
         }.asLiveData()
     }
 
@@ -77,7 +79,7 @@ class DataRepository(
             override fun loadDataFromDB(): LiveData<MovieEntity> =
                 localDataSource.getMovieDetail(id)
 
-            override fun shouldFetch(data: MovieEntity): Boolean = false
+            override fun shouldFetch(data: MovieEntity?): Boolean = data == null
 
             override fun createCall(): LiveData<ApiResponse<MovieEntity>> =
                 remoteDataSource.getMovieDetail(id)
@@ -109,7 +111,8 @@ class DataRepository(
                 return LivePagedListBuilder(localDataSource.getTvShows(), config).build()
             }
 
-            override fun shouldFetch(data: PagedList<TvShowEntity>): Boolean = data.isEmpty()
+            override fun shouldFetch(data: PagedList<TvShowEntity>?): Boolean =
+                data == null || data.isEmpty()
 
             override fun createCall(): LiveData<ApiResponse<List<TvShowEntity>>> =
                 remoteDataSource.getTvShows()
@@ -140,7 +143,7 @@ class DataRepository(
             override fun loadDataFromDB(): LiveData<TvShowEntity> =
                 localDataSource.getTvShowDetail(id)
 
-            override fun shouldFetch(data: TvShowEntity): Boolean = false
+            override fun shouldFetch(data: TvShowEntity?): Boolean = data == null
 
             override fun createCall(): LiveData<ApiResponse<TvShowEntity>> =
                 remoteDataSource.getTvShowDetail(id)

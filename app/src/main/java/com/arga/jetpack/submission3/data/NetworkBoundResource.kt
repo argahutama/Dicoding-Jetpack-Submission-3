@@ -13,7 +13,7 @@ abstract class NetworkBoundResource<ResultType, RequestType>(private val executo
     private fun onFetchFailed() {}
 
     protected abstract fun loadDataFromDB(): LiveData<ResultType>
-    protected abstract fun shouldFetch(data: ResultType): Boolean?
+    protected abstract fun shouldFetch(data: ResultType?): Boolean
     protected abstract fun createCall(): LiveData<ApiResponse<RequestType>>?
     protected abstract fun saveCallResult(data: RequestType)
 
@@ -72,7 +72,7 @@ abstract class NetworkBoundResource<ResultType, RequestType>(private val executo
 
         result.addSource(dbSource) { data ->
             result.removeSource(dbSource)
-            if (shouldFetch(data)!!) fetchFromNetwork(dbSource)
+            if (shouldFetch(data)) fetchFromNetwork(dbSource)
             else result.addSource(dbSource) { newData ->
                 result.setValue(Resource.success(newData))
             }
