@@ -32,10 +32,10 @@ class TvShowViewModelTest {
     fun getTvShowList() {
         val tvShow = MutableLiveData<List<TvShowEntity>>()
         tvShow.value = DummyData.generateDummyTvShows()
-        `when`(data.getTvShow()).thenReturn(tvShow)
+        `when`(data.getTvShows()).thenReturn(tvShow)
         val observer = mock(Observer::class.java)
         viewModel?.tvShow?.observeForever(observer as Observer<List<TvShowEntity>>)
-        verify(data).getTvShow()
+        verify(data).getTvShows()
     }
 
     @Test
@@ -46,7 +46,7 @@ class TvShowViewModelTest {
         val observer = mock(Observer::class.java)
         viewModel?.getTvShowDetail(tvShow.value!!.id)
             ?.observeForever(observer as Observer<TvShowEntity>)
-        verify(data).getTvShow()
+        verify(data).getTvShows()
 
         assertEquals(tvShow.value!!.id, viewModel?.getTvShowDetail(tvShow.value!!.id)?.value?.id)
         assertEquals(

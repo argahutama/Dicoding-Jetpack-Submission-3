@@ -19,12 +19,12 @@ class TvShowDetailActivity : AppCompatActivity() {
         val binding = ActivityTvShowDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val factory = ViewModelFactory.getInstance()
+        val factory = ViewModelFactory.getInstance(this)
         val viewModel = ViewModelProvider(this, factory)[TvShowViewModel::class.java]
 
         val tvShowId = intent.extras?.getInt("tvShowId")
         if (tvShowId != null) viewModel.getTvShowDetail(tvShowId).observe(
-            this, { loadTvShowDetail(it, binding) }
+            this, { it.data?.let { it1 -> loadTvShowDetail(it1, binding) } }
         )
     }
 

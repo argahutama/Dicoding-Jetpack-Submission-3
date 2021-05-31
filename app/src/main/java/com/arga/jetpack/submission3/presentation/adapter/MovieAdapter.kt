@@ -5,6 +5,8 @@ import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagedListAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.arga.jetpack.submission3.R
 import com.arga.jetpack.submission3.data.source.local.entity.MovieEntity
@@ -13,15 +15,20 @@ import com.arga.jetpack.submission3.presentation.activity.MovieDetailActivity
 import com.arga.jetpack.submission3.util.Utilization.Companion.glideOption
 import com.bumptech.glide.Glide
 
-class MovieAdapter(context: Context?) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
+class MovieAdapter(context: Context?) :
+    PagedListAdapter<MovieEntity, MovieAdapter.MovieViewHolder>(DIFF_CALLBACK) {
 
     private val activity = context as Activity
     private val list = ArrayList<MovieEntity>()
 
-    fun setData(movie: ArrayList<MovieEntity>) {
-        list.clear()
-        list.addAll(movie)
-        notifyDataSetChanged()
+    companion object {
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<MovieEntity>() {
+            override fun areItemsTheSame(oldItem: MovieEntity, newItem: MovieEntity): Boolean =
+                oldItem.id == newItem.id
+
+            override fun areContentsTheSame(oldItem: MovieEntity, newItem: MovieEntity): Boolean =
+                oldItem == newItem
+        }
     }
 
     override fun onCreateViewHolder(
@@ -58,5 +65,4 @@ class MovieAdapter(context: Context?) : RecyclerView.Adapter<MovieAdapter.MovieV
             }
         }
     }
-
 }

@@ -19,12 +19,12 @@ class MovieDetailActivity : AppCompatActivity() {
         val binding = ActivityMovieDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val factory = ViewModelFactory.getInstance()
+        val factory = ViewModelFactory.getInstance(this)
         val viewModel = ViewModelProvider(this, factory)[MovieViewModel::class.java]
 
         val movieId = intent.extras?.getInt("movieId")
         if (movieId != null) viewModel.getMovieDetail(movieId).observe(
-            this, { loadMovieDetail(it, binding) }
+            this, { it.data?.let { it1 -> loadMovieDetail(it1, binding) } }
         )
     }
 

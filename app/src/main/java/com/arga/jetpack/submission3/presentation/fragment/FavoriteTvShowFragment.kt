@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.arga.jetpack.submission3.data.source.local.entity.TvShowEntity
 import com.arga.jetpack.submission3.databinding.FragmentTvShowBinding
 import com.arga.jetpack.submission3.presentation.adapter.TvShowAdapter
 import com.arga.jetpack.submission3.presentation.viewmodel.TvShowViewModel
@@ -28,13 +27,12 @@ class FavoriteTvShowFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val factory = ViewModelFactory.getInstance()
+        val factory = ViewModelFactory.getInstance(requireContext())
         val viewModel = ViewModelProvider(this, factory)[TvShowViewModel::class.java]
 
         val tvShowAdapter = TvShowAdapter(context)
         viewModel.tvShow.observe(viewLifecycleOwner, { data ->
             binding.progressBar.visibility = View.GONE
-            tvShowAdapter.setData(data as ArrayList<TvShowEntity>)
         })
 
         with(binding.rvTvshow) {

@@ -38,14 +38,11 @@ class FavoriteMovieAdapter(context: Context?) :
 
     companion object {
         private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<MovieEntity>() {
-            override fun areItemsTheSame(oldItem: MovieEntity, newItem: MovieEntity): Boolean {
-                return oldItem.id == newItem.id
-            }
+            override fun areItemsTheSame(oldItem: MovieEntity, newItem: MovieEntity): Boolean =
+                oldItem.id == newItem.id
 
-            @SuppressLint("DiffUtilEquals")
-            override fun areContentsTheSame(oldItem: MovieEntity, newItem: MovieEntity): Boolean {
-                return oldItem == newItem
-            }
+            override fun areContentsTheSame(oldItem: MovieEntity, newItem: MovieEntity): Boolean =
+                oldItem == newItem
         }
     }
 

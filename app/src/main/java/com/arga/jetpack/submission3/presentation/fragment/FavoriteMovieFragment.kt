@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.paging.PagedList
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.arga.jetpack.submission3.data.source.local.entity.MovieEntity
 import com.arga.jetpack.submission3.databinding.FragmentMovieBinding
@@ -29,14 +30,13 @@ class FavoriteMovieFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val factory = ViewModelFactory.getInstance()
+        val factory = ViewModelFactory.getInstance(requireContext())
         val viewModel = ViewModelProvider(this, factory)[MovieViewModel::class.java]
 
         val moviesAdapter = MovieAdapter(context)
 
-        viewModel.movie.observe(viewLifecycleOwner, { data ->
+        viewModel.movies.observe(viewLifecycleOwner, {
             binding.progressBar.visibility = View.GONE
-            moviesAdapter.setData(data as ArrayList<MovieEntity>)
         })
 
         with(binding.rvMovies) {

@@ -7,11 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.arga.jetpack.submission3.data.source.local.entity.MovieEntity
 import com.arga.jetpack.submission3.databinding.FragmentMovieBinding
 import com.arga.jetpack.submission3.presentation.adapter.MovieAdapter
-import com.arga.jetpack.submission3.util.ViewModelFactory
 import com.arga.jetpack.submission3.presentation.viewmodel.MovieViewModel
+import com.arga.jetpack.submission3.util.ViewModelFactory
 
 class MovieFragment : Fragment() {
 
@@ -29,14 +28,14 @@ class MovieFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val factory = ViewModelFactory.getInstance()
+        val factory = ViewModelFactory.getInstance(requireContext())
         val viewModel = ViewModelProvider(this, factory)[MovieViewModel::class.java]
 
         val moviesAdapter = MovieAdapter(context)
 
-        viewModel.movie.observe(viewLifecycleOwner, { data ->
+        viewModel.movies.observe(viewLifecycleOwner, { data ->
             binding.progressBar.visibility = View.GONE
-            moviesAdapter.setData(data as ArrayList<MovieEntity>)
+            moviesAdapter.submitList(data.data)
         })
 
         with(binding.rvMovies) {

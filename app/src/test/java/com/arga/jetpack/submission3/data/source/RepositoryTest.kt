@@ -1,7 +1,7 @@
 package com.arga.jetpack.submission3.data.source
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.arga.jetpack.submission3.data.source.remote.RemoteRepository
+import com.arga.jetpack.submission3.data.source.remote.RemoteDataSource
 import com.arga.jetpack.submission3.data.source.remote.interactor.GetMovieCallback
 import com.arga.jetpack.submission3.data.source.remote.interactor.GetMovieDetailCallback
 import com.arga.jetpack.submission3.data.source.remote.interactor.GetTvShowCallback
@@ -18,7 +18,7 @@ class RepositoryTest {
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 
-    private val remote = mock(RemoteRepository::class.java)
+    private val remote = mock(RemoteDataSource::class.java)
     private val repository = FakeRepository(remote)
 
     private val movieResponses = DummyData.generateDummyMovies()
@@ -31,9 +31,9 @@ class RepositoryTest {
         doAnswer { invocation ->
             (invocation.arguments[0] as GetMovieCallback).onMovieListLoaded(movieResponses)
             null
-        }.`when`(remote).getMovie(com.nhaarman.mockitokotlin2.any())
-        val movieEntities = LiveDataTest.getValue(repository.getMovie())
-        verify(remote).getMovie(com.nhaarman.mockitokotlin2.any())
+        }.`when`(remote).getMovies(com.nhaarman.mockitokotlin2.any())
+        val movieEntities = LiveDataTest.getValue(repository.getMovies())
+        verify(remote).getMovies(com.nhaarman.mockitokotlin2.any())
         assertNotNull(movieEntities)
         assertEquals(movieResponses.size, movieEntities.size)
     }
@@ -43,9 +43,9 @@ class RepositoryTest {
         doAnswer { invocation ->
             (invocation.arguments[0] as GetTvShowCallback).onTvShowListLoaded(tvShowResponses)
             null
-        }.`when`(remote).getTvShow(com.nhaarman.mockitokotlin2.any())
-        val tvShowEntities = LiveDataTest.getValue(repository.getTvShow())
-        verify(remote).getTvShow(com.nhaarman.mockitokotlin2.any())
+        }.`when`(remote).getTvShows(com.nhaarman.mockitokotlin2.any())
+        val tvShowEntities = LiveDataTest.getValue(repository.getTvShows())
+        verify(remote).getTvShows(com.nhaarman.mockitokotlin2.any())
         assertNotNull(tvShowEntities)
         assertEquals(tvShowResponses.size, tvShowEntities.size)
     }

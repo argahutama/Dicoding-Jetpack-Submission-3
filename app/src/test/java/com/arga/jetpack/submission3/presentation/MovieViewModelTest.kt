@@ -32,10 +32,10 @@ class MovieViewModelTest {
     fun getMovieList() {
         val movie = MutableLiveData<List<MovieEntity>>()
         movie.value = DummyData.generateDummyMovies()
-        `when`(data.getMovie()).thenReturn(movie)
+        `when`(data.getMovies()).thenReturn(movie)
         val observer = mock(Observer::class.java)
         viewModel?.movie?.observeForever(observer as Observer<List<MovieEntity>>)
-        verify(data).getMovie()
+        verify(data).getMovies()
     }
 
     @Test
@@ -46,7 +46,7 @@ class MovieViewModelTest {
         val observer = mock(Observer::class.java)
         viewModel?.getMovieDetail(movie.value!!.id)
             ?.observeForever(observer as Observer<MovieEntity>)
-        verify(data).getMovie()
+        verify(data).getMovies()
 
         assertEquals(movie.value!!.id, viewModel?.getMovieDetail(movie.value!!.id)?.value?.id)
         assertEquals(

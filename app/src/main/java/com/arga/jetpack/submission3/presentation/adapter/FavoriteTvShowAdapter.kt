@@ -40,14 +40,11 @@ class FavoriteTvShowAdapter(context: Context?) :
 
     companion object {
         private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<TvShowEntity>() {
-            override fun areItemsTheSame(oldItem: TvShowEntity, newItem: TvShowEntity): Boolean {
-                return oldItem.id == newItem.id
-            }
+            override fun areItemsTheSame(oldItem: TvShowEntity, newItem: TvShowEntity): Boolean =
+                oldItem.id == newItem.id
 
-            @SuppressLint("DiffUtilEquals")
-            override fun areContentsTheSame(oldItem: TvShowEntity, newItem: TvShowEntity): Boolean {
-                return oldItem == newItem
-            }
+            override fun areContentsTheSame(oldItem: TvShowEntity, newItem: TvShowEntity): Boolean =
+                oldItem == newItem
         }
     }
 
