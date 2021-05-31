@@ -2,12 +2,16 @@ package com.arga.jetpack.submission3.presentation.adapter
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.arga.jetpack.submission3.R
 import com.arga.jetpack.submission3.data.source.local.entity.TvShowEntity
 import com.arga.jetpack.submission3.databinding.TvshowItemBinding
+import com.arga.jetpack.submission3.presentation.activity.TvShowDetailActivity
+import com.arga.jetpack.submission3.util.Utilization.Companion.glideOption
+import com.bumptech.glide.Glide
 
 class TvShowAdapter(context: Context?): RecyclerView.Adapter<TvShowAdapter.TvShowViewHolder>(){
 

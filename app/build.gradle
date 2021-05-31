@@ -8,7 +8,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.arga.jetpack.submission2"
+        applicationId "com.arga.jetpack.submission3"
         minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
