@@ -8,8 +8,7 @@ import com.arga.jetpack.submission3.data.source.local.entity.TvShowEntity
 
 class FavoriteTvShowViewModel(private val dataRepository: DataRepository) : ViewModel() {
 
-    fun getFavoriteTvShows(): LiveData<PagedList<TvShowEntity>> =
-        dataRepository.getFavoritesTvShows()
+    val favoriteTvShows: LiveData<PagedList<TvShowEntity>> = dataRepository.getFavoritesTvShows()
 
     fun setFavoriteMovie(tvShowEntity: TvShowEntity) {
         val isFavorite = !tvShowEntity.isFavorite

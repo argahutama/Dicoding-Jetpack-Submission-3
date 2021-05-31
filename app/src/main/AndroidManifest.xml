@@ -15,6 +15,7 @@
         <activity android:name=".presentation.activity.FavoriteActivity" />
         <activity android:name=".presentation.activity.TvShowDetailActivity" />
         <activity android:name=".presentation.activity.MovieDetailActivity" />
+        <activity android:name=".presentation.activity.MainActivity" />
         <activity android:name=".presentation.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +23,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".presentation.activity.MainActivity" />
     </application>
 
 </manifest>

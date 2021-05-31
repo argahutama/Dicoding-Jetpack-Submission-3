@@ -9,5 +9,6 @@ import com.arga.jetpack.submission3.vo.Resource
 
 class TvShowViewModel(private val dataRepository: DataRepository) : ViewModel() {
     val tvShow: LiveData<Resource<PagedList<TvShowEntity>>> = dataRepository.getTvShows()
-    fun getTvShowDetail(tvId: Int): LiveData<Resource<TvShowEntity>> = dataRepository.getTvShowDetail(tvId)
+    fun getTvShowDetail(tvId: Int): LiveData<Resource<TvShowEntity>> =
+        dataRepository.getTvShowDetail(tvId)
 }

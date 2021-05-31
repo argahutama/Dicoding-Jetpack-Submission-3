@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.arga.jetpack.submission3.databinding.FragmentTvShowBinding
 import com.arga.jetpack.submission3.presentation.adapter.TvShowAdapter
-import com.arga.jetpack.submission3.presentation.viewmodel.TvShowViewModel
+import com.arga.jetpack.submission3.presentation.viewmodel.FavoriteTvShowViewModel
 import com.arga.jetpack.submission3.util.ViewModelFactory
 
 class FavoriteTvShowFragment : Fragment() {
@@ -24,21 +24,21 @@ class FavoriteTvShowFragment : Fragment() {
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         val factory = ViewModelFactory.getInstance(requireContext())
-        val viewModel = ViewModelProvider(this, factory)[TvShowViewModel::class.java]
+        val viewModel = ViewModelProvider(this, factory)[FavoriteTvShowViewModel::class.java]
 
         val tvShowAdapter = TvShowAdapter(context)
-        viewModel.tvShow.observe(viewLifecycleOwner, { data ->
+
+        viewModel.favoriteTvShows.observe(viewLifecycleOwner, { tvShows ->
             binding.progressBar.visibility = View.GONE
+            tvShowAdapter.submitList(tvShows)
         })
 
-        with(binding.rvTvshow) {
-            layoutManager = LinearLayoutManager(activity)
-            setHasFixedSize(true)
-            adapter = tvShowAdapter
-        }
+        binding.rvTvshow.layoutManager = LinearLayoutManager(context)
+        binding.rvTvshow.setHasFixedSize(true)
+        binding.rvTvshow.adapter = tvShowAdapter
     }
 }

@@ -6,13 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.paging.PagedList
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.arga.jetpack.submission3.data.source.local.entity.MovieEntity
 import com.arga.jetpack.submission3.databinding.FragmentMovieBinding
 import com.arga.jetpack.submission3.presentation.adapter.MovieAdapter
+import com.arga.jetpack.submission3.presentation.viewmodel.FavoriteMovieViewModel
 import com.arga.jetpack.submission3.util.ViewModelFactory
-import com.arga.jetpack.submission3.presentation.viewmodel.MovieViewModel
 
 class FavoriteMovieFragment : Fragment() {
 
@@ -27,23 +25,22 @@ class FavoriteMovieFragment : Fragment() {
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         val factory = ViewModelFactory.getInstance(requireContext())
-        val viewModel = ViewModelProvider(this, factory)[MovieViewModel::class.java]
+        val viewModel = ViewModelProvider(this, factory)[FavoriteMovieViewModel::class.java]
 
         val moviesAdapter = MovieAdapter(context)
 
-        viewModel.movies.observe(viewLifecycleOwner, {
+        viewModel.favoriteMovies.observe(viewLifecycleOwner, { movies ->
             binding.progressBar.visibility = View.GONE
+            moviesAdapter.submitList(movies)
         })
 
-        with(binding.rvMovies) {
-            layoutManager = LinearLayoutManager(activity)
-            setHasFixedSize(true)
-            adapter = moviesAdapter
-        }
+        binding.rvMovies.layoutManager = LinearLayoutManager(context)
+        binding.rvMovies.setHasFixedSize(true)
+        binding.rvMovies.adapter = moviesAdapter
 
     }
 }

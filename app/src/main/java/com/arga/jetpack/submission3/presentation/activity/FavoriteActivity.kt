@@ -3,7 +3,7 @@ package com.arga.jetpack.submission3.presentation.activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.arga.jetpack.submission3.databinding.ActivityFavoriteBinding
-import com.arga.jetpack.submission3.presentation.adapter.SectionPagerMainAdapter
+import com.arga.jetpack.submission3.presentation.adapter.SectionPagerFavoriteAdapter
 
 class FavoriteActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,7 +14,7 @@ class FavoriteActivity : AppCompatActivity() {
 
         val mFragmentManager = supportFragmentManager
         val sectionsPagerAdapter =
-            SectionPagerMainAdapter(this, mFragmentManager)
+            SectionPagerFavoriteAdapter(this, mFragmentManager)
 
         with(binding) {
             viewPager.adapter = sectionsPagerAdapter
