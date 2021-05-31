@@ -24,12 +24,12 @@ class TvShowViewModelTest {
     private var data = mock(DataRepository::class.java)
 
     @Before
-    fun setUp(){
+    fun setUp() {
         viewModel = TvShowViewModel(data)
     }
 
     @Test
-    fun getTvShowList(){
+    fun getTvShowList() {
         val tvShow = MutableLiveData<List<TvShowEntity>>()
         tvShow.value = DummyData.generateDummyTvShows()
         `when`(data.getTvShow()).thenReturn(tvShow)
@@ -39,20 +39,39 @@ class TvShowViewModelTest {
     }
 
     @Test
-    fun getTvShowDetail(){
+    fun getTvShowDetail() {
         val tvShow = MutableLiveData<TvShowEntity>()
         tvShow.value = DummyData.generateDummyTvShows()[0]
         `when`(data.getTvShowDetail(tvShow.value!!.id)).thenReturn(tvShow)
         val observer = mock(Observer::class.java)
-        viewModel?.getTvShowDetail(tvShow.value!!.id)?.observeForever(observer as Observer<TvShowEntity>)
+        viewModel?.getTvShowDetail(tvShow.value!!.id)
+            ?.observeForever(observer as Observer<TvShowEntity>)
         verify(data).getTvShow()
 
         assertEquals(tvShow.value!!.id, viewModel?.getTvShowDetail(tvShow.value!!.id)?.value?.id)
-        assertEquals(tvShow.value!!.posterPath, viewModel?.getTvShowDetail(tvShow.value!!.id)?.value?.posterPath)
-        assertEquals(tvShow.value!!.backdropPath, viewModel?.getTvShowDetail(tvShow.value!!.id)?.value?.backdropPath)
-        assertEquals(tvShow.value!!.name, viewModel?.getTvShowDetail(tvShow.value!!.id)?.value?.name)
-        assertEquals(tvShow.value!!.overview, viewModel?.getTvShowDetail(tvShow.value!!.id)?.value?.overview)
-        assertEquals(tvShow.value!!.firstAirDate, viewModel?.getTvShowDetail(tvShow.value!!.id)?.value?.firstAirDate)
-        assertEquals(tvShow.value!!.voteAverage, viewModel?.getTvShowDetail(tvShow.value!!.id)?.value?.voteAverage)
+        assertEquals(
+            tvShow.value!!.posterPath,
+            viewModel?.getTvShowDetail(tvShow.value!!.id)?.value?.posterPath
+        )
+        assertEquals(
+            tvShow.value!!.backdropPath,
+            viewModel?.getTvShowDetail(tvShow.value!!.id)?.value?.backdropPath
+        )
+        assertEquals(
+            tvShow.value!!.name,
+            viewModel?.getTvShowDetail(tvShow.value!!.id)?.value?.name
+        )
+        assertEquals(
+            tvShow.value!!.overview,
+            viewModel?.getTvShowDetail(tvShow.value!!.id)?.value?.overview
+        )
+        assertEquals(
+            tvShow.value!!.firstAirDate,
+            viewModel?.getTvShowDetail(tvShow.value!!.id)?.value?.firstAirDate
+        )
+        assertEquals(
+            tvShow.value!!.voteAverage,
+            viewModel?.getTvShowDetail(tvShow.value!!.id)?.value?.voteAverage
+        )
     }
 }

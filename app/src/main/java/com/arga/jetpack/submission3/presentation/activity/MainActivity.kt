@@ -35,13 +35,15 @@ class MainActivity : AppCompatActivity() {
 
         this.doubleBackToExitPressedOnce = true
 
-        MotionToast.darkColorToast(this,
-                resources.getString(R.string.warning),
-                resources.getString(R.string.press_back_once_again_to_exit),
-                MotionToast.TOAST_WARNING,
-                MotionToast.GRAVITY_BOTTOM,
-                MotionToast.LONG_DURATION,
-                ResourcesCompat.getFont(this,R.font.montserrat))
+        MotionToast.darkColorToast(
+            this,
+            resources.getString(R.string.warning),
+            resources.getString(R.string.press_back_once_again_to_exit),
+            MotionToast.TOAST_WARNING,
+            MotionToast.GRAVITY_BOTTOM,
+            MotionToast.LONG_DURATION,
+            ResourcesCompat.getFont(this, R.font.montserrat)
+        )
 
         Handler(Looper.getMainLooper()).postDelayed({
             doubleBackToExitPressedOnce = false

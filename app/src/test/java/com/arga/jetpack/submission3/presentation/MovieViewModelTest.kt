@@ -24,12 +24,12 @@ class MovieViewModelTest {
     private var data = mock(DataRepository::class.java)
 
     @Before
-    fun setUp(){
+    fun setUp() {
         viewModel = MovieViewModel(data)
     }
 
     @Test
-    fun getMovieList(){
+    fun getMovieList() {
         val movie = MutableLiveData<List<MovieEntity>>()
         movie.value = DummyData.generateDummyMovies()
         `when`(data.getMovie()).thenReturn(movie)
@@ -39,20 +39,36 @@ class MovieViewModelTest {
     }
 
     @Test
-    fun getMovieDetail(){
+    fun getMovieDetail() {
         val movie = MutableLiveData<MovieEntity>()
         movie.value = DummyData.generateDummyMovies()[0]
         `when`(data.getMovieDetail(movie.value!!.id)).thenReturn(movie)
         val observer = mock(Observer::class.java)
-        viewModel?.getMovieDetail(movie.value!!.id)?.observeForever(observer as Observer<MovieEntity>)
+        viewModel?.getMovieDetail(movie.value!!.id)
+            ?.observeForever(observer as Observer<MovieEntity>)
         verify(data).getMovie()
 
         assertEquals(movie.value!!.id, viewModel?.getMovieDetail(movie.value!!.id)?.value?.id)
-        assertEquals(movie.value!!.posterPath, viewModel?.getMovieDetail(movie.value!!.id)?.value?.posterPath)
-        assertEquals(movie.value!!.backdropPath, viewModel?.getMovieDetail(movie.value!!.id)?.value?.backdropPath)
+        assertEquals(
+            movie.value!!.posterPath,
+            viewModel?.getMovieDetail(movie.value!!.id)?.value?.posterPath
+        )
+        assertEquals(
+            movie.value!!.backdropPath,
+            viewModel?.getMovieDetail(movie.value!!.id)?.value?.backdropPath
+        )
         assertEquals(movie.value!!.title, viewModel?.getMovieDetail(movie.value!!.id)?.value?.title)
-        assertEquals(movie.value!!.overview, viewModel?.getMovieDetail(movie.value!!.id)?.value?.overview)
-        assertEquals(movie.value!!.releasedDate, viewModel?.getMovieDetail(movie.value!!.id)?.value?.releasedDate)
-        assertEquals(movie.value!!.voteAverage, viewModel?.getMovieDetail(movie.value!!.id)?.value?.voteAverage)
+        assertEquals(
+            movie.value!!.overview,
+            viewModel?.getMovieDetail(movie.value!!.id)?.value?.overview
+        )
+        assertEquals(
+            movie.value!!.releasedDate,
+            viewModel?.getMovieDetail(movie.value!!.id)?.value?.releasedDate
+        )
+        assertEquals(
+            movie.value!!.voteAverage,
+            viewModel?.getMovieDetail(movie.value!!.id)?.value?.voteAverage
+        )
     }
 }

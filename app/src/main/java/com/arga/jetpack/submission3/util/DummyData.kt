@@ -10,17 +10,19 @@ object DummyData {
         val movies = ArrayList<MovieEntity>()
 
         movies.add(
-                MovieEntity(1,
-                    "https://image.tmdb.org/t/p/w1280/nkayOAUBUu4mMvyNf9iHSUiPjF1.jpg",
-                    "https://image.tmdb.org/t/p/w1280/6ELCZlTA5lGUops70hKdB83WJxH.jpg",
-                    "Mortal Kombat",
-                    "Washed-up MMA fighter Cole Young, unaware of his heritage, and hunted by Emperor Shang Tsung's best warrior, Sub-Zero, seeks out and trains with Earth's greatest champions as he prepares to stand against the enemies of Outworld in a high stakes battle for the universe.",
-                    "2021-04-07",
-                    7.6
-                )
+            MovieEntity(
+                1,
+                "https://image.tmdb.org/t/p/w1280/nkayOAUBUu4mMvyNf9iHSUiPjF1.jpg",
+                "https://image.tmdb.org/t/p/w1280/6ELCZlTA5lGUops70hKdB83WJxH.jpg",
+                "Mortal Kombat",
+                "Washed-up MMA fighter Cole Young, unaware of his heritage, and hunted by Emperor Shang Tsung's best warrior, Sub-Zero, seeks out and trains with Earth's greatest champions as he prepares to stand against the enemies of Outworld in a high stakes battle for the universe.",
+                "2021-04-07",
+                7.6
+            )
         )
         movies.add(
-            MovieEntity(2,
+            MovieEntity(
+                2,
                 "https://image.tmdb.org/t/p/w1280/elZ6JCzSEvFOq4gNjNeZsnRFsvj.jpg",
                 "https://image.tmdb.org/t/p/w1280/elZ6JCzSEvFOq4gNjNeZsnRFsvj.jpg",
                 "Welcome to Sudden Death",
@@ -30,7 +32,8 @@ object DummyData {
             )
         )
         movies.add(
-            MovieEntity(3,
+            MovieEntity(
+                3,
                 "https://image.tmdb.org/t/p/w1280/elZ6JCzSEvFOq4gNjNeZsnRFsvj.jpg",
                 "https://image.tmdb.org/t/p/w1280/elZ6JCzSEvFOq4gNjNeZsnRFsvj.jpg",
                 "Welcome to Sudden Death",
@@ -40,7 +43,8 @@ object DummyData {
             )
         )
         movies.add(
-            MovieEntity(4,
+            MovieEntity(
+                4,
                 "https://image.tmdb.org/t/p/w1280/elZ6JCzSEvFOq4gNjNeZsnRFsvj.jpg",
                 "https://image.tmdb.org/t/p/w1280/elZ6JCzSEvFOq4gNjNeZsnRFsvj.jpg",
                 "Welcome to Sudden Death",
@@ -50,7 +54,8 @@ object DummyData {
             )
         )
         movies.add(
-            MovieEntity(5,
+            MovieEntity(
+                5,
                 "https://image.tmdb.org/t/p/w1280/elZ6JCzSEvFOq4gNjNeZsnRFsvj.jpg",
                 "https://image.tmdb.org/t/p/w1280/elZ6JCzSEvFOq4gNjNeZsnRFsvj.jpg",
                 "Welcome to Sudden Death",
@@ -60,7 +65,8 @@ object DummyData {
             )
         )
         movies.add(
-            MovieEntity(6,
+            MovieEntity(
+                6,
                 "https://image.tmdb.org/t/p/w1280/elZ6JCzSEvFOq4gNjNeZsnRFsvj.jpg",
                 "https://image.tmdb.org/t/p/w1280/elZ6JCzSEvFOq4gNjNeZsnRFsvj.jpg",
                 "Welcome to Sudden Death",
@@ -70,7 +76,8 @@ object DummyData {
             )
         )
         movies.add(
-            MovieEntity(7,
+            MovieEntity(
+                7,
                 "https://image.tmdb.org/t/p/w1280/elZ6JCzSEvFOq4gNjNeZsnRFsvj.jpg",
                 "https://image.tmdb.org/t/p/w1280/elZ6JCzSEvFOq4gNjNeZsnRFsvj.jpg",
                 "Welcome to Sudden Death",
@@ -80,7 +87,8 @@ object DummyData {
             )
         )
         movies.add(
-            MovieEntity(8,
+            MovieEntity(
+                8,
                 "https://image.tmdb.org/t/p/w1280/elZ6JCzSEvFOq4gNjNeZsnRFsvj.jpg",
                 "https://image.tmdb.org/t/p/w1280/elZ6JCzSEvFOq4gNjNeZsnRFsvj.jpg",
                 "Welcome to Sudden Death",
@@ -90,7 +98,8 @@ object DummyData {
             )
         )
         movies.add(
-            MovieEntity(9,
+            MovieEntity(
+                9,
                 "https://image.tmdb.org/t/p/w1280/elZ6JCzSEvFOq4gNjNeZsnRFsvj.jpg",
                 "https://image.tmdb.org/t/p/w1280/elZ6JCzSEvFOq4gNjNeZsnRFsvj.jpg",
                 "Welcome to Sudden Death",
@@ -100,7 +109,8 @@ object DummyData {
             )
         )
         movies.add(
-            MovieEntity(10,
+            MovieEntity(
+                10,
                 "https://image.tmdb.org/t/p/w1280/elZ6JCzSEvFOq4gNjNeZsnRFsvj.jpg",
                 "https://image.tmdb.org/t/p/w1280/elZ6JCzSEvFOq4gNjNeZsnRFsvj.jpg",
                 "Welcome to Sudden Death",
@@ -118,7 +128,8 @@ object DummyData {
         val tvShows = ArrayList<TvShowEntity>()
 
         tvShows.add(
-            TvShowEntity(1,
+            TvShowEntity(
+                1,
                 "https://image.tmdb.org/t/p/w1280/o7uk5ChRt3quPIv8PcvPfzyXdMw.jpg",
                 "https://image.tmdb.org/t/p/w1280/dYvIUzdh6TUv4IFRq8UBkX7bNNu.jpg",
                 "Who Killed Sara?",
@@ -128,7 +139,8 @@ object DummyData {
             )
         )
         tvShows.add(
-            TvShowEntity(2,
+            TvShowEntity(
+                2,
                 "https://image.tmdb.org/t/p/w1280/o7uk5ChRt3quPIv8PcvPfzyXdMw.jpg",
                 "https://image.tmdb.org/t/p/w1280/dYvIUzdh6TUv4IFRq8UBkX7bNNu.jpg",
                 "Who Killed Sara?",
@@ -138,7 +150,8 @@ object DummyData {
             )
         )
         tvShows.add(
-            TvShowEntity(3,
+            TvShowEntity(
+                3,
                 "https://image.tmdb.org/t/p/w1280/o7uk5ChRt3quPIv8PcvPfzyXdMw.jpg",
                 "https://image.tmdb.org/t/p/w1280/dYvIUzdh6TUv4IFRq8UBkX7bNNu.jpg",
                 "Who Killed Sara?",
@@ -148,7 +161,8 @@ object DummyData {
             )
         )
         tvShows.add(
-            TvShowEntity(4,
+            TvShowEntity(
+                4,
                 "https://image.tmdb.org/t/p/w1280/o7uk5ChRt3quPIv8PcvPfzyXdMw.jpg",
                 "https://image.tmdb.org/t/p/w1280/dYvIUzdh6TUv4IFRq8UBkX7bNNu.jpg",
                 "Who Killed Sara?",
@@ -158,7 +172,8 @@ object DummyData {
             )
         )
         tvShows.add(
-            TvShowEntity(5,
+            TvShowEntity(
+                5,
                 "https://image.tmdb.org/t/p/w1280/o7uk5ChRt3quPIv8PcvPfzyXdMw.jpg",
                 "https://image.tmdb.org/t/p/w1280/dYvIUzdh6TUv4IFRq8UBkX7bNNu.jpg",
                 "Who Killed Sara?",
@@ -168,7 +183,8 @@ object DummyData {
             )
         )
         tvShows.add(
-            TvShowEntity(6,
+            TvShowEntity(
+                6,
                 "https://image.tmdb.org/t/p/w1280/o7uk5ChRt3quPIv8PcvPfzyXdMw.jpg",
                 "https://image.tmdb.org/t/p/w1280/dYvIUzdh6TUv4IFRq8UBkX7bNNu.jpg",
                 "Who Killed Sara?",
@@ -178,7 +194,8 @@ object DummyData {
             )
         )
         tvShows.add(
-            TvShowEntity(7,
+            TvShowEntity(
+                7,
                 "https://image.tmdb.org/t/p/w1280/o7uk5ChRt3quPIv8PcvPfzyXdMw.jpg",
                 "https://image.tmdb.org/t/p/w1280/dYvIUzdh6TUv4IFRq8UBkX7bNNu.jpg",
                 "Who Killed Sara?",
@@ -188,7 +205,8 @@ object DummyData {
             )
         )
         tvShows.add(
-            TvShowEntity(8,
+            TvShowEntity(
+                8,
                 "https://image.tmdb.org/t/p/w1280/o7uk5ChRt3quPIv8PcvPfzyXdMw.jpg",
                 "https://image.tmdb.org/t/p/w1280/dYvIUzdh6TUv4IFRq8UBkX7bNNu.jpg",
                 "Who Killed Sara?",
@@ -198,7 +216,8 @@ object DummyData {
             )
         )
         tvShows.add(
-            TvShowEntity(9,
+            TvShowEntity(
+                9,
                 "https://image.tmdb.org/t/p/w1280/o7uk5ChRt3quPIv8PcvPfzyXdMw.jpg",
                 "https://image.tmdb.org/t/p/w1280/dYvIUzdh6TUv4IFRq8UBkX7bNNu.jpg",
                 "Who Killed Sara?",
@@ -208,7 +227,8 @@ object DummyData {
             )
         )
         tvShows.add(
-            TvShowEntity(10,
+            TvShowEntity(
+                10,
                 "https://image.tmdb.org/t/p/w1280/o7uk5ChRt3quPIv8PcvPfzyXdMw.jpg",
                 "https://image.tmdb.org/t/p/w1280/dYvIUzdh6TUv4IFRq8UBkX7bNNu.jpg",
                 "Who Killed Sara?",

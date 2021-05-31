@@ -13,12 +13,12 @@ import com.arga.jetpack.submission3.presentation.activity.MovieDetailActivity
 import com.arga.jetpack.submission3.util.Utilization.Companion.glideOption
 import com.bumptech.glide.Glide
 
-class MovieAdapter(context: Context?): RecyclerView.Adapter<MovieAdapter.MovieViewHolder>(){
+class MovieAdapter(context: Context?) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
     private val activity = context as Activity
-    private val list =  ArrayList<MovieEntity>()
+    private val list = ArrayList<MovieEntity>()
 
-    fun setData(movie: ArrayList<MovieEntity>){
+    fun setData(movie: ArrayList<MovieEntity>) {
         list.clear()
         list.addAll(movie)
         notifyDataSetChanged()
@@ -38,10 +38,10 @@ class MovieAdapter(context: Context?): RecyclerView.Adapter<MovieAdapter.MovieVi
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) =
         holder.bind(list[position])
 
-    inner class MovieViewHolder(private val binding: MoviesItemBinding)
-        : RecyclerView.ViewHolder(binding.root){
-        fun bind(movie: MovieEntity){
-            with(binding){
+    inner class MovieViewHolder(private val binding: MoviesItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(movie: MovieEntity) {
+            with(binding) {
                 tvTitleMovie.text = movie.title
                 tvDescriptionMovie.text = movie.overview
                 tvRating.text = movie.voteAverage.toString()

@@ -7,11 +7,11 @@ import java.util.concurrent.TimeUnit
 
 object LiveDataTest {
     @Suppress("UNCHECKED_CAST")
-    fun <T> getValue(liveData: LiveData<T>): T{
+    fun <T> getValue(liveData: LiveData<T>): T {
         val data = arrayOfNulls<Any>(1)
         val countDownLatch = CountDownLatch(1)
 
-        val observer = object: Observer<T> {
+        val observer = object : Observer<T> {
             override fun onChanged(t: T) {
                 data[0] = t
                 countDownLatch.countDown()
@@ -19,9 +19,9 @@ object LiveDataTest {
             }
         }
         liveData.observeForever(observer)
-        try{
+        try {
             countDownLatch.await(1500, TimeUnit.MILLISECONDS)
-        }catch (e: Exception){
+        } catch (e: Exception) {
             e.localizedMessage
         }
 

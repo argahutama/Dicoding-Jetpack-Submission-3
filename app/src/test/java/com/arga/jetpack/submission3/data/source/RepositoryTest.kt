@@ -81,7 +81,8 @@ class RepositoryTest {
             com.nhaarman.mockitokotlin2.any(),
             com.nhaarman.mockitokotlin2.any()
         )
-        val result = tvShowId.let { repository.getTvShowDetail(it) }.let { LiveDataTest.getValue(it) }
+        val result =
+            tvShowId.let { repository.getTvShowDetail(it) }.let { LiveDataTest.getValue(it) }
         verify(
             remote,
             times(1)

@@ -46,7 +46,8 @@ class TvShowDetailActivity : AppCompatActivity() {
             .apply(glideOption)
             .into(binding.ivSmallPoster)
         binding.tvTitle.text = tvShowDetail.name
-        binding.tvFirstOnAir.text = resources.getString(R.string.first_on_air, tvShowDetail.firstAirDate)
+        binding.tvFirstOnAir.text =
+            resources.getString(R.string.first_on_air, tvShowDetail.firstAirDate)
         binding.tvRating.text = tvShowDetail.voteAverage.toString()
         binding.tvOverview.text = tvShowDetail.overview
     }

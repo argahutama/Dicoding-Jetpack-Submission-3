@@ -10,7 +10,7 @@ import com.arga.jetpack.submission3.presentation.fragment.MovieFragment
 import com.arga.jetpack.submission3.presentation.fragment.TvShowFragment
 
 class SectionPagerAdapter(private val mContext: Context, fm: FragmentManager) :
-        FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+    FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     companion object {
         @StringRes
@@ -26,7 +26,8 @@ class SectionPagerAdapter(private val mContext: Context, fm: FragmentManager) :
         return fragment as Fragment
     }
 
-    override fun getPageTitle(position: Int): CharSequence = mContext.resources.getString(TAB_TITLES[position])
+    override fun getPageTitle(position: Int): CharSequence =
+        mContext.resources.getString(TAB_TITLES[position])
 
     override fun getCount(): Int = TAB_TITLES.size
 }

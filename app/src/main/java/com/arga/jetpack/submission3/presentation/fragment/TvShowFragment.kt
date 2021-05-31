@@ -17,7 +17,11 @@ class TvShowFragment : Fragment() {
 
     private lateinit var binding: FragmentTvShowBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentTvShowBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
@@ -34,7 +38,7 @@ class TvShowFragment : Fragment() {
             tvShowAdapter.setData(data as ArrayList<TvShowEntity>)
         })
 
-        with(binding.rvTvshow){
+        with(binding.rvTvshow) {
             layoutManager = LinearLayoutManager(activity)
             setHasFixedSize(true)
             adapter = tvShowAdapter

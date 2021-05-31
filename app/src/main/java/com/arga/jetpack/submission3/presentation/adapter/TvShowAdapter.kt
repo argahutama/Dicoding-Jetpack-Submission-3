@@ -13,20 +13,20 @@ import com.arga.jetpack.submission3.presentation.activity.TvShowDetailActivity
 import com.arga.jetpack.submission3.util.Utilization.Companion.glideOption
 import com.bumptech.glide.Glide
 
-class TvShowAdapter(context: Context?): RecyclerView.Adapter<TvShowAdapter.TvShowViewHolder>(){
+class TvShowAdapter(context: Context?) : RecyclerView.Adapter<TvShowAdapter.TvShowViewHolder>() {
 
     private val activity = context as Activity
-    private val list =  ArrayList<TvShowEntity>()
+    private val list = ArrayList<TvShowEntity>()
 
-    fun setData(movie: ArrayList<TvShowEntity>){
+    fun setData(movie: ArrayList<TvShowEntity>) {
         list.clear()
         list.addAll(movie)
         notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(
-            parent: ViewGroup,
-            viewType: Int
+        parent: ViewGroup,
+        viewType: Int
     ): TvShowViewHolder {
         val binding = TvshowItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return TvShowViewHolder(binding)
@@ -38,9 +38,10 @@ class TvShowAdapter(context: Context?): RecyclerView.Adapter<TvShowAdapter.TvSho
     override fun onBindViewHolder(holder: TvShowViewHolder, position: Int) =
         holder.bind(list[position])
 
-    inner class TvShowViewHolder(private val binding: TvshowItemBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(tvShow: TvShowEntity){
-            with(binding){
+    inner class TvShowViewHolder(private val binding: TvshowItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(tvShow: TvShowEntity) {
+            with(binding) {
                 tvTitleTvShow.text = tvShow.name
                 tvDescriptionTvShow.text = tvShow.overview
                 tvRating.text = tvShow.voteAverage.toString()

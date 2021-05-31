@@ -2,7 +2,7 @@ package com.arga.jetpack.submission3.data.source.local.entity
 
 import com.google.gson.annotations.SerializedName
 
-data class TvShowEntity (
+data class TvShowEntity(
     @SerializedName("id")
     val id: Int,
     @SerializedName("poster_path")

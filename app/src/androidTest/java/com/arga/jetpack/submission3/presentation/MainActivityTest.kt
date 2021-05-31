@@ -31,6 +31,7 @@ class MainActivityTest {
     fun setUp() {
         IdlingRegistry.getInstance().register(EspressoIdlingResource.espressoIdlingResource())
     }
+
     @After
     fun tearDown() {
         IdlingRegistry.getInstance().unregister(EspressoIdlingResource.espressoIdlingResource())
@@ -40,19 +41,19 @@ class MainActivityTest {
     fun loadMovies() {
         onView(withId(R.id.rv_movies)).check(matches(isDisplayed()))
         onView(withId(R.id.rv_movies)).perform(
-                RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(
-                        dummyMovie.size
-                )
+            RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(
+                dummyMovie.size
+            )
         )
     }
 
     @Test
     fun loadDetailMovie() {
         onView(withId(R.id.rv_movies)).perform(
-                RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
-                        0,
-                        click()
-                )
+            RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                0,
+                click()
+            )
         )
         onView(withId(R.id.iv_big_poster)).check(matches(isDisplayed()))
         onView(withId(R.id.iv_small_poster)).check(matches(isDisplayed()))
@@ -67,9 +68,9 @@ class MainActivityTest {
         onView(withText("TV SHOW")).perform(click())
         onView(withId(R.id.rv_tvshow)).check(matches(isDisplayed()))
         onView(withId(R.id.rv_tvshow)).perform(
-                RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(
-                        dummyTvShow.size
-                )
+            RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(
+                dummyTvShow.size
+            )
         )
     }
 
@@ -77,10 +78,10 @@ class MainActivityTest {
     fun loadDetailTvShow() {
         onView(withText("TV SHOW")).perform(click())
         onView(withId(R.id.rv_tvshow)).perform(
-                RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
-                        0,
-                        click()
-                )
+            RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                0,
+                click()
+            )
         )
         onView(withId(R.id.iv_big_poster)).check(matches(isDisplayed()))
         onView(withId(R.id.iv_small_poster)).check(matches(isDisplayed()))
@@ -98,7 +99,7 @@ class MainActivityTest {
     @Test
     fun checkTabLayoutDisplayed() {
         onView(withId(R.id.tabs))
-                .perform(click())
-                .check(matches(isDisplayed()))
+            .perform(click())
+            .check(matches(isDisplayed()))
     }
 }

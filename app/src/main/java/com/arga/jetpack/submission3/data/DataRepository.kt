@@ -11,15 +11,15 @@ import com.arga.jetpack.submission3.data.source.remote.interactor.GetMovieDetail
 import com.arga.jetpack.submission3.data.source.remote.interactor.GetTvShowCallback
 import com.arga.jetpack.submission3.data.source.remote.interactor.GetTvShowDetailCallback
 
-class DataRepository(private val remoteRepository: RemoteRepository): DataSource {
+class DataRepository(private val remoteRepository: RemoteRepository) : DataSource {
 
-    companion object{
+    companion object {
         @Volatile
         private var INSTANCE: DataRepository? = null
 
-        fun getInstance(remoteRepository: RemoteRepository): DataRepository?{
-            if (INSTANCE == null){
-                synchronized(DataRepository::class.java){
+        fun getInstance(remoteRepository: RemoteRepository): DataRepository? {
+            if (INSTANCE == null) {
+                synchronized(DataRepository::class.java) {
                     if (INSTANCE == null)
                         INSTANCE = DataRepository(remoteRepository)
                 }
@@ -30,7 +30,7 @@ class DataRepository(private val remoteRepository: RemoteRepository): DataSource
 
     override fun getMovie(): LiveData<List<MovieEntity>> {
         val movieList = MutableLiveData<List<MovieEntity>>()
-        remoteRepository.getMovie(object: GetMovieCallback {
+        remoteRepository.getMovie(object : GetMovieCallback {
             override fun onMovieListLoaded(movieResponse: List<MovieEntity>) {
                 movieList.postValue(movieResponse)
                 Log.d("Movie Response", movieResponse.toString())
@@ -42,7 +42,7 @@ class DataRepository(private val remoteRepository: RemoteRepository): DataSource
 
     override fun getMovieDetail(movieId: Int): LiveData<MovieEntity> {
         val movieDetail = MutableLiveData<MovieEntity>()
-        remoteRepository.getMovieDetail(movieId, object: GetMovieDetailCallback {
+        remoteRepository.getMovieDetail(movieId, object : GetMovieDetailCallback {
             override fun onMovieDetailLoaded(movieDetailResponse: MovieEntity) {
                 movieDetail.postValue(movieDetailResponse)
             }
@@ -53,7 +53,7 @@ class DataRepository(private val remoteRepository: RemoteRepository): DataSource
 
     override fun getTvShow(): LiveData<List<TvShowEntity>> {
         val tvShowList = MutableLiveData<List<TvShowEntity>>()
-        remoteRepository.getTvShow(object: GetTvShowCallback {
+        remoteRepository.getTvShow(object : GetTvShowCallback {
             override fun onTvShowListLoaded(tvShowResponse: List<TvShowEntity>) {
                 tvShowList.postValue(tvShowResponse)
                 Log.d("Movie Response", tvShowResponse.toString())
@@ -65,7 +65,7 @@ class DataRepository(private val remoteRepository: RemoteRepository): DataSource
 
     override fun getTvShowDetail(tvShowId: Int): LiveData<TvShowEntity> {
         val tvShowDetail = MutableLiveData<TvShowEntity>()
-        remoteRepository.getTvShowDetail(tvShowId, object: GetTvShowDetailCallback {
+        remoteRepository.getTvShowDetail(tvShowId, object : GetTvShowDetailCallback {
             override fun onTvShowDetailLoaded(tvShowDetailResponse: TvShowEntity) {
                 tvShowDetail.postValue(tvShowDetailResponse)
             }

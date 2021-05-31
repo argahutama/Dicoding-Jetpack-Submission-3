@@ -17,7 +17,11 @@ class MovieFragment : Fragment() {
 
     private lateinit var binding: FragmentMovieBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentMovieBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
@@ -35,7 +39,7 @@ class MovieFragment : Fragment() {
             moviesAdapter.setData(data as ArrayList<MovieEntity>)
         })
 
-        with(binding.rvMovies){
+        with(binding.rvMovies) {
             layoutManager = LinearLayoutManager(activity)
             setHasFixedSize(true)
             adapter = moviesAdapter

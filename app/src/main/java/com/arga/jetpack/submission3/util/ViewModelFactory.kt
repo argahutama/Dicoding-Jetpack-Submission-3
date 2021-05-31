@@ -7,8 +7,9 @@ import com.arga.jetpack.submission3.di.Injection
 import com.arga.jetpack.submission3.presentation.viewmodel.MovieViewModel
 import com.arga.jetpack.submission3.presentation.viewmodel.TvShowViewModel
 
-class ViewModelFactory(private val dataRepository: DataRepository): ViewModelProvider.NewInstanceFactory() {
-    companion object{
+class ViewModelFactory(private val dataRepository: DataRepository) :
+    ViewModelProvider.NewInstanceFactory() {
+    companion object {
         @Volatile
         private var instance: ViewModelFactory? = null
 
@@ -20,9 +21,11 @@ class ViewModelFactory(private val dataRepository: DataRepository): ViewModelPro
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return when{
+        return when {
             modelClass.isAssignableFrom(MovieViewModel::class.java) -> MovieViewModel(dataRepository) as T
-            modelClass.isAssignableFrom(TvShowViewModel::class.java) -> TvShowViewModel(dataRepository) as T
+            modelClass.isAssignableFrom(TvShowViewModel::class.java) -> TvShowViewModel(
+                dataRepository
+            ) as T
             else -> throw IllegalArgumentException("Unknown ViewModel: " + modelClass.name)
         }
     }

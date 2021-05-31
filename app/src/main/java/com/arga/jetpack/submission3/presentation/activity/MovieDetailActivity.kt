@@ -46,7 +46,8 @@ class MovieDetailActivity : AppCompatActivity() {
             .apply(glideOption)
             .into(binding.ivSmallPoster)
         binding.tvTitle.text = movieDetail.title
-        binding.tvRelease.text = resources.getString(R.string.release_date, movieDetail.releasedDate)
+        binding.tvRelease.text =
+            resources.getString(R.string.release_date, movieDetail.releasedDate)
         binding.tvRating.text = movieDetail.voteAverage.toString()
         binding.tvOverview.text = movieDetail.overview
     }

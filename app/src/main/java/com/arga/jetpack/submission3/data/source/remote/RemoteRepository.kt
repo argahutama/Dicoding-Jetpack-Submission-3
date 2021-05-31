@@ -20,7 +20,7 @@ open class RemoteRepository {
     private val apiKey = API_KEY
     private val apiClient = ApiClient
 
-    companion object{
+    companion object {
         private var INSTANCE: RemoteRepository? = null
         private val TAG = RemoteRepository::class.java.toString()
 
@@ -33,7 +33,7 @@ open class RemoteRepository {
 
     fun getMovie(getMovieCallback: GetMovieCallback) {
         EspressoIdlingResource.increment()
-        apiClient.getApiService().getMovies(apiKey).enqueue(object: Callback<MovieResponse> {
+        apiClient.getApiService().getMovies(apiKey).enqueue(object : Callback<MovieResponse> {
             override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
                 response.body()?.results?.let { getMovieCallback.onMovieListLoaded(it) }
                 EspressoIdlingResource.decrement()
@@ -45,24 +45,28 @@ open class RemoteRepository {
         })
     }
 
-    fun getMovieDetail(movieId: Int, getMovieDetailCallback: GetMovieDetailCallback){
+    fun getMovieDetail(movieId: Int, getMovieDetailCallback: GetMovieDetailCallback) {
         EspressoIdlingResource.increment()
-        apiClient.getApiService().getMovieDetails(movieId, apiKey).enqueue(object: Callback<MovieEntity> {
-            override fun onResponse(call: Call<MovieEntity>, response: Response<MovieEntity>) {
-                getMovieDetailCallback.onMovieDetailLoaded(response.body()!!)
-                EspressoIdlingResource.decrement()
-            }
+        apiClient.getApiService().getMovieDetails(movieId, apiKey)
+            .enqueue(object : Callback<MovieEntity> {
+                override fun onResponse(call: Call<MovieEntity>, response: Response<MovieEntity>) {
+                    getMovieDetailCallback.onMovieDetailLoaded(response.body()!!)
+                    EspressoIdlingResource.decrement()
+                }
 
-            override fun onFailure(call: Call<MovieEntity>, t: Throwable) {
-                Log.d(TAG, t.printStackTrace().toString())
-            }
-        })
+                override fun onFailure(call: Call<MovieEntity>, t: Throwable) {
+                    Log.d(TAG, t.printStackTrace().toString())
+                }
+            })
     }
 
-    fun getTvShow(getTvShowCallback: GetTvShowCallback){
+    fun getTvShow(getTvShowCallback: GetTvShowCallback) {
         EspressoIdlingResource.increment()
-        apiClient.getApiService().getTvShows(apiKey).enqueue(object: Callback<TvShowResponse> {
-            override fun onResponse(call: Call<TvShowResponse>, response: Response<TvShowResponse>) {
+        apiClient.getApiService().getTvShows(apiKey).enqueue(object : Callback<TvShowResponse> {
+            override fun onResponse(
+                call: Call<TvShowResponse>,
+                response: Response<TvShowResponse>
+            ) {
                 response.body()?.results?.let { getTvShowCallback.onTvShowListLoaded(it) }
                 EspressoIdlingResource.decrement()
             }
@@ -73,17 +77,21 @@ open class RemoteRepository {
         })
     }
 
-    fun getTvShowDetail(tvShowId: Int, getTvShowDetailCallback: GetTvShowDetailCallback){
+    fun getTvShowDetail(tvShowId: Int, getTvShowDetailCallback: GetTvShowDetailCallback) {
         EspressoIdlingResource.increment()
-        apiClient.getApiService().getTvShowDetails(tvShowId, apiKey).enqueue(object: Callback<TvShowEntity> {
-            override fun onResponse(call: Call<TvShowEntity>, response: Response<TvShowEntity>) {
-                getTvShowDetailCallback.onTvShowDetailLoaded(response.body()!!)
-                EspressoIdlingResource.decrement()
-            }
+        apiClient.getApiService().getTvShowDetails(tvShowId, apiKey)
+            .enqueue(object : Callback<TvShowEntity> {
+                override fun onResponse(
+                    call: Call<TvShowEntity>,
+                    response: Response<TvShowEntity>
+                ) {
+                    getTvShowDetailCallback.onTvShowDetailLoaded(response.body()!!)
+                    EspressoIdlingResource.decrement()
+                }
 
-            override fun onFailure(call: Call<TvShowEntity>, t: Throwable) {
-                Log.d(TAG, t.printStackTrace().toString())
-            }
-        })
+                override fun onFailure(call: Call<TvShowEntity>, t: Throwable) {
+                    Log.d(TAG, t.printStackTrace().toString())
+                }
+            })
     }
 }
