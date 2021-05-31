@@ -1,8 +1,12 @@
 package com.arga.jetpack.submission3.data.source.local.entity
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+@Entity
 data class TvShowEntity(
+    @PrimaryKey
     @SerializedName("id")
     val id: Int,
     @SerializedName("poster_path")
@@ -16,5 +20,6 @@ data class TvShowEntity(
     @SerializedName("overview")
     val overview: String?,
     @SerializedName("vote_average")
-    val voteAverage: Double?
+    val voteAverage: Double?,
+    var isFavorite: Boolean = false
 )
