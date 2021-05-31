@@ -28,7 +28,9 @@ buildscript {
         shapeofviewVersion = '1.4.7'
 
         roomVersion = '2.2.3'
-        roomRuntimeVersion = '2.2.5'
+        roomRuntimeVersion = '2.3.0'
+
+        pagingVersion = '2.1.1'
     }
 
     repositories {
