@@ -1,6 +1,5 @@
 package com.arga.jetpack.submission3.presentation.adapter
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -17,12 +16,9 @@ import com.arga.jetpack.submission3.util.Utilization.Companion.glideOption
 import com.bumptech.glide.Glide
 
 class FavoriteTvShowAdapter(context: Context?) :
-    PagedListAdapter<TvShowEntity, FavoriteTvShowAdapter.TvShowViewHolder>(
-        DIFF_CALLBACK
-    ) {
+    PagedListAdapter<TvShowEntity, FavoriteTvShowAdapter.TvShowViewHolder>(DIFF_CALLBACK) {
 
     private val activity = context as Activity
-    private val list = ArrayList<TvShowEntity>()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -32,11 +28,10 @@ class FavoriteTvShowAdapter(context: Context?) :
         return TvShowViewHolder(binding)
     }
 
-
-    override fun getItemCount(): Int = list.size
-
-    override fun onBindViewHolder(holder: TvShowViewHolder, position: Int) =
-        holder.bind(list[position])
+    override fun onBindViewHolder(holder: TvShowViewHolder, position: Int) {
+        val tvShow = getItem(position)
+        if (tvShow != null) holder.bind(tvShow)
+    }
 
     companion object {
         private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<TvShowEntity>() {

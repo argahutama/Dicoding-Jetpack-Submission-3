@@ -19,7 +19,6 @@ class TvShowAdapter(context: Context?) :
     PagedListAdapter<TvShowEntity, TvShowAdapter.TvShowViewHolder>(DIFF_CALLBACK) {
 
     private val activity = context as Activity
-    private val list = ArrayList<TvShowEntity>()
 
     companion object {
         private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<TvShowEntity>() {
@@ -39,11 +38,10 @@ class TvShowAdapter(context: Context?) :
         return TvShowViewHolder(binding)
     }
 
-
-    override fun getItemCount(): Int = list.size
-
-    override fun onBindViewHolder(holder: TvShowViewHolder, position: Int) =
-        holder.bind(list[position])
+    override fun onBindViewHolder(holder: TvShowViewHolder, position: Int) {
+        val tvShow = getItem(position)
+        if (tvShow != null) holder.bind(tvShow)
+    }
 
     inner class TvShowViewHolder(private val binding: TvshowItemBinding) :
         RecyclerView.ViewHolder(binding.root) {

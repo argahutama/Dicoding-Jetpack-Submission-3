@@ -19,7 +19,6 @@ class MovieAdapter(context: Context?) :
     PagedListAdapter<MovieEntity, MovieAdapter.MovieViewHolder>(DIFF_CALLBACK) {
 
     private val activity = context as Activity
-    private val list = ArrayList<MovieEntity>()
 
     companion object {
         private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<MovieEntity>() {
@@ -39,11 +38,10 @@ class MovieAdapter(context: Context?) :
         return MovieViewHolder(binding)
     }
 
-
-    override fun getItemCount(): Int = list.size
-
-    override fun onBindViewHolder(holder: MovieViewHolder, position: Int) =
-        holder.bind(list[position])
+    override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
+        val movie = getItem(position)
+        if (movie != null) holder.bind(movie)
+    }
 
     inner class MovieViewHolder(private val binding: MoviesItemBinding) :
         RecyclerView.ViewHolder(binding.root) {

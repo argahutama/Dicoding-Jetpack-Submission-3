@@ -1,6 +1,5 @@
 package com.arga.jetpack.submission3.presentation.adapter
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -20,7 +19,6 @@ class FavoriteMovieAdapter(context: Context?) :
     PagedListAdapter<MovieEntity, FavoriteMovieAdapter.MovieViewHolder>(DIFF_CALLBACK) {
 
     private val activity = context as Activity
-    private val list = ArrayList<MovieEntity>()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -30,11 +28,10 @@ class FavoriteMovieAdapter(context: Context?) :
         return MovieViewHolder(binding)
     }
 
-
-    override fun getItemCount(): Int = list.size
-
-    override fun onBindViewHolder(holder: MovieViewHolder, position: Int) =
-        holder.bind(list[position])
+    override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
+        val movie = getItem(position)
+        if (movie != null) holder.bind(movie)
+    }
 
     companion object {
         private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<MovieEntity>() {
