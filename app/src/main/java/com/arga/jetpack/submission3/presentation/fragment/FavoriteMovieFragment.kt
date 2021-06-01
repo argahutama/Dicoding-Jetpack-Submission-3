@@ -38,9 +38,11 @@ class FavoriteMovieFragment : Fragment() {
             favoriteMovieAdapter.submitList(movies)
         })
 
-        binding.rvMovies.layoutManager = LinearLayoutManager(context)
-        binding.rvMovies.setHasFixedSize(true)
-        binding.rvMovies.adapter = favoriteMovieAdapter
 
+        with(binding.rvMovies) {
+            layoutManager = LinearLayoutManager(context)
+            setHasFixedSize(true)
+            adapter = favoriteMovieAdapter
+        }
     }
 }

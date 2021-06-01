@@ -37,8 +37,10 @@ class FavoriteTvShowFragment : Fragment() {
             favoriteTvShowAdapter.submitList(tvShows)
         })
 
-        binding.rvTvshow.layoutManager = LinearLayoutManager(context)
-        binding.rvTvshow.setHasFixedSize(true)
-        binding.rvTvshow.adapter = favoriteTvShowAdapter
+        with(binding.rvTvshow) {
+            layoutManager = LinearLayoutManager(context)
+            setHasFixedSize(true)
+            adapter = favoriteTvShowAdapter
+        }
     }
 }
