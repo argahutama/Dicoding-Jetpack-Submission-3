@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.ViewModelProvider
+import com.arga.jetpack.submission3.BuildConfig.IMAGE_URL
 import com.arga.jetpack.submission3.R
 import com.arga.jetpack.submission3.data.source.local.entity.MovieEntity
 import com.arga.jetpack.submission3.databinding.ActivityMovieDetailBinding
@@ -97,11 +98,11 @@ class MovieDetailActivity : AppCompatActivity() {
         binding.llContent.visibility = View.VISIBLE
 
         Glide.with(this)
-            .load("https://image.tmdb.org/t/p/w500${movieDetail.backdropPath}")
+            .load(IMAGE_URL + movieDetail.backdropPath)
             .apply(glideOption)
             .into(binding.ivBigPoster)
         Glide.with(this)
-            .load("https://image.tmdb.org/t/p/w500${movieDetail.posterPath}")
+            .load(IMAGE_URL + movieDetail.posterPath)
             .apply(glideOption)
             .into(binding.ivSmallPoster)
         binding.tvTitle.text = movieDetail.title

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.arga.jetpack.submission3.BuildConfig.IMAGE_URL
 import com.arga.jetpack.submission3.R
 import com.arga.jetpack.submission3.data.source.local.entity.TvShowEntity
 import com.arga.jetpack.submission3.databinding.TvshowItemBinding
@@ -52,7 +53,7 @@ class FavoriteTvShowAdapter(context: Context?) :
                 tvDescriptionTvShow.text = tvShow.overview
                 tvRating.text = tvShow.voteAverage.toString()
                 Glide.with(itemView)
-                    .load("https://image.tmdb.org/t/p/w500${tvShow.posterPath}")
+                    .load(IMAGE_URL + tvShow.posterPath)
                     .apply(glideOption)
                     .into(ivTvShow)
                 itemView.setOnClickListener {

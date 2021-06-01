@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.arga.jetpack.submission3.BuildConfig.IMAGE_URL
 import com.arga.jetpack.submission3.R
 import com.arga.jetpack.submission3.data.source.local.entity.MovieEntity
 import com.arga.jetpack.submission3.databinding.MoviesItemBinding
@@ -52,7 +53,7 @@ class FavoriteMovieAdapter(context: Context?) :
                 tvDescriptionMovie.text = movie.overview
                 tvRating.text = movie.voteAverage.toString()
                 Glide.with(itemView)
-                    .load("https://image.tmdb.org/t/p/w500${movie.posterPath}")
+                    .load(IMAGE_URL + movie.posterPath)
                     .apply(glideOption)
                     .into(ivMovie)
                 itemView.setOnClickListener {

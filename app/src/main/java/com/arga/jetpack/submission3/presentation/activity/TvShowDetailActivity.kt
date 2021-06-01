@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.ViewModelProvider
+import com.arga.jetpack.submission3.BuildConfig.IMAGE_URL
 import com.arga.jetpack.submission3.R
 import com.arga.jetpack.submission3.data.source.local.entity.TvShowEntity
 import com.arga.jetpack.submission3.databinding.ActivityTvShowDetailBinding
@@ -99,11 +100,11 @@ class TvShowDetailActivity : AppCompatActivity() {
         binding.llContent.visibility = View.VISIBLE
 
         Glide.with(this)
-            .load("https://image.tmdb.org/t/p/w500${tvShowDetail.backdropPath}")
+            .load(IMAGE_URL + tvShowDetail.backdropPath)
             .apply(glideOption)
             .into(binding.ivBigPoster)
         Glide.with(this)
-            .load("https://image.tmdb.org/t/p/w500${tvShowDetail.posterPath}")
+            .load(IMAGE_URL + tvShowDetail.posterPath)
             .apply(glideOption)
             .into(binding.ivSmallPoster)
         binding.tvTitle.text = tvShowDetail.name

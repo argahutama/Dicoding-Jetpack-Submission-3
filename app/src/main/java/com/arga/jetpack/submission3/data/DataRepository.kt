@@ -48,13 +48,11 @@ class DataRepository(
                 return LivePagedListBuilder(localDataSource.getMovies(), config).build()
             }
 
-            override fun shouldFetch(data: PagedList<MovieEntity>?): Boolean {
-                return data == null || data.isEmpty()
-            }
+            override fun shouldFetch(data: PagedList<MovieEntity>?): Boolean =
+                data == null || data.isEmpty()
 
-            override fun createCall(): LiveData<ApiResponse<List<MovieEntity>>> {
-                return remoteDataSource.getMovies()
-            }
+            override fun createCall(): LiveData<ApiResponse<List<MovieEntity>>> =
+                remoteDataSource.getMovies()
 
             override fun saveCallResult(data: List<MovieEntity>) {
                 val movieList = ArrayList<MovieEntity>()

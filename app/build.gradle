@@ -14,7 +14,9 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-        buildConfigField ("String", "API_KEY", '"7521ad57a6b5f8bbe36f9551abbb5955"')
+        buildConfigField("String", "API_KEY", '"7521ad57a6b5f8bbe36f9551abbb5955"')
+        buildConfigField("String", "BASE_URL", '"https://api.themoviedb.org/3/"')
+        buildConfigField("String", "IMAGE_URL", '"https://image.tmdb.org/t/p/w500"')
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
