@@ -4,19 +4,18 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.ViewModelProvider
 import com.arga.jetpack.submission3.BuildConfig.IMAGE_URL
 import com.arga.jetpack.submission3.R
 import com.arga.jetpack.submission3.data.source.local.entity.MovieEntity
 import com.arga.jetpack.submission3.databinding.ActivityMovieDetailBinding
 import com.arga.jetpack.submission3.presentation.activity.MainActivity.Companion.EXTRA_ID
+import com.arga.jetpack.submission3.presentation.viewmodel.MovieViewModel
+import com.arga.jetpack.submission3.util.Utilization
 import com.arga.jetpack.submission3.util.Utilization.Companion.glideOption
 import com.arga.jetpack.submission3.util.ViewModelFactory
-import com.arga.jetpack.submission3.presentation.viewmodel.MovieViewModel
 import com.arga.jetpack.submission3.vo.Status
 import com.bumptech.glide.Glide
-import www.sanju.motiontoast.MotionToast
 
 class MovieDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,41 +44,21 @@ class MovieDetailActivity : AppCompatActivity() {
                             movie.data?.let { loadMovieDetail(it, binding) }
                             fabFavorite.setOnClickListener {
                                 viewModel.setFavoriteMovie()
-                                if (movie.data?.isFavorite!!) MotionToast.darkColorToast(
+                                if (movie.data?.isFavorite!!) Utilization.successToast(
                                     this@MovieDetailActivity,
-                                    resources.getString(R.string.success),
-                                    resources.getString(R.string.success_remove_to_favorite),
-                                    MotionToast.TOAST_SUCCESS,
-                                    MotionToast.GRAVITY_BOTTOM,
-                                    MotionToast.LONG_DURATION,
-                                    ResourcesCompat.getFont(
-                                        this@MovieDetailActivity,
-                                        R.font.montserrat
-                                    )
-                                ) else MotionToast.darkColorToast(
+                                    resources.getString(R.string.success_remove_to_favorite)
+                                )
+                                else Utilization.successToast(
                                     this@MovieDetailActivity,
-                                    resources.getString(R.string.success),
-                                    resources.getString(R.string.success_add_to_favorite),
-                                    MotionToast.TOAST_SUCCESS,
-                                    MotionToast.GRAVITY_BOTTOM,
-                                    MotionToast.LONG_DURATION,
-                                    ResourcesCompat.getFont(
-                                        this@MovieDetailActivity,
-                                        R.font.montserrat
-                                    )
+                                    resources.getString(R.string.success_add_to_favorite)
                                 )
                             }
                         }
                         Status.ERROR -> {
                             binding.progressBar.visibility = View.GONE
-                            MotionToast.darkColorToast(
+                            Utilization.errorToast(
                                 this@MovieDetailActivity,
-                                resources.getString(R.string.error),
-                                resources.getString(R.string.there_is_an_error),
-                                MotionToast.TOAST_ERROR,
-                                MotionToast.GRAVITY_BOTTOM,
-                                MotionToast.LONG_DURATION,
-                                ResourcesCompat.getFont(this@MovieDetailActivity, R.font.montserrat)
+                                resources.getString(R.string.there_is_an_error)
                             )
                         }
                     }

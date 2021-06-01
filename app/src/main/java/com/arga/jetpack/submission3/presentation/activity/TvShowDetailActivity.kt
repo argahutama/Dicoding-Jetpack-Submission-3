@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.ViewModelProvider
 import com.arga.jetpack.submission3.BuildConfig.IMAGE_URL
 import com.arga.jetpack.submission3.R
@@ -12,11 +11,12 @@ import com.arga.jetpack.submission3.data.source.local.entity.TvShowEntity
 import com.arga.jetpack.submission3.databinding.ActivityTvShowDetailBinding
 import com.arga.jetpack.submission3.presentation.activity.MainActivity.Companion.EXTRA_ID
 import com.arga.jetpack.submission3.presentation.viewmodel.TvShowViewModel
+import com.arga.jetpack.submission3.util.Utilization.Companion.errorToast
 import com.arga.jetpack.submission3.util.Utilization.Companion.glideOption
+import com.arga.jetpack.submission3.util.Utilization.Companion.successToast
 import com.arga.jetpack.submission3.util.ViewModelFactory
 import com.arga.jetpack.submission3.vo.Status
 import com.bumptech.glide.Glide
-import www.sanju.motiontoast.MotionToast
 
 class TvShowDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,44 +44,22 @@ class TvShowDetailActivity : AppCompatActivity() {
                             tvShow.data?.let { loadTvShowDetail(it, binding) }
                             fabFavorite.setOnClickListener {
                                 viewModel.setFavoriteTvShow()
-                                if (tvShow.data?.isFavorite!!) MotionToast.darkColorToast(
-                                    this@TvShowDetailActivity,
-                                    resources.getString(R.string.success),
-                                    resources.getString(R.string.success_remove_to_favorite),
-                                    MotionToast.TOAST_SUCCESS,
-                                    MotionToast.GRAVITY_BOTTOM,
-                                    MotionToast.LONG_DURATION,
-                                    ResourcesCompat.getFont(
+                                if (tvShow.data?.isFavorite!!)
+                                    successToast(
                                         this@TvShowDetailActivity,
-                                        R.font.montserrat
+                                        resources.getString(R.string.success_remove_to_favorite)
                                     )
-                                ) else MotionToast.darkColorToast(
+                                else successToast(
                                     this@TvShowDetailActivity,
-                                    resources.getString(R.string.success),
-                                    resources.getString(R.string.success_add_to_favorite),
-                                    MotionToast.TOAST_SUCCESS,
-                                    MotionToast.GRAVITY_BOTTOM,
-                                    MotionToast.LONG_DURATION,
-                                    ResourcesCompat.getFont(
-                                        this@TvShowDetailActivity,
-                                        R.font.montserrat
-                                    )
+                                    resources.getString(R.string.success_add_to_favorite)
                                 )
                             }
                         }
                         Status.ERROR -> {
                             binding.progressBar.visibility = View.GONE
-                            MotionToast.darkColorToast(
+                            errorToast(
                                 this@TvShowDetailActivity,
-                                resources.getString(R.string.error),
-                                resources.getString(R.string.there_is_an_error),
-                                MotionToast.TOAST_ERROR,
-                                MotionToast.GRAVITY_BOTTOM,
-                                MotionToast.LONG_DURATION,
-                                ResourcesCompat.getFont(
-                                    this@TvShowDetailActivity,
-                                    R.font.montserrat
-                                )
+                                resources.getString(R.string.there_is_an_error)
                             )
                         }
                     }

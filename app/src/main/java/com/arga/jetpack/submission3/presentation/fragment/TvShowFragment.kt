@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,9 +11,9 @@ import com.arga.jetpack.submission3.R
 import com.arga.jetpack.submission3.databinding.FragmentTvShowBinding
 import com.arga.jetpack.submission3.presentation.adapter.TvShowAdapter
 import com.arga.jetpack.submission3.presentation.viewmodel.TvShowViewModel
+import com.arga.jetpack.submission3.util.Utilization.Companion.errorToast
 import com.arga.jetpack.submission3.util.ViewModelFactory
 import com.arga.jetpack.submission3.vo.Status
-import www.sanju.motiontoast.MotionToast
 
 class TvShowFragment : Fragment() {
 
@@ -47,21 +46,16 @@ class TvShowFragment : Fragment() {
                     }
                     Status.ERROR -> {
                         binding.progressBar.visibility = View.GONE
-                        MotionToast.darkColorToast(
+                        errorToast(
                             requireActivity(),
-                            resources.getString(R.string.error),
-                            resources.getString(R.string.there_is_an_error),
-                            MotionToast.TOAST_ERROR,
-                            MotionToast.GRAVITY_BOTTOM,
-                            MotionToast.LONG_DURATION,
-                            ResourcesCompat.getFont(requireActivity(), R.font.montserrat)
+                            resources.getString(R.string.there_is_an_error)
                         )
                     }
                 }
             }
         })
 
-        with(binding.rvTvshow){
+        with(binding.rvTvshow) {
             layoutManager = LinearLayoutManager(context)
             setHasFixedSize(true)
             adapter = tvShowAdapter

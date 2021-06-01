@@ -1,15 +1,14 @@
 package com.arga.jetpack.submission3.presentation.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import androidx.core.content.res.ResourcesCompat
+import androidx.appcompat.app.AppCompatActivity
 import com.arga.jetpack.submission3.R
 import com.arga.jetpack.submission3.databinding.ActivityMainBinding
 import com.arga.jetpack.submission3.presentation.adapter.sectionpager.SectionPagerMainAdapter
-import www.sanju.motiontoast.MotionToast
+import com.arga.jetpack.submission3.util.Utilization.Companion.warningToast
 
 class MainActivity : AppCompatActivity() {
 
@@ -44,15 +43,7 @@ class MainActivity : AppCompatActivity() {
 
         this.doubleBackToExitPressedOnce = true
 
-        MotionToast.darkColorToast(
-            this,
-            resources.getString(R.string.warning),
-            resources.getString(R.string.press_back_once_again_to_exit),
-            MotionToast.TOAST_WARNING,
-            MotionToast.GRAVITY_BOTTOM,
-            MotionToast.LONG_DURATION,
-            ResourcesCompat.getFont(this, R.font.montserrat)
-        )
+        warningToast(this, resources.getString(R.string.press_back_once_again_to_exit))
 
         Handler(Looper.getMainLooper()).postDelayed({
             doubleBackToExitPressedOnce = false
