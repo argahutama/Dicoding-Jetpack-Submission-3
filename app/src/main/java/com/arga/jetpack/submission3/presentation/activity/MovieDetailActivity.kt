@@ -44,6 +44,29 @@ class MovieDetailActivity : AppCompatActivity() {
                             movie.data?.let { loadMovieDetail(it, binding) }
                             fabFavorite.setOnClickListener {
                                 viewModel.setFavoriteMovie()
+                                if (movie.data?.isFavorite!!) MotionToast.darkColorToast(
+                                    this@MovieDetailActivity,
+                                    resources.getString(R.string.success),
+                                    resources.getString(R.string.success_remove_to_favorite),
+                                    MotionToast.TOAST_SUCCESS,
+                                    MotionToast.GRAVITY_BOTTOM,
+                                    MotionToast.LONG_DURATION,
+                                    ResourcesCompat.getFont(
+                                        this@MovieDetailActivity,
+                                        R.font.montserrat
+                                    )
+                                ) else MotionToast.darkColorToast(
+                                    this@MovieDetailActivity,
+                                    resources.getString(R.string.success),
+                                    resources.getString(R.string.success_add_to_favorite),
+                                    MotionToast.TOAST_SUCCESS,
+                                    MotionToast.GRAVITY_BOTTOM,
+                                    MotionToast.LONG_DURATION,
+                                    ResourcesCompat.getFont(
+                                        this@MovieDetailActivity,
+                                        R.font.montserrat
+                                    )
+                                )
                             }
                         }
                         Status.ERROR -> {

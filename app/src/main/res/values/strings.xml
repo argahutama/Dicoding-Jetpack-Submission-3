@@ -5,8 +5,11 @@
     <string name="tab_tv_show">TV SHOW</string>
     <string name="movie_poster">Movie Poster</string>
     <string name="tvshow_poster">TV Show Poster</string>
+    <string name="success">Success</string>
     <string name="error">Error</string>
     <string name="warning">Warning</string>
+    <string name="success_add_to_favorite">Berhasil Menambahkan ke Daftar Favorit</string>
+    <string name="success_remove_to_favorite">Berhasil Menghapus dari Daftar Favorit</string>
     <string name="there_is_an_error">Terjadi kesalahan</string>
     <string name="press_back_once_again_to_exit">Press back once again to exit</string>
     <string name="title">Title</string>

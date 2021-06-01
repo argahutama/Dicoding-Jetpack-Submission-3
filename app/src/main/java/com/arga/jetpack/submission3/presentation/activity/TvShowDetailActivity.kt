@@ -43,6 +43,29 @@ class TvShowDetailActivity : AppCompatActivity() {
                             tvShow.data?.let { loadTvShowDetail(it, binding) }
                             fabFavorite.setOnClickListener {
                                 viewModel.setFavoriteTvShow()
+                                if (tvShow.data?.isFavorite!!) MotionToast.darkColorToast(
+                                    this@TvShowDetailActivity,
+                                    resources.getString(R.string.success),
+                                    resources.getString(R.string.success_remove_to_favorite),
+                                    MotionToast.TOAST_SUCCESS,
+                                    MotionToast.GRAVITY_BOTTOM,
+                                    MotionToast.LONG_DURATION,
+                                    ResourcesCompat.getFont(
+                                        this@TvShowDetailActivity,
+                                        R.font.montserrat
+                                    )
+                                ) else MotionToast.darkColorToast(
+                                    this@TvShowDetailActivity,
+                                    resources.getString(R.string.success),
+                                    resources.getString(R.string.success_add_to_favorite),
+                                    MotionToast.TOAST_SUCCESS,
+                                    MotionToast.GRAVITY_BOTTOM,
+                                    MotionToast.LONG_DURATION,
+                                    ResourcesCompat.getFont(
+                                        this@TvShowDetailActivity,
+                                        R.font.montserrat
+                                    )
+                                )
                             }
                         }
                         Status.ERROR -> {
@@ -54,7 +77,10 @@ class TvShowDetailActivity : AppCompatActivity() {
                                 MotionToast.TOAST_ERROR,
                                 MotionToast.GRAVITY_BOTTOM,
                                 MotionToast.LONG_DURATION,
-                                ResourcesCompat.getFont(this@TvShowDetailActivity, R.font.montserrat)
+                                ResourcesCompat.getFont(
+                                    this@TvShowDetailActivity,
+                                    R.font.montserrat
+                                )
                             )
                         }
                     }
