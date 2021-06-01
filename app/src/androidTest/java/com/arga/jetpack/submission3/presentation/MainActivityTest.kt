@@ -61,6 +61,7 @@ class MainActivityTest {
         onView(withId(R.id.tv_release)).check(matches(isDisplayed()))
         onView(withId(R.id.tv_rating)).check(matches(isDisplayed()))
         onView(withId(R.id.tv_overview)).check(matches(isDisplayed()))
+        onView(withId(R.id.fabFavorite)).check(matches(isDisplayed()))
     }
 
     @Test
@@ -89,6 +90,7 @@ class MainActivityTest {
         onView(withId(R.id.tv_first_on_air)).check(matches(isDisplayed()))
         onView(withId(R.id.tv_rating)).check(matches(isDisplayed()))
         onView(withId(R.id.tv_overview)).check(matches(isDisplayed()))
+        onView(withId(R.id.fabFavorite)).check(matches(isDisplayed()))
     }
 
     @Test
