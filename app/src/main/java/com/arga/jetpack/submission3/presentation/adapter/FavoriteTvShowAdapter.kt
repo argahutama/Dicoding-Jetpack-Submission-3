@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.arga.jetpack.submission3.BuildConfig.IMAGE_URL
 import com.arga.jetpack.submission3.R
 import com.arga.jetpack.submission3.data.source.local.entity.TvShowEntity
-import com.arga.jetpack.submission3.databinding.TvshowItemBinding
+import com.arga.jetpack.submission3.databinding.ItemTvshowBinding
 import com.arga.jetpack.submission3.presentation.activity.MainActivity.Companion.EXTRA_ID
 import com.arga.jetpack.submission3.presentation.activity.TvShowDetailActivity
 import com.arga.jetpack.submission3.util.Utilization.Companion.glideOption
@@ -26,7 +26,7 @@ class FavoriteTvShowAdapter(context: Context?) :
         parent: ViewGroup,
         viewType: Int
     ): TvShowViewHolder {
-        val binding = TvshowItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemTvshowBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return TvShowViewHolder(binding)
     }
 
@@ -45,7 +45,7 @@ class FavoriteTvShowAdapter(context: Context?) :
         }
     }
 
-    inner class TvShowViewHolder(private val binding: TvshowItemBinding) :
+    inner class TvShowViewHolder(private val binding: ItemTvshowBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(tvShow: TvShowEntity) {
             with(binding) {

@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.arga.jetpack.submission3.BuildConfig.IMAGE_URL
 import com.arga.jetpack.submission3.R
 import com.arga.jetpack.submission3.data.source.local.entity.MovieEntity
-import com.arga.jetpack.submission3.databinding.MoviesItemBinding
+import com.arga.jetpack.submission3.databinding.ItemMoviesBinding
 import com.arga.jetpack.submission3.presentation.activity.MainActivity.Companion.EXTRA_ID
 import com.arga.jetpack.submission3.presentation.activity.MovieDetailActivity
 import com.arga.jetpack.submission3.util.Utilization.Companion.glideOption
@@ -36,7 +36,7 @@ class MovieAdapter(context: Context?) :
         parent: ViewGroup,
         viewType: Int
     ): MovieViewHolder {
-        val binding = MoviesItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemMoviesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MovieViewHolder(binding)
     }
 
@@ -45,7 +45,7 @@ class MovieAdapter(context: Context?) :
         if (movie != null) holder.bind(movie)
     }
 
-    inner class MovieViewHolder(private val binding: MoviesItemBinding) :
+    inner class MovieViewHolder(private val binding: ItemMoviesBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(movie: MovieEntity) {
             with(binding) {
