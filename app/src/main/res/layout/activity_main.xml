@@ -32,6 +32,7 @@
             android:id="@+id/ivFavorite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
             android:src="@drawable/ic_baseline_favorite_filled_white_24"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
