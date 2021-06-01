@@ -5,7 +5,7 @@ package com.arga.jetpack.submission3.presentation
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
-import androidx.test.espresso.action.ViewActions.*
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers.*
@@ -38,7 +38,7 @@ class MainActivityTest {
     }
 
     @Test
-    fun loadMovies() {
+    fun testLoadMovies() {
         onView(withId(R.id.rv_movies)).check(matches(isDisplayed()))
         onView(withId(R.id.rv_movies)).perform(
             RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(
@@ -48,7 +48,7 @@ class MainActivityTest {
     }
 
     @Test
-    fun loadDetailMovie() {
+    fun testLoadDetailMovie() {
         onView(withId(R.id.rv_movies)).perform(
             RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
                 0,
@@ -64,7 +64,7 @@ class MainActivityTest {
     }
 
     @Test
-    fun loadTvShows() {
+    fun testLoadTvShows() {
         onView(withText("TV SHOW")).perform(click())
         onView(withId(R.id.rv_tvshow)).check(matches(isDisplayed()))
         onView(withId(R.id.rv_tvshow)).perform(
@@ -75,7 +75,7 @@ class MainActivityTest {
     }
 
     @Test
-    fun loadDetailTvShow() {
+    fun testLoadDetailTvShow() {
         onView(withText("TV SHOW")).perform(click())
         onView(withId(R.id.rv_tvshow)).perform(
             RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
@@ -101,5 +101,20 @@ class MainActivityTest {
         onView(withId(R.id.tabs))
             .perform(click())
             .check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun testLoadFavoriteMovies() {
+        onView(withId(R.id.ivFavorite)).check(matches(isDisplayed()))
+        onView(withId(R.id.ivFavorite)).perform(click())
+        onView(withId(R.id.rv_movies)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun testLoadFavoriteTvShows() {
+        onView(withId(R.id.ivFavorite)).check(matches(isDisplayed()))
+        onView(withId(R.id.ivFavorite)).perform(click())
+        onView(withText("TV SHOW")).perform(click())
+        onView(withId(R.id.rv_tvshow)).check(matches(isDisplayed()))
     }
 }
