@@ -21,6 +21,8 @@ class TvShowDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        window.statusBarColor = ContextCompat.getColor(this, R.color.black)
+
         val binding = ActivityTvShowDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
