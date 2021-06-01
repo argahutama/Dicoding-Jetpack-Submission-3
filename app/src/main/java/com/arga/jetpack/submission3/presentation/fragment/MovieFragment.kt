@@ -41,9 +41,9 @@ class MovieFragment : Fragment() {
                 when (movies.status) {
                     Status.LOADING -> binding.progressBar.visibility = View.VISIBLE
                     Status.SUCCESS -> {
+                        binding.progressBar.visibility = View.GONE
                         binding.llLayoutNoItem.visibility =
                             if (movies.data?.size == 0) View.VISIBLE else View.GONE
-                        binding.progressBar.visibility = View.GONE
                         moviesAdapter.submitList(movies.data)
                     }
                     Status.ERROR -> {

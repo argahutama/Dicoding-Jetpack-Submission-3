@@ -33,8 +33,8 @@ class FavoriteTvShowFragment : Fragment() {
         val favoriteTvShowAdapter = FavoriteTvShowAdapter(context)
 
         viewModel.getFavoriteTvShows().observe(viewLifecycleOwner, { tvShows ->
-            binding.llLayoutNoItem.visibility = if (tvShows.size == 0) View.VISIBLE else View.GONE
             binding.progressBar.visibility = View.GONE
+            binding.llLayoutNoItem.visibility = if (tvShows.size == 0) View.VISIBLE else View.GONE
             favoriteTvShowAdapter.submitList(tvShows)
         })
 
