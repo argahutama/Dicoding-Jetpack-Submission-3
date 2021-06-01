@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.arga.jetpack.submission3.databinding.FragmentMovieBinding
-import com.arga.jetpack.submission3.presentation.adapter.MovieAdapter
+import com.arga.jetpack.submission3.presentation.adapter.FavoriteMovieAdapter
 import com.arga.jetpack.submission3.presentation.viewmodel.FavoriteMovieViewModel
 import com.arga.jetpack.submission3.util.ViewModelFactory
 
@@ -31,16 +31,16 @@ class FavoriteMovieFragment : Fragment() {
         val factory = ViewModelFactory.getInstance(requireContext())
         val viewModel = ViewModelProvider(this, factory)[FavoriteMovieViewModel::class.java]
 
-        val moviesAdapter = MovieAdapter(context)
+        val favoriteMovieAdapter = FavoriteMovieAdapter(context)
 
         viewModel.favoriteMovies.observe(viewLifecycleOwner, { movies ->
             binding.progressBar.visibility = View.GONE
-            moviesAdapter.submitList(movies)
+            favoriteMovieAdapter.submitList(movies)
         })
 
         binding.rvMovies.layoutManager = LinearLayoutManager(context)
         binding.rvMovies.setHasFixedSize(true)
-        binding.rvMovies.adapter = moviesAdapter
+        binding.rvMovies.adapter = favoriteMovieAdapter
 
     }
 }

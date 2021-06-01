@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.arga.jetpack.submission3.databinding.FragmentTvShowBinding
-import com.arga.jetpack.submission3.presentation.adapter.TvShowAdapter
+import com.arga.jetpack.submission3.presentation.adapter.FavoriteTvShowAdapter
 import com.arga.jetpack.submission3.presentation.viewmodel.FavoriteTvShowViewModel
 import com.arga.jetpack.submission3.util.ViewModelFactory
 
@@ -30,15 +30,15 @@ class FavoriteTvShowFragment : Fragment() {
         val factory = ViewModelFactory.getInstance(requireContext())
         val viewModel = ViewModelProvider(this, factory)[FavoriteTvShowViewModel::class.java]
 
-        val tvShowAdapter = TvShowAdapter(context)
+        val favoriteTvShowAdapter = FavoriteTvShowAdapter(context)
 
         viewModel.favoriteTvShows.observe(viewLifecycleOwner, { tvShows ->
             binding.progressBar.visibility = View.GONE
-            tvShowAdapter.submitList(tvShows)
+            favoriteTvShowAdapter.submitList(tvShows)
         })
 
         binding.rvTvshow.layoutManager = LinearLayoutManager(context)
         binding.rvTvshow.setHasFixedSize(true)
-        binding.rvTvshow.adapter = tvShowAdapter
+        binding.rvTvshow.adapter = favoriteTvShowAdapter
     }
 }
