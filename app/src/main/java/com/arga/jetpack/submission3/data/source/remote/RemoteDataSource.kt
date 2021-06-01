@@ -35,12 +35,13 @@ open class RemoteDataSource {
 
         client.enqueue(object : Callback<MovieResponse> {
             override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
-                resultMovies.value = ApiResponse.success(response.body()?.results as List<MovieEntity>)
+                resultMovies.value =
+                    ApiResponse.success(response.body()?.results as List<MovieEntity>)
                 EspressoIdlingResource.decrement()
             }
 
             override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
-                Log.d(TAG, "onFailure :${t.message}" )
+                Log.d(TAG, "onFailure :${t.message}")
                 EspressoIdlingResource.decrement()
             }
         })
@@ -59,7 +60,7 @@ open class RemoteDataSource {
             }
 
             override fun onFailure(call: Call<MovieEntity>, t: Throwable) {
-                Log.d(TAG, "onFailure :${t.message}" )
+                Log.d(TAG, "onFailure :${t.message}")
                 EspressoIdlingResource.decrement()
             }
         })
@@ -92,7 +93,7 @@ open class RemoteDataSource {
 
     fun getTvShowDetail(id: Int): LiveData<ApiResponse<TvShowEntity>> {
         EspressoIdlingResource.increment()
-        val resultDetailTvShow =  MutableLiveData<ApiResponse<TvShowEntity>>()
+        val resultDetailTvShow = MutableLiveData<ApiResponse<TvShowEntity>>()
         val client = ApiClient.getApiService().getTvShowDetails(id, apiKey)
         client.enqueue(object : Callback<TvShowEntity> {
             override fun onResponse(call: Call<TvShowEntity>, response: Response<TvShowEntity>) {
@@ -101,7 +102,7 @@ open class RemoteDataSource {
             }
 
             override fun onFailure(call: Call<TvShowEntity>, t: Throwable) {
-                Log.d(TAG, "onFailure :${t.message}" )
+                Log.d(TAG, "onFailure :${t.message}")
                 EspressoIdlingResource.decrement()
             }
         })

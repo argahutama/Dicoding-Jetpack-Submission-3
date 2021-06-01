@@ -46,12 +46,8 @@ open class LocalDataSource constructor(private val dao: MyDao) {
     companion object {
         private var INSTANCE: LocalDataSource? = null
 
-        fun getInstance(catalogueDao: MyDao): LocalDataSource {
-            if (INSTANCE == null) {
-                INSTANCE =
-                    LocalDataSource(catalogueDao)
-            }
-            return INSTANCE as LocalDataSource
-        }
+        fun getInstance(mDao: MyDao): LocalDataSource =
+            INSTANCE ?: LocalDataSource(mDao).apply { INSTANCE = this }
+
     }
 }
