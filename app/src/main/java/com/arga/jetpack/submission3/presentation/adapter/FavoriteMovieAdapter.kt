@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.arga.jetpack.submission3.R
 import com.arga.jetpack.submission3.data.source.local.entity.MovieEntity
 import com.arga.jetpack.submission3.databinding.MoviesItemBinding
+import com.arga.jetpack.submission3.presentation.activity.MainActivity.Companion.EXTRA_ID
 import com.arga.jetpack.submission3.presentation.activity.MovieDetailActivity
 import com.arga.jetpack.submission3.util.Utilization.Companion.glideOption
 import com.bumptech.glide.Glide
@@ -56,7 +57,7 @@ class FavoriteMovieAdapter(context: Context?) :
                     .into(ivMovie)
                 itemView.setOnClickListener {
                     val intent = Intent(itemView.context, MovieDetailActivity::class.java)
-                    intent.putExtra("movieId", movie.id)
+                    intent.putExtra(EXTRA_ID, movie.id)
                     activity.startActivity(intent)
                     activity.overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
                 }

@@ -37,7 +37,7 @@ class TvShowFragment : Fragment() {
 
         val tvShowAdapter = TvShowAdapter(context)
 
-        viewModel.tvShow.observe(viewLifecycleOwner, { tvShows ->
+        viewModel.tvShows.observe(viewLifecycleOwner, { tvShows ->
             if (tvShows != null) {
                 when (tvShows.status) {
                     Status.LOADING -> binding.progressBar.visibility = View.VISIBLE

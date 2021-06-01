@@ -58,4 +58,8 @@ class MainActivity : AppCompatActivity() {
             doubleBackToExitPressedOnce = false
         }, 2000)
     }
+
+    companion object {
+        const val EXTRA_ID = "extra:id"
+    }
 }

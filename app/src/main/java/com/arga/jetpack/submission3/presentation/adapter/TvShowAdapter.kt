@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.arga.jetpack.submission3.R
 import com.arga.jetpack.submission3.data.source.local.entity.TvShowEntity
 import com.arga.jetpack.submission3.databinding.TvshowItemBinding
+import com.arga.jetpack.submission3.presentation.activity.MainActivity.Companion.EXTRA_ID
 import com.arga.jetpack.submission3.presentation.activity.TvShowDetailActivity
 import com.arga.jetpack.submission3.util.Utilization.Companion.glideOption
 import com.bumptech.glide.Glide
@@ -56,7 +57,7 @@ class TvShowAdapter(context: Context?) :
                     .into(ivTvShow)
                 itemView.setOnClickListener {
                     val intent = Intent(itemView.context, TvShowDetailActivity::class.java)
-                    intent.putExtra("tvShowId", tvShow.id)
+                    intent.putExtra(EXTRA_ID, tvShow.id)
                     activity.startActivity(intent)
                     activity.overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
                 }
