@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.arga.jetpack.submission3.R
 import com.arga.jetpack.submission3.databinding.ActivityFavoriteBinding
-import com.arga.jetpack.submission3.presentation.adapter.SectionPagerFavoriteAdapter
+import com.arga.jetpack.submission3.presentation.adapter.sectionpager.SectionPagerFavoriteAdapter
 
 class FavoriteActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

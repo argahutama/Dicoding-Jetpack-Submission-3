@@ -53,6 +53,7 @@ class MovieAdapter(context: Context?) :
                 tvRating.text = movie.voteAverage.toString()
                 Glide.with(itemView)
                     .load("https://image.tmdb.org/t/p/w500${movie.posterPath}")
+                    .centerCrop()
                     .apply(glideOption)
                     .into(ivMovie)
                 itemView.setOnClickListener {

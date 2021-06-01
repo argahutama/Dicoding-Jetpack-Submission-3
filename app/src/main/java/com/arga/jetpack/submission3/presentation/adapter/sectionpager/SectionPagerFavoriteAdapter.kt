@@ -1,4 +1,4 @@
-package com.arga.jetpack.submission3.presentation.adapter
+package com.arga.jetpack.submission3.presentation.adapter.sectionpager
 
 import android.content.Context
 import androidx.annotation.StringRes

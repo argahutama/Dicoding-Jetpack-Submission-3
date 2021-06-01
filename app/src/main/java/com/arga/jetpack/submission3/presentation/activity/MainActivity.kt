@@ -8,7 +8,7 @@ import android.os.Looper
 import androidx.core.content.res.ResourcesCompat
 import com.arga.jetpack.submission3.R
 import com.arga.jetpack.submission3.databinding.ActivityMainBinding
-import com.arga.jetpack.submission3.presentation.adapter.SectionPagerMainAdapter
+import com.arga.jetpack.submission3.presentation.adapter.sectionpager.SectionPagerMainAdapter
 import www.sanju.motiontoast.MotionToast
 
 class MainActivity : AppCompatActivity() {
