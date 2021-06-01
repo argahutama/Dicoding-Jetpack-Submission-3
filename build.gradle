@@ -31,6 +31,8 @@ buildscript {
         roomRuntimeVersion = '2.3.0'
 
         pagingVersion = '2.1.1'
+
+        multidexVersion = '1.0.3'
     }
 
     repositories {

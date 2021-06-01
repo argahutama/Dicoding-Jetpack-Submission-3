@@ -18,6 +18,11 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
     }
 
     buildTypes {
@@ -84,4 +89,7 @@ dependencies {
 
     //paging
     implementation "androidx.paging:paging-runtime-ktx:$pagingVersion"
+
+    //multidex
+    implementation "com.android.support:multidex:$multidexVersion"
 }
