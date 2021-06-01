@@ -33,7 +33,7 @@ class FavoriteMovieFragment : Fragment() {
 
         val favoriteMovieAdapter = FavoriteMovieAdapter(context)
 
-        viewModel.favoriteMovies.observe(viewLifecycleOwner, { movies ->
+        viewModel.getFavoriteMovies().observe(viewLifecycleOwner, { movies ->
             binding.progressBar.visibility = View.GONE
             favoriteMovieAdapter.submitList(movies)
         })
