@@ -14,7 +14,7 @@ import com.arga.jetpack.submission3.vo.Resource
 class DataRepository(
     private val localDataSource: LocalDataSource,
     private val remoteDataSource: RemoteDataSource,
-    val executor: AppExecutor
+    val mExecutor: AppExecutor
 ) : DataSource {
 
     companion object {
@@ -24,11 +24,11 @@ class DataRepository(
         fun getInstance(
             localDataSource: LocalDataSource,
             remoteDataSource: RemoteDataSource,
-            executor: AppExecutor
+            mExecutor: AppExecutor
         ): DataRepository? {
             if (INSTANCE == null) synchronized(DataRepository::class.java) {
                 if (INSTANCE == null)
-                    INSTANCE = DataRepository(localDataSource, remoteDataSource, executor)
+                    INSTANCE = DataRepository(localDataSource, remoteDataSource, mExecutor)
             }
 
             return INSTANCE
@@ -37,7 +37,7 @@ class DataRepository(
 
     override fun getMovies(): LiveData<Resource<PagedList<MovieEntity>>> {
         return object :
-            NetworkBoundResource<PagedList<MovieEntity>, List<MovieEntity>>(executor) {
+            NetworkBoundResource<PagedList<MovieEntity>, List<MovieEntity>>(mExecutor) {
 
             override fun loadDataFromDB(): LiveData<PagedList<MovieEntity>> {
                 val config = PagedList.Config.Builder()
@@ -75,7 +75,7 @@ class DataRepository(
     }
 
     override fun getMovieDetail(id: Int): LiveData<Resource<MovieEntity>> {
-        return object : NetworkBoundResource<MovieEntity, MovieEntity>(executor) {
+        return object : NetworkBoundResource<MovieEntity, MovieEntity>(mExecutor) {
             override fun loadDataFromDB(): LiveData<MovieEntity> =
                 localDataSource.getMovieDetail(id)
 
@@ -101,7 +101,7 @@ class DataRepository(
 
     override fun getTvShows(): LiveData<Resource<PagedList<TvShowEntity>>> {
         return object :
-            NetworkBoundResource<PagedList<TvShowEntity>, List<TvShowEntity>>(executor) {
+            NetworkBoundResource<PagedList<TvShowEntity>, List<TvShowEntity>>(mExecutor) {
             override fun loadDataFromDB(): LiveData<PagedList<TvShowEntity>> {
                 val config = PagedList.Config.Builder()
                     .setEnablePlaceholders(false)
@@ -139,7 +139,7 @@ class DataRepository(
 
     override fun getTvShowDetail(id: Int): LiveData<Resource<TvShowEntity>> {
         return object :
-            NetworkBoundResource<TvShowEntity, TvShowEntity>(executor) {
+            NetworkBoundResource<TvShowEntity, TvShowEntity>(mExecutor) {
             override fun loadDataFromDB(): LiveData<TvShowEntity> =
                 localDataSource.getTvShowDetail(id)
 
@@ -182,10 +182,10 @@ class DataRepository(
     }
 
     override fun setFavoriteMovie(movie: MovieEntity, isFavorite: Boolean) {
-        executor.diskIO().execute { localDataSource.setFavoriteMovie(movie, isFavorite) }
+        mExecutor.diskIO().execute { localDataSource.setFavoriteMovie(movie, isFavorite) }
     }
 
     override fun setFavoriteTvShow(tvShow: TvShowEntity, isFavorite: Boolean) {
-        executor.diskIO().execute { localDataSource.setFavoriteTvShow(tvShow, isFavorite) }
+        mExecutor.diskIO().execute { localDataSource.setFavoriteTvShow(tvShow, isFavorite) }
     }
 }

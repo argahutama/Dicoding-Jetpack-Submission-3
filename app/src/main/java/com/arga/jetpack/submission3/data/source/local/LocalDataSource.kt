@@ -21,14 +21,10 @@ open class LocalDataSource constructor(private val dao: MyDao) {
         dao.updateMovie(movie)
     }
 
-    fun getMovies(): DataSource.Factory<Int, MovieEntity> {
-        return dao.getMovies()
-    }
+    fun getMovies(): DataSource.Factory<Int, MovieEntity> = dao.getMovies()
 
 
-    fun getTvShows(): DataSource.Factory<Int, TvShowEntity> {
-        return dao.getTvShows()
-    }
+    fun getTvShows(): DataSource.Factory<Int, TvShowEntity> = dao.getTvShows()
 
     fun getTvShowDetail(tvShowId: Int): LiveData<TvShowEntity> = dao.getTvShowById(tvShowId)
 

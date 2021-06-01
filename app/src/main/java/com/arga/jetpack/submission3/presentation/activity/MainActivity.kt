@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
             ivFavorite.setOnClickListener {
                 val intent = Intent(this@MainActivity, FavoriteActivity::class.java)
                 startActivity(intent)
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
             }
         }
     }

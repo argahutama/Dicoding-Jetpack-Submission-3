@@ -7,7 +7,7 @@ import com.arga.jetpack.submission3.data.source.remote.StatusResponse
 import com.arga.jetpack.submission3.util.AppExecutor
 import com.arga.jetpack.submission3.vo.Resource
 
-abstract class NetworkBoundResource<ResultType, RequestType>(private val executors: AppExecutor) {
+abstract class NetworkBoundResource<ResultType, RequestType>(private val mExecutors: AppExecutor) {
     private val result = MediatorLiveData<Resource<ResultType>>()
 
     private fun onFetchFailed() {}
@@ -29,18 +29,18 @@ abstract class NetworkBoundResource<ResultType, RequestType>(private val executo
             result.removeSource(dbSource)
 
             when (response.status) {
-                StatusResponse.SUCCESS -> executors.diskIO().execute {
+                StatusResponse.SUCCESS -> mExecutors.diskIO().execute {
 
                     response.body?.let { saveCallResult(it) }
 
-                    executors.mainThread().execute {
+                    mExecutors.mainThread().execute {
                         result.addSource(
                             loadDataFromDB()
                         ) { newData -> result.setValue(Resource.success(newData)) }
                     }
                 }
 
-                StatusResponse.EMPTY -> executors.mainThread().execute {
+                StatusResponse.EMPTY -> mExecutors.mainThread().execute {
                     result.addSource(
                         loadDataFromDB()
                     ) { newData -> result.setValue(Resource.success(newData)) }
