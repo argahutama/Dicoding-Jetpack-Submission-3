@@ -4,15 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.arga.jetpack.submission3.R
 import com.arga.jetpack.submission3.databinding.FragmentMovieBinding
 import com.arga.jetpack.submission3.presentation.adapter.MovieAdapter
 import com.arga.jetpack.submission3.presentation.viewmodel.MovieViewModel
 import com.arga.jetpack.submission3.util.ViewModelFactory
 import com.arga.jetpack.submission3.vo.Status
+import www.sanju.motiontoast.MotionToast
 
 class MovieFragment : Fragment() {
 
@@ -45,7 +47,15 @@ class MovieFragment : Fragment() {
                     }
                     Status.ERROR -> {
                         binding.progressBar.visibility = View.GONE
-                        Toast.makeText(context, "Terjadi kesalahan", Toast.LENGTH_SHORT).show()
+                        MotionToast.darkColorToast(
+                            requireActivity(),
+                            resources.getString(R.string.error),
+                            resources.getString(R.string.there_is_an_error),
+                            MotionToast.TOAST_ERROR,
+                            MotionToast.GRAVITY_BOTTOM,
+                            MotionToast.LONG_DURATION,
+                            ResourcesCompat.getFont(requireActivity(), R.font.montserrat)
+                        )
                     }
                 }
             }
