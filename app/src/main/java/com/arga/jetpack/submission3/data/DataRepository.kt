@@ -42,8 +42,8 @@ class DataRepository(
             override fun loadDataFromDB(): LiveData<PagedList<MovieEntity>> {
                 val config = PagedList.Config.Builder()
                     .setEnablePlaceholders(false)
-                    .setInitialLoadSizeHint(10)
-                    .setPageSize(10)
+                    .setInitialLoadSizeHint(4)
+                    .setPageSize(4)
                     .build()
                 return LivePagedListBuilder(localDataSource.getMovies(), config).build()
             }
@@ -107,8 +107,8 @@ class DataRepository(
             override fun loadDataFromDB(): LiveData<PagedList<TvShowEntity>> {
                 val config = PagedList.Config.Builder()
                     .setEnablePlaceholders(false)
-                    .setInitialLoadSizeHint(10)
-                    .setPageSize(10)
+                    .setInitialLoadSizeHint(4)
+                    .setPageSize(4)
                     .build()
                 return LivePagedListBuilder(localDataSource.getTvShows(), config).build()
             }
@@ -168,8 +168,8 @@ class DataRepository(
     override fun getFavoritesMovies(): LiveData<PagedList<MovieEntity>> {
         val config = PagedList.Config.Builder()
             .setEnablePlaceholders(false)
-            .setInitialLoadSizeHint(10)
-            .setPageSize(10)
+            .setInitialLoadSizeHint(4)
+            .setPageSize(4)
             .build()
         return LivePagedListBuilder(localDataSource.getFavoriteMovies(), config).build()
     }
@@ -177,8 +177,8 @@ class DataRepository(
     override fun getFavoritesTvShows(): LiveData<PagedList<TvShowEntity>> {
         val config = PagedList.Config.Builder()
             .setEnablePlaceholders(false)
-            .setInitialLoadSizeHint(10)
-            .setPageSize(10)
+            .setInitialLoadSizeHint(4)
+            .setPageSize(4)
             .build()
         return LivePagedListBuilder(localDataSource.getFavoriteTvShows(), config).build()
     }
