@@ -41,6 +41,8 @@ class MovieFragment : Fragment() {
                 when (movies.status) {
                     Status.LOADING -> binding.progressBar.visibility = View.VISIBLE
                     Status.SUCCESS -> {
+                        binding.llLayoutNoItem.visibility =
+                            if (movies.data?.size == 0) View.VISIBLE else View.GONE
                         binding.progressBar.visibility = View.GONE
                         moviesAdapter.submitList(movies.data)
                     }
@@ -55,7 +57,7 @@ class MovieFragment : Fragment() {
             }
         })
 
-        with(binding.rvMovies){
+        with(binding.rvMovies) {
             layoutManager = LinearLayoutManager(context)
             setHasFixedSize(true)
             adapter = moviesAdapter

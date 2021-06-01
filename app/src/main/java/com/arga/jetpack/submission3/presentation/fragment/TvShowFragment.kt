@@ -41,6 +41,8 @@ class TvShowFragment : Fragment() {
                 when (tvShows.status) {
                     Status.LOADING -> binding.progressBar.visibility = View.VISIBLE
                     Status.SUCCESS -> {
+                        binding.llLayoutNoItem.visibility =
+                            if (tvShows.data?.size == 0) View.VISIBLE else View.GONE
                         binding.progressBar.visibility = View.GONE
                         tvShowAdapter.submitList(tvShows.data)
                     }

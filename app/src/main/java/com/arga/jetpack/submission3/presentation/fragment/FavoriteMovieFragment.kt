@@ -34,6 +34,7 @@ class FavoriteMovieFragment : Fragment() {
         val favoriteMovieAdapter = FavoriteMovieAdapter(context)
 
         viewModel.getFavoriteMovies().observe(viewLifecycleOwner, { movies ->
+            binding.llLayoutNoItem.visibility = if (movies.size == 0) View.VISIBLE else View.GONE
             binding.progressBar.visibility = View.GONE
             favoriteMovieAdapter.submitList(movies)
         })
