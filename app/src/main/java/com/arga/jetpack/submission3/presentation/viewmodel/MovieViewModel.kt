@@ -10,7 +10,7 @@ import com.arga.jetpack.submission3.data.source.local.entity.MovieEntity
 import com.arga.jetpack.submission3.vo.Resource
 
 class MovieViewModel(private val dataRepository: DataRepository) : ViewModel() {
-    val movies: LiveData<Resource<PagedList<MovieEntity>>> = dataRepository.getMovies()
+    fun getMovies(): LiveData<Resource<PagedList<MovieEntity>>> = dataRepository.getMovies()
     private val selectedMovieId = MutableLiveData<Int>()
 
     fun setSelectedDetail(id: Int) {

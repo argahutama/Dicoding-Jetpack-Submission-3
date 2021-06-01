@@ -36,7 +36,7 @@ class MovieFragment : Fragment() {
 
         val moviesAdapter = MovieAdapter(context)
 
-        viewModel.movies.observe(viewLifecycleOwner, { movies ->
+        viewModel.getMovies().observe(viewLifecycleOwner, { movies ->
             if (movies != null) {
                 when (movies.status) {
                     Status.LOADING -> binding.progressBar.visibility = View.VISIBLE

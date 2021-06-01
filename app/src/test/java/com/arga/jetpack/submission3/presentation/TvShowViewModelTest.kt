@@ -3,75 +3,59 @@ package com.arga.jetpack.submission3.presentation
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
+import androidx.paging.PagedList
 import com.arga.jetpack.submission3.data.DataRepository
 import com.arga.jetpack.submission3.data.source.local.entity.TvShowEntity
 import com.arga.jetpack.submission3.presentation.viewmodel.TvShowViewModel
-import com.arga.jetpack.submission3.util.DummyData
-import org.junit.Assert.assertEquals
+import com.arga.jetpack.submission3.vo.Resource
+import junit.framework.TestCase
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.mockito.Mockito.*
+import org.junit.runner.RunWith
+import org.mockito.Mock
+import org.mockito.Mockito.`when`
+import org.mockito.Mockito.verify
+import org.mockito.junit.MockitoJUnitRunner
 
-@Suppress("UNCHECKED_CAST")
+@RunWith(MockitoJUnitRunner::class)
 class TvShowViewModelTest {
 
-    @Rule
-    @JvmField
+    private lateinit var viewModel: TvShowViewModel
+
+    @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 
-    private var viewModel: TvShowViewModel? = null
-    private var data = mock(DataRepository::class.java)
+
+    @Mock
+    private lateinit var dataRepository: DataRepository
+
+    @Mock
+    private lateinit var tvShowObserver: Observer<Resource<PagedList<TvShowEntity>>>
+
+    @Mock
+    private lateinit var pagedListTvShows: PagedList<TvShowEntity>
 
     @Before
     fun setUp() {
-        viewModel = TvShowViewModel(data)
+        viewModel = TvShowViewModel(dataRepository)
     }
 
     @Test
-    fun getTvShowList() {
-        val tvShow = MutableLiveData<List<TvShowEntity>>()
-        tvShow.value = DummyData.generateDummyTvShows()
-        `when`(data.getTvShows()).thenReturn(tvShow)
-        val observer = mock(Observer::class.java)
-        viewModel?.tvShow?.observeForever(observer as Observer<List<TvShowEntity>>)
-        verify(data).getTvShows()
-    }
+    fun testGetTvShows() {
+        val dummyTvShows = Resource.success(pagedListTvShows)
+        `when`(dummyTvShows.data?.size).thenReturn(10)
+        val tvShows = MutableLiveData<Resource<PagedList<TvShowEntity>>>()
+        tvShows.value = dummyTvShows
 
-    @Test
-    fun getTvShowDetail() {
-        val tvShow = MutableLiveData<TvShowEntity>()
-        tvShow.value = DummyData.generateDummyTvShows()[0]
-        `when`(data.getTvShowDetail(tvShow.value!!.id)).thenReturn(tvShow)
-        val observer = mock(Observer::class.java)
-        viewModel?.getTvShowDetail(tvShow.value!!.id)
-            ?.observeForever(observer as Observer<TvShowEntity>)
-        verify(data).getTvShows()
+        `when`(dataRepository.getTvShows()).thenReturn(tvShows)
+        val tvShowEntities = viewModel.getTvShows().value?.data
+        verify(dataRepository).getTvShows()
 
-        assertEquals(tvShow.value!!.id, viewModel?.getTvShowDetail(tvShow.value!!.id)?.value?.id)
-        assertEquals(
-            tvShow.value!!.posterPath,
-            viewModel?.getTvShowDetail(tvShow.value!!.id)?.value?.posterPath
-        )
-        assertEquals(
-            tvShow.value!!.backdropPath,
-            viewModel?.getTvShowDetail(tvShow.value!!.id)?.value?.backdropPath
-        )
-        assertEquals(
-            tvShow.value!!.name,
-            viewModel?.getTvShowDetail(tvShow.value!!.id)?.value?.name
-        )
-        assertEquals(
-            tvShow.value!!.overview,
-            viewModel?.getTvShowDetail(tvShow.value!!.id)?.value?.overview
-        )
-        assertEquals(
-            tvShow.value!!.firstAirDate,
-            viewModel?.getTvShowDetail(tvShow.value!!.id)?.value?.firstAirDate
-        )
-        assertEquals(
-            tvShow.value!!.voteAverage,
-            viewModel?.getTvShowDetail(tvShow.value!!.id)?.value?.voteAverage
-        )
+        TestCase.assertNotNull(tvShowEntities)
+        TestCase.assertEquals(10, tvShowEntities?.size)
+
+        viewModel.getTvShows().observeForever(tvShowObserver)
+        verify(tvShowObserver).onChanged(dummyTvShows)
     }
 }

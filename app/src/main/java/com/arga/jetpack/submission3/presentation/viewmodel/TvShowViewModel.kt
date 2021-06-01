@@ -10,7 +10,7 @@ import com.arga.jetpack.submission3.data.source.local.entity.TvShowEntity
 import com.arga.jetpack.submission3.vo.Resource
 
 class TvShowViewModel(private val dataRepository: DataRepository) : ViewModel() {
-    val tvShows: LiveData<Resource<PagedList<TvShowEntity>>> = dataRepository.getTvShows()
+    fun getTvShows(): LiveData<Resource<PagedList<TvShowEntity>>> = dataRepository.getTvShows()
     private val selectedTvShowId = MutableLiveData<Int>()
 
     fun setSelectedDetail(id: Int) {
